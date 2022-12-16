@@ -5,6 +5,14 @@
     font-family: sans-serif;
  }
  
+--------------------------
+/* NAV */
+
+.titulo{
+    display: flex;
+}
+
+--------------------------
  .profile-area {
      padding: 80px 0;
  }
@@ -69,6 +77,7 @@
      color: darkcyan;
      padding: 0 10px;
  }
+
 
 footer{
     height: 400px;
