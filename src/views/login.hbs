@@ -1,1 +1,37 @@
-<h1>Login</h1>
+{{!-- <div id="login-button">
+    <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+    </img>
+</div> --}}
+<div id="container">
+    <h2>Log in</h2>
+    <span class="close-btn">
+        <img href="index" src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    </span>
+
+    <form>
+        <input type="email" name="email" placeholder="E-mail">
+        <input type="password" name="pass" placeholder="Password">
+        <a href="#">Log in</a>
+        <div id="remember-container">
+            <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked" />
+            <span id="remember">Recordarme</span>
+            <span id="forgotten">Contraseña olvidada</span>
+        </div>
+     {{!--    <div >
+            <a id="back" href="/">Volver</a>
+        </div> --}}
+    </form>
+</div>
+
+<!-- Forgotten Password Container -->
+<div id="forgotten-container">
+    <h1>Olvidada</h1>
+    <span class="close-btn">
+        <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    </span>
+
+    <form>
+        <input type="email" name="email" placeholder="E-mail">
+        <a href="#" class="orange-btn">Obtener nueva contraseña</a>
+    </form>
+</div>
