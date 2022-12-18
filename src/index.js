@@ -3,6 +3,7 @@ import { engine } from 'express-handlebars';
 import path from 'path';
 import url from 'url';
 import index from './routes/index.routes.js'
+import login from './routes/login.routes.js'
 
 //Path
 const __filename = url.fileURLToPath(import.meta.url);
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //rutas
 app.use(index);
+app.use(login);
 //public 
 app.use(express.static(path.join(__dirname, "public")))
 

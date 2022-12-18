@@ -5,6 +5,11 @@
     font-family: sans-serif;
  }
  
+--------------------------
+
+
+
+--------------------------
  .profile-area {
      padding: 80px 0;
  }
@@ -62,14 +67,16 @@
  .socials {
      text-align: center;
      padding-bottom: 20px;
- }
+ }i {
+    font-size: 20px;
+    color: darkcyan;
+    padding: 0 10px;
+}
 
- .socials i {
-     font-size: 20px;
-     color: darkcyan;
-     padding: 0 10px;
- }
-
+----------------------------
 footer{
     height: 400px;
+    
+}.info{
+    height: 310px;
 }
