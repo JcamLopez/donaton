@@ -1,0 +1,50 @@
+.car1{
+    height: 700px;
+}
+
+.elemento img{
+    height: 700px;
+}
+
+------------------------
+
+.car2{
+    height: 800px;
+}
+
+.car_elemento{
+    margin: 0 10px;
+    border-radius: 10px;
+    color: black;
+}
+
+.car_elemento img{
+    margin: 10px 0;
+    padding: 10px 0;
+    height: 300px;
+}
+
+.car_elemento img:hover{
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+    transition: 0.8s;
+}
+
+.prev{
+    width: 50px;
+    height: 50px;
+      
+}
+
+.next{
+    width: 50px;
+    height: 50px;
+   
+}
+
+
+--------------------
+
+.otros{
+    height: 700px;
+}
