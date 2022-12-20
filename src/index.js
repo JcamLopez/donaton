@@ -5,13 +5,16 @@ import url from 'url';
 import index from './routes/index.routes.js'
 import login from './routes/login.routes.js'
 import proyectos from './routes/proyectos.routes.js'
-
+import passport from 'passport';
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
+import pass from './models/authenticate/passport.js';
 //Path
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 //inicializar 
 const app = express();
-
+pass;
 //Confirguraciones
 app.set("port", process.env.PORT || 5000);
 app.set("views", path.join(__dirname, "views"));
@@ -26,8 +29,18 @@ app.engine('.hbs', engine({
 app.set("view engine", ".hbs");
 
 //Midelware
+app.use(cookieParser());
+app.use(session(
+  {
+    secret: 'sesion',
+    resave: false,
+    saveUninitialized: false,
+  }
+))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
 //rutas
 app.use(index);
 app.use(login);

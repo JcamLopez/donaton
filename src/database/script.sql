@@ -2,9 +2,7 @@ create database reforestacion;
 
 CREATE TABLE persona (
     id_persona SERIAL PRIMARY KEY,
-    fk_imagen int  null,
-    fk_pais int not null,
-    fk_rol int not null,    
+    fk_nacionalidad int not null,    
     nombre_completo VARCHAR(100) not null
 );
 
@@ -61,6 +59,8 @@ CREATE TABLE arbol (
 CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     fk_rol int not null,
+    fk_persona int not null,
+    fk_imagen int  null,
     usuario varchar(100) not null,
     clave varchar(100) not null
 );
