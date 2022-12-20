@@ -1,5 +1,5 @@
 
-<div class="container-form sign-up">
+<div id="registro-usaurio" class="container-form sign-up">
     <div class="welcome-back">
         <div class="message">
             <h2>Bienvenido a DonaTree</h2>
@@ -10,29 +10,30 @@
     <div class="formulario">
         <h2 class="create-account">Crear una cuenta</h2>
 
-        <p class="cuenta-gratis">Crear una cuenta gratis</p>
+        <p class="cuenta-gratis">Crear una cuenta en DonaTree</p>
         <div class="mb-3">
-            <label for="usuario" class="form-label">Nombre completo</label>
-            <input type="text" id="usuario" placeholder="Por favor ingrese su nombre completo">
+            <label for="nombre_usuario" class="form-label">Nombre completo</label>
+            <input type="text" id="nombre_usuario" placeholder="Por favor ingrese su nombre completo">
         </div>
 
         <div class="mb-3">
             <label for="nacionalidad" class="form-label">Nacionalidad</label>
             <select id="nacionalidad" class="nacionalidad">
                 <option value="0">Seleccione su nacionalidad</option>
+                <option>Seleccione su nacionalidad</option>
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="registro-usuario" class="form-label">Usuario</label>
-            <input type="email" id="registro-usuario" placeholder="Por favor ingrese su correo">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="email" id="usuario" placeholder="Por favor ingrese su correo">
         </div>
 
         <div class="mb-3">
             <label for="clave" class="form-label">Contraseña</label>
-            <input type="password" id="registro-clave" placeholder="Por fravor ingrese la contraseña">
+            <input type="password" id="clave" placeholder="Por fravor ingrese la contraseña">
         </div>
 
-       <button>Registrarse</button>
+       <button id="btn-registrar-usuario">Registrarse</button>
     </div>
 </div>

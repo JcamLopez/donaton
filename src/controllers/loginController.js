@@ -3,19 +3,25 @@ const controller = {};
 
 
 controller.vista_login = (req, res) => {
+    res.render('./login')
+}
+
+controller.cargar_nacionalidad = (req, res) => {
     pais.ConsultarNaniconalidad().then((respuesta) => {
         if (respuesta == "se consulto la nacionalidad de manera correcta") {
             res.json({
-                status: "ok",
-                url:'/login',
-                nacionalidad: JSON.stringify(nacionalidad)
-            });
+                status: 'ok',
+                nacionalidad: nacionalidad
+            })
         }
     }).catch((err) => {
         console.log("Error " + err)
     });
-    //res.render('./login')
 }
+
+/*controller.registro_usuario = (req,res) => {
+     console.log(req.body)
+}*/
 
 
 
