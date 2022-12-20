@@ -22,4 +22,19 @@ footer{
     
 }.info{
     height: 310px;
+}a{
+    /* font-style: oblique; */
+    text-decoration: none;
+    color: black;
+}
+
+.iconos{
+    cursor: pointer;
+    display: flex;
+}
+
+.tamanio{
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
 }
