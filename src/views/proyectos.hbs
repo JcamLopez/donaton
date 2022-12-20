@@ -1,46 +1,10 @@
 <div class="container.fluid ">
 
-    <nav class="navbar navbar-expand-lg bg-success bg-gradient fixed-top ">
-        <div class="container ">
-            <div class="d-flex">
-                <div class="">
-                    <a href="#" class="">
-                        <img src="https://assets.stickpng.com/images/5a902381b15d5c051b369085.png" width="90px"
-                            height="90px" class="logo">
-                    </a>
-                </div>
-
-                <div class="col align-self-center">
-                    <h1>DonaTree</h1>
-                </div>
-            </div>
-            {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="#">Donar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="#">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="login">Iniciar sesión</a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </div>
-    </nav>
+    {{>nav-index}}
     <br><br>
     <br><br>
     <br>
-    
+
 
 
 
@@ -99,37 +63,6 @@
 
     </div>
 
-    <footer class="bg-success bg-gradient">
-        <div class="container text-center">
-            <br>
-            <div class="row info">
-                <div class="col">
-                    fsdfsfd <br>
-                    fsdfsfd <br>
-                    fsdfsfd <br>
-                    fsdfsfd
-                </div>
-                <div class="col">
-                    fsdfsfd <br>
-                    fsdfsfd <br>
-                    fsdfsfd <br>
-                    fsdfsfd
-                </div>
-                <div class="col">
-                    fsdfsfd <br>
-                    fsdfsfd <br>
-                    fsdfsfd <br>
-                    fsdfsfd
-                </div>
-            </div>
-            <br>
-            <div class="row ">
-                <div class="coL-12 coL-sm-8 coL-md-4 ">
-                    <div class="copy">
-                        <p>&copy; 2023 Todos los derechos reservados <br></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{>footer}}
+
 </div>
