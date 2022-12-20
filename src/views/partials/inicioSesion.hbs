@@ -1,18 +1,24 @@
-<form class="formulario">
-    <h2 class="create-account">Iniciar Sesion</h2>
-    <div class="iconos">
-        <div class="border-icon">
-            <i class='bx bxl-instagram'></i>
+<div class="container-form sign-in">
+    <div class="formulario">
+        <h2 class="create-account">Iniciar Sesion</h2>
+     
+        <p class="cuenta-gratis">¿Aun no tienes una cuenta?</p>
+        <div class="mb-3">
+            <label for="inicio-usuario" class="form-label">Usuario</label>
+            <input type="email" id="inicio-usuario" placeholder="Por favor ingrese su correo">
         </div>
-        <div class="border-icon">
-            <i class='bx bxl-linkedin'></i>
+
+        <div class="mb-3">
+            <label for="inicio" class="form-label">Contraseña</label>
+            <input type="password" id="inicio-clave" placeholder="Por fravor ingrese la contraseña">
         </div>
-        <div class="border-icon">
-            <i class='bx bxl-facebook-circle'></i>
+        <button class="mb-3">Inciar Sesión</button>
+    </div>
+    <div class="welcome-back">
+        <div class="message">
+            <h2>Bienvenido de nuevo</h2>
+            <p>Si aun no tienes una cuenta por favor registrese aqui</p>
+            <button class="sign-in-btn">Registrarse</button>
         </div>
     </div>
-    <p class="cuenta-gratis">¿Aun no tienes una cuenta?</p>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Contraseña">
-    <input type="button" value="Iniciar Sesion">
-</form>
+</div>

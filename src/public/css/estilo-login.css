@@ -15,7 +15,7 @@
     height: 90vh;
     display: flex;
     justify-content: space-around;
-    transition:  all .5s ease-out;
+    transition: all .5s ease-out;
 }
 
 .welcome-back {
@@ -59,38 +59,16 @@
     text-align: center;
 }
 
+
+
 .create-account {
     padding: 2.7rem 0;
     font-size: 1.7rem;
 }
 
-.iconos {
-    width: 200px;
-    display: flex;
-    justify-content: space-around;
-    margin: auto;
-}
-
-.border-icon {
-    height: 20px;
-    width: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    border: solid thin white;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    transition: all .3s ease-in;
-}
-
-.border-icon:hover {
-    background-color: #4a4aee;
-    cursor: pointer;
-}
 
 .cuenta-gratis {
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .formulario input {
@@ -108,7 +86,7 @@
     color: white;
 }
 
-.formulario select {
+.nacionalidad {
     width: 70%;
     display: block;
     margin: auto;
@@ -123,8 +101,11 @@
     color: white;
 }
 
+.formulario ::placeholder {
+    color: white;
+}
 
-.formulario input[type="button"] {
+.formulario button {
     width: 60%;
     margin: auto;
     border: solid thin white;
@@ -132,7 +113,7 @@
     border-radius: 2rem;
     background-color: white;
     font-weight: 600;
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-size: .8rem;
     cursor: pointer;
     color: #222;
@@ -153,4 +134,3 @@
     opacity: 0;
     visibility: hidden;
 }
-
