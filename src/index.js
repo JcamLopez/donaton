@@ -9,12 +9,15 @@ import passport from 'passport';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import pass from './models/authenticate/passport.js';
+
 //Path
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 //inicializar 
 const app = express();
 pass;
+
 //Confirguraciones
 app.set("port", process.env.PORT || 5000);
 app.set("views", path.join(__dirname, "views"));
