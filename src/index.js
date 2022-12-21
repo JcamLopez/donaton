@@ -5,6 +5,8 @@ import url from 'url';
 import index from './routes/index.routes.js'
 import login from './routes/login.routes.js'
 import proyectos from './routes/proyectos.routes.js'
+import comparativas from './routes/comparativas.routes.js'
+import donantes from './routes/donantes.routes.js'
 import passport from 'passport';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
@@ -48,6 +50,8 @@ app.use(passport.session());
 app.use(index);
 app.use(login);
 app.use(proyectos);
+app.use(comparativas);
+app.use(donantes);
 //public 
 app.use(express.static(path.join(__dirname, "public")))
 
