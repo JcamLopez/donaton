@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy } from 'passport-local';
 import pool from '../../database/conexion.js'
 import encriptar from './encrypt.js'
-import registro_usaurio from '../../models/registro_usuario.js';
+import usu from '../../models/usuario.js';
 
 passport.use('local.registro', new Strategy({
     usernameField: 'usuario',
@@ -10,27 +10,32 @@ passport.use('local.registro', new Strategy({
     passReqToCallback: true
 }, async (req, usuario, clave, done) => {
     try {
-
-        const { nombre, nacionalidad, usaurio, clave } = req.body;
+        const { nombre, nacionalidad, usuario, clave } = req.body;
+        const clave_encriptada = await encriptar.encriptar(clave);
         const user = {
             nombre,
             nacionalidad,
-            usaurio,
-            clave
+            usuario,
+            clave_encriptada
         }
-        const clave_encriptada = await encriptar.encriptar(clave);
-        registro_usaurio.regitrar_usuario(user)
 
+        usu.regitrar_usuario(user)
+        usu.ConsultaUltimoUsuario().then((res) => {
+            user.id = res
+            return done(null, user)
+        }).catch((err) => {
+            console.log(err)
+        })
     } catch (err) {
         console.log("Error " + err)
     }
 }));
 
 
-/*passport.serializeUser((usuario, done) => {
+passport.serializeUser((usuario, done) => {
     done(null, usuario.id)
 })
-
+/*
 passport.deserializeUser(async (id, done) => {
     const sql = await pool.query('select u.id_usuario as id, u.usuario,u.clave from usuario as u where u.id_usuario = $1', [id])
 

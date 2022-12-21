@@ -25,8 +25,7 @@ CREATE TABLE permiso (
 );
 
 CREATE TABLE rol (
-    id_tipo_arbol SERIAL PRIMARY KEY,
-    fk_permiso_usuario int not null,
+    id_rol SERIAL PRIMARY KEY,
     rol varchar(100) not null
 );
 
@@ -73,6 +72,8 @@ CREATE TABLE publica (
     fecha date not null 
 );
 
+INSERT INTO rol (rol) VALUES('admin'),
+('usuario')
 
 
 INSERT INTO pais (nacionalidad,pais) VALUES
