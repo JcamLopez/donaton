@@ -15,10 +15,10 @@ usuario.regitrar_usuario = (usuario) => {
                     persona.consultar_persona().then(async (response) => {
                         if (response == "se consulto la ultima persona con exito") {
                             registrar(usuario).then((response) => {
-                               
+
                                 console.log(response)
                             }).catch((err) => {
-                               
+
                                 console.log(err)
                             })
                         }
@@ -47,16 +47,30 @@ const registrar = (usuario) => {
 }
 
 usuario.ConsultaUltimoUsuario = () => {
-    return new Promise(async(resolve, reject) => {
-         const sql = await pool.query('select max(u.id_usuario) as id from usuario as u');
-         if(sql.rowCount > 0){
-            const id= sql.rows[0].id;
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select max(u.id_usuario) as id from usuario as u');
+        if (sql.rowCount > 0) {
+            const id = sql.rows[0].id;
             return resolve(sql.rows[0].id)
-         }else{
+        } else {
             return reject('no se consulto el ultimo usuario')
-         }
-        
+        }
+
     })
 }
 
+
+usuario.consultar_usuario = (usuario) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query("select u.id_usuario as id,u.usuario as usu, u.clave as c  from usuario as u where u.usuario =$1", [usuario])
+       
+        if (sql.rowCount > 0) {
+            var user = sql.rows[0];
+            return resolve(user)
+        } else {
+            reject('El usaurio no existe')
+        }
+    })
+
+}
 export default usuario;
