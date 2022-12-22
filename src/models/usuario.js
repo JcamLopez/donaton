@@ -60,7 +60,6 @@ usuario.ConsultaUltimoUsuario = () => {
 usuario.consultar_usuario = (usuario) => {
     return new Promise(async (resolve, reject) => {
         const sql = await pool.query("select u.id_usuario as id,u.usuario as usu, u.clave as c  from usuario as u where u.usuario =$1", [usuario])
-        console.log(sql)
         if (sql.rowCount > 0) {
             var user = sql.rows[0];
             return resolve(user)
@@ -70,4 +69,19 @@ usuario.consultar_usuario = (usuario) => {
     })
 
 }
+
+
+usuario.consultar_usuario_por_id = (id) => {
+    return new Promise((resolve, reject) => {
+        var sql = pool.query('select * from usuario as u where u.id_usuario = $1',[1])
+        if (sql.rowCount > 0) {
+            resolve(sql)
+        } else {
+            reject('No se encontro el usuario')
+        }
+    })
+}
+
+
+
 export default usuario;

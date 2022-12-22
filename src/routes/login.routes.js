@@ -13,7 +13,7 @@ router.post('/registrar-usuario', passport.authenticate('local.registro'), (req,
 }));
 
 router.post('/inicio-sesion', passport.authenticate('local.inicio.sesion'), (req, res, next) => {
-   
+    
     res.json({
         status: "ok",
         url: '/',
