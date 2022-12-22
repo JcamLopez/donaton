@@ -23,6 +23,7 @@ if (contenedorlogin != undefined && contenedorlogin != null && contenedorlogin !
 
     const iniciarSesion = () => {
         btn_login.addEventListener('click', () => {
+           
             const usuario = document.getElementById('login-usuario').value
             const clave = document.getElementById('login-clave').value
 
@@ -36,7 +37,7 @@ if (contenedorlogin != undefined && contenedorlogin != null && contenedorlogin !
                         body: datos
                     }).then(res => res.json())
                         .then(res => {
-                            console.log(res)
+                          
                             if (res.status == "ok") {
                                 if (res.usuario == "usuario_si_existe") {
                                     if (res.clave == "clave_correcta") {
