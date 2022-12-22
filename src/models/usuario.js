@@ -1,12 +1,10 @@
-import { resolve } from 'path';
+
 import pool from '../database/conexion.js'
 import { pais, id_nacionalidad } from './pais.js'
 import { persona, ultimo_id_persona } from './persona.js'
 
 
 const usuario = {};
-
-
 usuario.regitrar_usuario = (usuario) => {
     pais.ConsultarIdNacioanlidad(usuario.nacionalidad).then(async (response) => {
         if (response == "se consulto con exito el pais por nacionalidad") {
@@ -50,7 +48,6 @@ usuario.ConsultaUltimoUsuario = () => {
     return new Promise(async (resolve, reject) => {
         const sql = await pool.query('select max(u.id_usuario) as id from usuario as u');
         if (sql.rowCount > 0) {
-            const id = sql.rows[0].id;
             return resolve(sql.rows[0].id)
         } else {
             return reject('no se consulto el ultimo usuario')
@@ -63,12 +60,12 @@ usuario.ConsultaUltimoUsuario = () => {
 usuario.consultar_usuario = (usuario) => {
     return new Promise(async (resolve, reject) => {
         const sql = await pool.query("select u.id_usuario as id,u.usuario as usu, u.clave as c  from usuario as u where u.usuario =$1", [usuario])
-       
+        console.log(sql)
         if (sql.rowCount > 0) {
             var user = sql.rows[0];
             return resolve(user)
         } else {
-            reject('El usaurio no existe')
+            reject('El usuario no existe')
         }
     })
 

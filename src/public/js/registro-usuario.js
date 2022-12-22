@@ -3,9 +3,9 @@ if (registro != undefined && registro != null && registro != "") {
 
     const btnRegistrarUsuario = document.getElementById('btn-registrar-usuario');
     const $btnSignIn = document.querySelector('.sign-in-btn'),
-    $btnSignUp = document.querySelector('.sign-up-btn'),
-    $signUp = document.querySelector('.sign-up'),
-    $signIn = document.querySelector('.sign-in');
+        $btnSignUp = document.querySelector('.sign-up-btn'),
+        $signUp = document.querySelector('.sign-up'),
+        $signIn = document.querySelector('.sign-in');
     window.onload = function () {
         login();
         cargar_nacionalidad();
@@ -13,7 +13,7 @@ if (registro != undefined && registro != null && registro != "") {
 
 
     const login = () => {
-      
+
 
         document.addEventListener('click', e => {
             if (e.target === $btnSignIn || e.target === $btnSignUp) {
@@ -61,36 +61,40 @@ if (registro != undefined && registro != null && registro != "") {
                             }).then(res => res.json())
                                 .then(res => {
                                     if (res.status == "ok") {
-                                        const swalWithBootstrapButtons = Swal.mixin({
-                                            customClass: {
-                                                confirmButton: 'btn btn-success',
-                                            },
-                                            buttonsStyling: false
-                                        })
-
-                                        swalWithBootstrapButtons.fire({
-                                            title: 'Felicidades',
-                                            text: "Has registrado los datos con Exito",
-                                            icon: 'success',
-                                            width: 600,
-                                            padding: '3em',
-                                            color: '#000000',
-                                            backdrop: `
-                                           rgba(0,0,123,0.4)`,
-                                            showCancelButton: false,
-                                            confirmButtonText: 'Ok',
-                                            reverseButtons: true
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                swalWithBootstrapButtons.fire(
+                                        if (res.usuario == "usuario_no_existe") {
+                                            const swalWithBootstrapButtons = Swal.mixin({
+                                                customClass: {
+                                                    confirmButton: 'btn btn-success',
+                                                },
+                                                buttonsStyling: false
+                                            })
+                                            swalWithBootstrapButtons.fire({
+                                                title: 'Felicidades',
+                                                text: "Has registrado los datos con Exito",
+                                                icon: 'success',
+                                                width: 600,
+                                                padding: '3em',
+                                                color: '#000000',
+                                                backdrop: `
+                                               rgba(0,0,123,0.4)`,
+                                                showCancelButton: false,
+                                                confirmButtonText: 'Ok',
+                                                reverseButtons: true
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
                                                     $signIn.classList.toggle('active'),
-                                                    $signUp.classList.toggle('active')
-                                                )
-                                            }
-                                        })
+                                                        $signUp.classList.toggle('active')
+                                                }
+                                            })
+                                        } else {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: 'El usuario ya existe',
+                                                footer: 'Ayudanos a la reforestacion'
+                                            })
+                                        }
                                     }
-
-
                                 })
 
                         } else {
