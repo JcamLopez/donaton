@@ -5,7 +5,7 @@ import url from 'url';
 import index from './routes/index.routes.js'
 import login from './routes/login.routes.js'
 import proyectos from './routes/proyectos.routes.js'
-import comparativas from './routes/comparativas.routes.js'
+import adoptarbol from './routes/adoptarbol.routes.js'
 import donantes from './routes/donantes.routes.js'
 import perfil from './routes/perfil.routes.js'
 import sobrenosotros from './routes/sobrenosotros.routes.js'
@@ -52,7 +52,7 @@ app.use(passport.session());
 app.use(index);
 app.use(login);
 app.use(proyectos);
-app.use(comparativas);
+app.use(adoptarbol);
 app.use(donantes);
 app.use(perfil);
 app.use(sobrenosotros);
