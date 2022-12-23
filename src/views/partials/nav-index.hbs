@@ -1,45 +1,68 @@
- <nav class="navbar navbar-expand-lg bg-success bg-gradient fixed-top ">
-        <div class="container ">
-            <div class="d-flex">
-                <div class="">
-                    <a href="/" class="">
-                        <img src="img/logo.png" width="90px"
-                            height="70px" class="logo">
-                    </a>
-                </div>
-
-                <div class="col align-self-center text-black">
-                    <h1>DonaTree</h1>
-                </div>
+<nav class="navbar navbar-expand-lg bg-success bg-gradient fixed-top ">
+    <div class="container ">
+        <div class="d-flex">
+            <div class="">
+                <a href="/" class="">
+                    <img src="img/logo.png" width="90px" height="70px" class="logo">
+                </a>
             </div>
-            {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-black" href="#">Donar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-black" href="/proyectos">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-black" href="/adoptarbol">Adopta un árbol</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-black" href="/login">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-black" href="/perfil">Perfil</a>
-                    </li>
-                </ul>
 
+            <div class="col align-self-center text-black">
+                <h1>DonaTree</h1>
             </div>
         </div>
-    </nav>
+        {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-black" href="#">Donar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-black" href="/proyectos">Proyectos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-black" href="/login">Iniciar sesión</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Admin
+                    </a>
+                    <ul class="dropdown-menu bg-success bg-gradient">
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/perfil">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/paneladmon">Panel admin</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        User
+                    </a>
+                    <ul class="dropdown-menu bg-success bg-gradient">
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/perfil">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/adoptarbol">Adopta un árbol</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Solicitud vinculación</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
