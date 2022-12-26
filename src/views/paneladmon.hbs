@@ -23,51 +23,20 @@
             <div class="tab-content" id="nav-tabContent">
 
                 <!---MODULOS--->
-                
+
                 <!---PROYECTOS--->
                 <div class="tab-pane fade show active" id="nav-peti" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="cp container ">
                         <br>
                         <div class="row justify-content-center ">
-                            {{!-- FORM NUEVO PROYECTO --}}
-                            {{!-- <div class="row">
 
-                                <div class="col-md-4 text-center bg-white">
-                                    <br>
-                                    <h4>Publicar proyecto</h4>
-                                    <br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-10 text-start">
-                                            <div class="row ">
-                                                <label for="floatingInput">Nombre</label>
-                                                <input type="text" class="form-control" id="floatingInput">
-                                            </div>
-                                            <div class="row">
-                                                <label for="floatingTextarea">Descripción</label>
-                                                <textarea class="form-control" placeholder="Leave a comment here"
-                                                    id="floatingTextarea"></textarea>
-                                            </div>
-                                            <div class="row">
-                                                <label for="floatingInput">Responsable</label>
-                                                <input type="text" class="form-control" id="floatingInput">
-                                            </div>
-                                            <br>
-                                            <div class="d-grid gap-2 col-4 mx-auto">
-                                                <button class="btn btn-success bg-gradient">Publicar</button>
-                                            </div>
-                                            <br>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            --}}
                             <div class="row justify-content-center">
 
                                 <!----MODAL FORMULARIO---->
                                 <div class="col-md-11 text-start">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-                                        Nuevo</button>
+                                        Agregar Proyecto</button>
 
                                     <div class="modal fade" id="exampleModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,237 +44,84 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Nuevo
-                                                        Usuario</h5>
+                                                        Proyecto</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="POST" class="">
-                                                        <br>
-                                                        <div class="row justify-content-center">
+                                                        {{!-- <div class="row justify-content-center">
                                                             <div class="col text-center">
                                                                 <label for="validationDefault01"
-                                                                    class="form-label ">Nombres</label>
+                                                                    class="form-label ">Nombre</label>
                                                             </div>
 
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="row justify-content-center ">
-                                                            <div class="col-md-5 ">
+                                                            <div class="col-md-10 ">
+                                                                <span id="passwordHelpInline" class="form-text">
+                                                                    Nombre del proyecto
+                                                                </span>
                                                                 <input type="text" class="form-control bg-light"
                                                                     id="validationDefault01" aria-required="true"
                                                                     autocomplete="chrome-off" aria-label="Nombre"
                                                                     rows="1" class="andes-form-control__field"
                                                                     maxlength="30" required>
-                                                                <span id="passwordHelpInline" class="form-text">
-                                                                    Primer nombre
-                                                                </span>
-
-                                                            </div>
-
-                                                            <div class="col-md-5 ">
-                                                                <input type="text" class="form-control bg-light"
-                                                                    id="validationDefault02" placeholder="Opcional"
-                                                                    autocomplete="chrome-off" aria-label="Nombre"
-                                                                    rows="1" class="andes-form-control__field"
-                                                                    maxlength="30">
-                                                                <span id="passwordHelpInline" class="form-text">
-                                                                    Segundo nombre
-                                                                </span>
                                                             </div>
                                                         </div>
                                                         <br>
 
-                                                        <div class="row justify-content-center">
-                                                            <div class="col text-center">
-                                                                <label for="validationDefault01"
-                                                                    class="form-label ">Apellidos</label>
-                                                            </div>
-
-                                                        </div>
-
                                                         <div class="row justify-content-center ">
 
-                                                            <div class="col-md-5 ">
+                                                            <div class="col-md-10 ">
+                                                                <span id="passwordHelpInline" class="form-text">
+                                                                    Descripción
+                                                                </span>
+                                                                <textarea class="form-control bg-light"
+                                                                    id="floatingTextarea2" aria-required="true"
+                                                                    autocomplete="chrome-off" style="height: 100px"
+                                                                    maxlength="150"></textarea>
+                                                                {{!--
                                                                 <input type="text" class="form-control bg-light"
                                                                     id="validationCustom01" aria-required="true"
-                                                                    autocomplete="chrome-off" rows="1" maxlength="30"
-                                                                    required>
-                                                                <span id="passwordHelpInline" class="form-text">
-                                                                    Primer apellido
-                                                                </span>
+                                                                    autocomplete="chrome-off" rows="2" maxlength="100"
+                                                                    required> --}}
                                                             </div>
+                                                        </div>
+                                                        <br>
 
-                                                            <div class="col-md-5">
-
+                                                        <div class="row justify-content-center ">
+                                                            <div class="col-md-10 ">
+                                                                <span id="passwordHelpInline" class="form-text">
+                                                                    Nombre del responsable
+                                                                </span>
                                                                 <input type="text" class="form-control bg-light"
-                                                                    id="validationDefault02" placeholder="Opcional"
+                                                                    id="validationDefault01" aria-required="true"
                                                                     autocomplete="chrome-off" aria-label="Nombre"
                                                                     rows="1" class="andes-form-control__field"
-                                                                    maxlength="30">
-                                                                <span id="passwordHelpInline" class="form-text">
-                                                                    Segundo apellido
-                                                                </span>
+                                                                    maxlength="30" required>
                                                             </div>
                                                         </div>
                                                         <br>
 
                                                         <div class="row justify-content-center ">
-                                                            <div class="col-md-5 ">
-                                                                <select class="form-select"
-                                                                    aria-label="Default select example" required>
-                                                                    <option><b>Departamento</b></option>
-                                                                    <option value="1">AMAZONAS</option>
-                                                                    <option value="2">ANTIOQUIA</option>
-                                                                    <option value="3">ARAUCA</option>
-                                                                    <option value="4">ATLÁNTICO</option>
-                                                                    <option value="5">BOLÍVAR</option>
-                                                                    <option value="6">BOYACÁ</option>
-                                                                    <option value="7">CALDAS</option>
-                                                                    <option value="8">CAQUETÁ</option>
-                                                                    <option value="9">CASANARE</option>
-                                                                    <option value="10">CAUCA</option>
-                                                                    <option value="11">CESAR</option>
-                                                                    <option value="12">CHOCÓ</option>
-                                                                    <option value="13">CÓRDOBA</option>
-                                                                    <option value="14">CUNDINAMARCA</option>
-                                                                    <option value="15">GUAINÍA</option>
-                                                                    <option value="16">GUAVIARE</option>
-                                                                    <option value="17">HUILA</option>
-                                                                    <option value="18">LA GUAJIRA</option>
-                                                                    <option value="19">MAGDALENA</option>
-                                                                    <option value="20">META</option>
-                                                                    <option value="21">NARÍÑO</option>
-                                                                    <option value="22">NORTE DE SANTANDER
-                                                                    </option>
-                                                                    <option value="23">PUTUMAYO</option>
-                                                                    <option value="24">QUINDÍO</option>
-                                                                    <option value="25">RISARALDA</option>
-                                                                    <option value="26">SAN ANDRÉS Y
-                                                                        PROVIDENCIA</option>
-                                                                    <option value="27">SANTANDER</option>
-                                                                    <option value="28">SUCRE</option>
-                                                                    <option value="29">TOLIMA</option>
-                                                                    <option value="30">VALLE</option>
-                                                                    <option value="31">VAUPÉS</option>
-                                                                    <option value="32">VICHADA</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <select class="form-select"
-                                                                    aria-label="Default select example" required>
-                                                                    <option value="">Municipio</option>
-                                                                    <option value="Arauca">Arauca</option>
-                                                                    <option value="Armenia">Armenia</option>
-                                                                    <option value="Barranquilla">
-                                                                        Barranquilla</option>
-                                                                    <option value="Bogotá">Bogotá</option>
-                                                                    <option value="Bucaramanga">Bucaramanga
-                                                                    </option>
-                                                                    <option value="Cali">Cali</option>
-                                                                    <option value="Cartagena">Cartagena
-                                                                    </option>
-                                                                    <option value="Cúcuta">Cúcuta</option>
-                                                                    <option value="Florencia">Florencia
-                                                                    </option>
-                                                                    <option value="Ibagué">Ibagué</option>
-                                                                    <option value="Leticia">Leticia</option>
-                                                                    <option value="Manizales">Manizales
-                                                                    </option>
-                                                                    <option value="Medellín">Medellín
-                                                                    </option>
-                                                                    <option value="Mitú">Mitú</option>
-                                                                    <option value="Mocoa">Mocoa</option>
-                                                                    <option value="Montería">Montería
-                                                                    </option>
-                                                                    <option value="Neiva">Neiva</option>
-                                                                    <option value="Pasto">Pasto</option>
-                                                                    <option value="Pereira">Pereira</option>
-                                                                    <option value="Popayán">Popayán</option>
-                                                                    <option value="Puerto Carreño">Puerto
-                                                                        Carreño</option>
-                                                                    <option value="Puerto Inírida">Puerto
-                                                                        Inírida</option>
-                                                                    <option value="Quibdó">Quibdó</option>
-                                                                    <option value="Riohacha">Riohacha
-                                                                    </option>
-                                                                    <option value="San Andrés">San Andrés
-                                                                    </option>
-                                                                    <option value="San José del Guaviare">
-                                                                        San José del Guaviare</option>
-                                                                    <option value="Santa Marta">Santa Marta
-                                                                    </option>
-                                                                    <option value="Sincelejo">Sincelejo
-                                                                    </option>
-                                                                    <option value="Tunja">Tunja</option>
-                                                                    <option value="Valledupar">Valledupar
-                                                                    </option>
-                                                                    <option value="Villavicencio">
-                                                                        Villavicencio</option>
-                                                                    <option value="Yopal">Yopal</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <br>
+                                                            <div class="col-md-10 ">
+                                                                <div class="mb-3">
+                                                                    <span id="passwordHelpInline" class="form-text">
+                                                                        Imagen del proyecto
+                                                                    </span>
+                                                                    <input class="form-control" type="file"
+                                                                        id="formFile">
+                                                                </div>
 
-                                                        <div class="row justify-content-center ">
-                                                            <div class="col-md-5 text-start">
-                                                                <label for="exampleFormControlInput1"
-                                                                    class="form-label ">Dirección</label>
-                                                                <input type="email" class="form-control bg-light"
-                                                                    id="exampleFormControlInput1" required>
                                                             </div>
-                                                            <div class="col-md-5 text-start">
-                                                                <label for="validationDefault02"
-                                                                    class="form-label ">Teléfono</label>
-                                                                <input type="password" class="form-control bg-light"
-                                                                    id="validationDefault02" required>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-
-                                                        <div class="row justify-content-center ">
-                                                            <div class="col-md-5 text-start">
-                                                                <label for="exampleFormControlInput1"
-                                                                    class="form-label ">Email</label>
-                                                                <input type="email" class="form-control bg-light"
-                                                                    id="exampleFormControlInput1"
-                                                                    placeholder="Ejemplo: juan@gmail.com" required>
-                                                                <span id="passwordHelpInline" class="form-text">
-                                                                    El email debe ser valido
-                                                                </span>
-                                                            </div>
-                                                            <div class="col-md-5 text-start">
-                                                                <label for="validationDefault02"
-                                                                    class="form-label ">Contraseña</label>
-                                                                <input type="password" class="form-control bg-light"
-                                                                    id="validationDefault02" required>
-                                                                <span id="passwordHelpInline" class="form-text">
-                                                                    Debe tener entre 8-20 caracteres
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-
-                                                        <div class="row justify-content-center">
-
-                                                            <div class="col-md-5">
-                                                                <select class="form-select"
-                                                                    aria-label="Default select example" required>
-                                                                    <option><b>Registrar como:</b></option>
-                                                                    <option value="1">Cliente</option>
-                                                                    <option value="2">Vendedor</option>
-                                                                    <option value="3">Administrador</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-5"></div>
                                                         </div>
                                                         <br>
 
                                                         <div class="d-grid gap-2 col-md-5 mx-auto">
                                                             <button class="btn btn-success bg-gradient"
-                                                                type="submit">Registrar</button>
+                                                                type="submit">Agregar</button>
                                                         </div>
-                                                        <br>
                                                     </form>
                                                 </div>
 
@@ -315,7 +131,8 @@
                                 </div>
                             </div>
                             <br><br>
-                    
+
+                            {{!-- REGISTROS EJEMPLO --}}
                             <div class="row justify-content-center">
                                 <div class="col-md-11 text-center bg-white">
                                     <br>
@@ -417,35 +234,38 @@
                                         </table>
 
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col">
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination justify-content-center">
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Previous">
-                                                            <span aria-hidden="true">&laquo;</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Next">
-                                                            <span aria-hidden="true">&raquo;</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
 
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
 
+                            {{!-- PAGINACION --}}
+                            <div class="row justify-content-center">
+                                <br>
+                                <div class="col">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-center">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
 
+                                </div>
+                            </div>
                         </div>
-                        <br>
+
+
                     </div>
                 </div>
 
@@ -457,26 +277,27 @@
                                 <br>
                                 <div class="row ">
 
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-4 ">
                                         <div class="buscar ">
                                             <form class="d-flex">
                                                 <input class="form-control me-2" type="search"
                                                     placeholder="Buscar usuario">
-                                                <button class="btn btn-outline-dark btn-sm" type="submit"><span
-                                                        class="material-icons-outlined">
+                                                <button class="btn btn-outline-dark btn-sm" type="submit">
+                                                    <span class="material-icons">
                                                         search
-                                                    </span></button>
+                                                    </span>
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
 
                                     <!----MODAL FORMULARIO---->
-                                    <div class="col-md-6 text-end">
+                                    <div class="col-md-8 text-end">
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal" data-bs-whatever="@mdo">Crear
+                                            data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Nuevo
                                             Usuario</button>
 
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal2" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -488,79 +309,29 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form method="POST" class="">
-                                                            <br>
-                                                            <div class="row justify-content-center">
-                                                                <div class="col text-center">
-                                                                    <label for="validationDefault01"
-                                                                        class="form-label ">Nombres</label>
-                                                                </div>
-
-                                                            </div>
                                                             <div class="row justify-content-center ">
-                                                                <div class="col-md-5 ">
+                                                                <div class="col-md-10 text-start">
+                                                                    <span id="passwordHelpInline" class="form-text">
+                                                                        Nombre completo
+                                                                    </span>
                                                                     <input type="text" class="form-control bg-light"
                                                                         id="validationDefault01" aria-required="true"
                                                                         autocomplete="chrome-off" aria-label="Nombre"
                                                                         rows="1" class="andes-form-control__field"
-                                                                        maxlength="30" required>
-                                                                    <span id="passwordHelpInline" class="form-text">
-                                                                        Primer nombre
-                                                                    </span>
-
+                                                                        maxlength="40" required>
                                                                 </div>
 
-                                                                <div class="col-md-5 ">
-                                                                    <input type="text" class="form-control bg-light"
-                                                                        id="validationDefault02" placeholder="Opcional"
-                                                                        autocomplete="chrome-off" aria-label="Nombre"
-                                                                        rows="1" class="andes-form-control__field"
-                                                                        maxlength="30">
-                                                                    <span id="passwordHelpInline" class="form-text">
-                                                                        Segundo nombre
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <br>
-
-                                                            <div class="row justify-content-center">
-                                                                <div class="col text-center">
-                                                                    <label for="validationDefault01"
-                                                                        class="form-label ">Apellidos</label>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row justify-content-center ">
-
-                                                                <div class="col-md-5 ">
-                                                                    <input type="text" class="form-control bg-light"
-                                                                        id="validationCustom01" aria-required="true"
-                                                                        autocomplete="chrome-off" rows="1"
-                                                                        maxlength="30" required>
-                                                                    <span id="passwordHelpInline" class="form-text">
-                                                                        Primer apellido
-                                                                    </span>
-                                                                </div>
-
-                                                                <div class="col-md-5">
-
-                                                                    <input type="text" class="form-control bg-light"
-                                                                        id="validationDefault02" placeholder="Opcional"
-                                                                        autocomplete="chrome-off" aria-label="Nombre"
-                                                                        rows="1" class="andes-form-control__field"
-                                                                        maxlength="30">
-                                                                    <span id="passwordHelpInline" class="form-text">
-                                                                        Segundo apellido
-                                                                    </span>
-                                                                </div>
                                                             </div>
                                                             <br>
 
                                                             <div class="row justify-content-center ">
-                                                                <div class="col-md-5 ">
-                                                                    <select class="form-select"
+                                                                <div class="col-md-10 text-start">
+                                                                    <span id="passwordHelpInline" class="form-text">
+                                                                        Nacionalidad
+                                                                    </span>
+                                                                    <select class="form-select bg-light"
                                                                         aria-label="Default select example" required>
-                                                                        <option><b>Departamento</b></option>
+                                                                        <option value=""></option>
                                                                         <option value="1">AMAZONAS</option>
                                                                         <option value="2">ANTIOQUIA</option>
                                                                         <option value="3">ARAUCA</option>
@@ -597,122 +368,41 @@
                                                                         <option value="32">VICHADA</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-md-5">
-                                                                    <select class="form-select"
-                                                                        aria-label="Default select example" required>
-                                                                        <option value="">Municipio</option>
-                                                                        <option value="Arauca">Arauca</option>
-                                                                        <option value="Armenia">Armenia</option>
-                                                                        <option value="Barranquilla">
-                                                                            Barranquilla</option>
-                                                                        <option value="Bogotá">Bogotá</option>
-                                                                        <option value="Bucaramanga">Bucaramanga
-                                                                        </option>
-                                                                        <option value="Cali">Cali</option>
-                                                                        <option value="Cartagena">Cartagena
-                                                                        </option>
-                                                                        <option value="Cúcuta">Cúcuta</option>
-                                                                        <option value="Florencia">Florencia
-                                                                        </option>
-                                                                        <option value="Ibagué">Ibagué</option>
-                                                                        <option value="Leticia">Leticia</option>
-                                                                        <option value="Manizales">Manizales
-                                                                        </option>
-                                                                        <option value="Medellín">Medellín
-                                                                        </option>
-                                                                        <option value="Mitú">Mitú</option>
-                                                                        <option value="Mocoa">Mocoa</option>
-                                                                        <option value="Montería">Montería
-                                                                        </option>
-                                                                        <option value="Neiva">Neiva</option>
-                                                                        <option value="Pasto">Pasto</option>
-                                                                        <option value="Pereira">Pereira</option>
-                                                                        <option value="Popayán">Popayán</option>
-                                                                        <option value="Puerto Carreño">Puerto
-                                                                            Carreño</option>
-                                                                        <option value="Puerto Inírida">Puerto
-                                                                            Inírida</option>
-                                                                        <option value="Quibdó">Quibdó</option>
-                                                                        <option value="Riohacha">Riohacha
-                                                                        </option>
-                                                                        <option value="San Andrés">San Andrés
-                                                                        </option>
-                                                                        <option value="San José del Guaviare">
-                                                                            San José del Guaviare</option>
-                                                                        <option value="Santa Marta">Santa Marta
-                                                                        </option>
-                                                                        <option value="Sincelejo">Sincelejo
-                                                                        </option>
-                                                                        <option value="Tunja">Tunja</option>
-                                                                        <option value="Valledupar">Valledupar
-                                                                        </option>
-                                                                        <option value="Villavicencio">
-                                                                            Villavicencio</option>
-                                                                        <option value="Yopal">Yopal</option>
-                                                                    </select>
-                                                                </div>
+
                                                             </div>
                                                             <br>
 
                                                             <div class="row justify-content-center ">
-                                                                <div class="col-md-5 text-start">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label ">Dirección</label>
+
+                                                                <div class="col-md-10 text-start">
+                                                                    <span id="passwordHelpInline" class="form-text">
+                                                                        Email
+                                                                    </span>
                                                                     <input type="email" class="form-control bg-light"
-                                                                        id="exampleFormControlInput1" required>
-                                                                </div>
-                                                                <div class="col-md-5 text-start">
-                                                                    <label for="validationDefault02"
-                                                                        class="form-label ">Teléfono</label>
-                                                                    <input type="password" class="form-control bg-light"
-                                                                        id="validationDefault02" required>
+                                                                        id="validationCustom01" aria-required="true"
+                                                                        autocomplete="chrome-off" rows="1"
+                                                                        maxlength="30" required>
                                                                 </div>
                                                             </div>
                                                             <br>
+
 
                                                             <div class="row justify-content-center ">
-                                                                <div class="col-md-5 text-start">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label ">Email</label>
-                                                                    <input type="email" class="form-control bg-light"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Ejemplo: juan@gmail.com" required>
+                                                                <div class="col-md-10 text-start">
                                                                     <span id="passwordHelpInline" class="form-text">
-                                                                        El email debe ser valido
+                                                                        Contraseña
                                                                     </span>
-                                                                </div>
-                                                                <div class="col-md-5 text-start">
-                                                                    <label for="validationDefault02"
-                                                                        class="form-label ">Contraseña</label>
                                                                     <input type="password" class="form-control bg-light"
                                                                         id="validationDefault02" required>
-                                                                    <span id="passwordHelpInline" class="form-text">
-                                                                        Debe tener entre 8-20 caracteres
-                                                                    </span>
                                                                 </div>
-                                                            </div>
-                                                            <br>
-
-                                                            <div class="row justify-content-center">
-
-                                                                <div class="col-md-5">
-                                                                    <select class="form-select"
-                                                                        aria-label="Default select example" required>
-                                                                        <option><b>Registrar como:</b></option>
-                                                                        <option value="1">Cliente</option>
-                                                                        <option value="2">Vendedor</option>
-                                                                        <option value="3">Administrador</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-5"></div>
                                                             </div>
                                                             <br>
 
                                                             <div class="d-grid gap-2 col-md-5 mx-auto">
-                                                                <button class="btn btn-success bg-gradient"
+                                                                <button class="btn btn-primary bg-gradient"
                                                                     type="submit">Registrar</button>
                                                             </div>
-                                                            <br>
+
                                                         </form>
                                                     </div>
 
@@ -725,6 +415,8 @@
                             </div>
                         </div>
                         <br>
+
+                        {{!-- REGISTROS EJEMPLO --}}
                         <div class="row justify-content-center">
                             <div class="col-11">
                                 <table class="table responsive text-center ">
@@ -922,6 +614,7 @@
                         </div>
                         <br>
 
+                        {{!-- PAGINACION --}}
                         <div class="row justify-content-center">
                             <div class="col">
                                 <nav aria-label="Page navigation example">
@@ -951,10 +644,10 @@
                 <!---PETICIONES--->
                 <div class="tab-pane fade" id="nav-crear" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <div class="container ">
-                        
+
                     </div>
                 </div>
-        
+
 
             </div>
         </div>
