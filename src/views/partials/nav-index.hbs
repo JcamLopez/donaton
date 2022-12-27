@@ -18,9 +18,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#donarcomo"
+                    data-bs-whatever="@mdo">
+                    Donar</button>
+                {{!-- <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="#">Donar</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/proyectos">Proyectos</a>
                 </li>
@@ -32,8 +35,8 @@
                     <a class="nav-link fw-bold text-black" href="/login">Iniciar sesión</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Admin
                     </a>
                     <ul class="dropdown-menu bg-success bg-gradient">
@@ -46,18 +49,18 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         User
                     </a>
                     <ul class="dropdown-menu bg-success bg-gradient">
                         <li class="nav-item">
                             <a class="dropdown-item " href="/perfil">Perfil</a>
                         </li>
-                        <li class="nav-item">
+                        {{!-- <li class="nav-item">
                             <a class="dropdown-item " href="/adoptarbol">Adopta un árbol</a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Solicitud vinculación</a></li>
+                        <li><a class="dropdown-item" href="#">Solicitud vinculación</a></li> --}}
                     </ul>
                 </li>
 
