@@ -51,10 +51,16 @@ app.use(passport.session());
 
 
 /// Variables globales
-app.use((req, res, next) => {
-  app.locals.user = req.user;
-  next()
-})
+/*app.use((req, res, next) => {
+
+
+  //if (req.session.permisos_usuario) {
+  //console.log(req.session.permisos_usuario)
+  //app.locals.permisos = req.session.permisos_usuario
+  //}
+
+})*/
+
 //rutas
 app.use(index);
 app.use(login);

@@ -73,7 +73,7 @@ usuario.consultar_usuario = (usuario) => {
 
 usuario.consultar_usuario_por_id = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = pool.query('select * from usuario as u where u.id_usuario = $1',[1])
+        var sql = pool.query('select * from usuario as u where u.id_usuario = $1', [id])
         if (sql.rowCount > 0) {
             resolve(sql)
         } else {
@@ -81,6 +81,35 @@ usuario.consultar_usuario_por_id = (id) => {
         }
     })
 }
+
+
+usuario.permisos_usuario = (id, res) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select p.permiso,p.ruta from usuario as u inner join rol as r on  u.fk_rol = r.id_rol inner join rol_tiene_permiso as rp on rp.fk_rol = r.id_rol inner join permiso as p on rp.fk_permiso = p.id_permiso where u.id_usuario = $1', [id])
+
+        if (sql.rowCount > 0) {
+
+            var obj = {}
+            console.log(sql)
+            sql.rows.forEach(element => {
+                const p = quitarAcentos(element.permiso).split(" ").join("");
+                //obj[p] = element.permiso
+                obj[p] = element
+            });
+
+            return resolve(obj)
+        } else {
+            return reject('No tiene permisos este usuario')
+        }
+    });
+}
+
+function quitarAcentos(cadena) {
+    const acentos = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U' };
+    return cadena.split('').map(letra => acentos[letra] || letra).join('').toString();
+}
+
+
 
 
 
