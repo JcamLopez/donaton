@@ -43,17 +43,12 @@ Copiar esto
     display: block;
     position: relative;
     width: 80%;
-    height: 17rem;
-    background-image: url(../img/deforestation.jpg);
+    height: 14rem;
+    /* background-image: url(../img/deforestation.jpg); */
     background-size: cover;
     background-position: center;
     border-radius: 0 0 20px 20px;
-    /*
-background-image: url('http://localhost/multimedia/png/user-portada-3.png');
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-*/
+
 }
 
 .seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
