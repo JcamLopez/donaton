@@ -2,8 +2,9 @@
 
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada">
-                <div class="perfil-usuario-avatar">
+            <div class="row perfil-usuario-portada ">
+
+                <div class="perfil-usuario-avatar ">
                     <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="img-avatar">
                     <button type="button" class="boton-avatar">
                         <span class="material-icons">
@@ -14,9 +15,9 @@
             </div>
         </div>
 
-        <div class="perfil-usuario-body">
+        <div class="perfil-usuario-body ">
 
-            <div class="row perfil-usuario-bio justify-content-center">
+            <div class="row perfil-usuario-bio justify-content-center ">
                 <div class="row ">
                     <div class="col">
 
@@ -31,19 +32,11 @@
 
                     <div class="form-floating">
                         <div class="row ">
-                            <div class="col-11 ">
+                            <div class="col ">
 
                                 Ingrese una breve descripción de usted o de su empresa
                             </div>
-                            <div class="col-1 align-self-end ">
-                                <button type="button" class="btn btn-sm">
 
-                                    <span class="material-icons">
-                                        edit
-                                    </span>
-                                </button>
-
-                            </div>
                         </div>
                         <textarea class="form-control" placeholder="Ingrese una breve descripción de usted o su empresa"
                             id="floatingTextarea2" style="height: 100px"></textarea>
@@ -52,8 +45,8 @@
 
             </div>
 
-            <div class="row perfil-usuario-footer">
-
+            <div class="row justify-content-center perfil-usuario-footer">
+                
                 <div class="col-6 ">
                     <div class="row dts">
                         <div class="col">
@@ -103,8 +96,8 @@
                 </div>
 
 
-                <div class="col-5 ">
-                    <div class="row">
+                <div class="col-6 ">
+                    <div class="row ">
                         <div class="col">
 
                             <label>Telefono:</label>
@@ -127,20 +120,37 @@
                     </div>
 
                 </div>
-                <div class="col-1 ">
-                    <button type="button" class="btn btn-sm">
-
-                        <span class="material-icons">
-                            edit
-                        </span>
-                    </button>
-
-                </div>
-
-
             </div>
+
         </div>
 
+        <br>
+
     </section>
+
+    {{!-- BOTONES EDITAR - GUARDAR --}}
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-6 ">
+                <div class="row justify-content-center">
+
+                    <div class="col-3 text-end">
+                        <button type="button" class="btn btn-outline-dark ">
+                            Editar datos
+                        </button>
+
+                    </div>
+           
+                    <div class="col-3 ">
+                        <button type="button" class="btn btn-outline-dark ">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 </div>

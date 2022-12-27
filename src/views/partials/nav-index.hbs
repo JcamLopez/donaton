@@ -43,10 +43,35 @@
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/login">Iniciar sesión</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold text-black" href="/perfil">Perfil</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Admin
+                    </a>
+                    <ul class="dropdown-menu bg-success bg-gradient">
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/perfil">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/paneladmon">Panel admin</a>
+                        </li>
+                    </ul>
                 </li>
-                {{/if}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        User
+                    </a>
+                    <ul class="dropdown-menu bg-success bg-gradient">
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/perfil">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item " href="/adoptarbol">Adopta un árbol</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Solicitud vinculación</a></li>
+                    </ul>
+                </li>
 
             </ul>
 
