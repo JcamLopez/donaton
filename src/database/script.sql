@@ -19,8 +19,8 @@ CREATE TABLE pais (
 
 CREATE TABLE permiso (
     id_permiso SERIAL PRIMARY KEY,
-    fk_super_admin int not null,
     permiso varchar(100) not null,
+    ruta varchar(100) not null,
     descripcion text not null
 );
 
@@ -28,6 +28,14 @@ CREATE TABLE rol (
     id_rol SERIAL PRIMARY KEY,
     rol varchar(100) not null
 );
+
+
+CREATE TABLE rol_tiene_permiso (
+    fk_rol int not null,
+    fk_permiso int not null,
+    estado int not null
+);
+
 
 
 CREATE TABLE tipo_arbol (
@@ -74,6 +82,18 @@ CREATE TABLE publica (
 
 INSERT INTO rol (rol) VALUES('admin'),
 ('usuario')
+
+INSERT INTO permiso (permiso,ruta,descripcion) VALUES 
+('Mi perfil','/mi-perfil','El usuario podra ver los datos de su perfil'),
+('Panel Admin','/panel-admin','El admin podra realizar el crud de los usuarios')
+
+
+INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
+(2,1,1),
+(1,1,1),
+(1,2,1)
+
+
 
 
 INSERT INTO pais (nacionalidad,pais) VALUES

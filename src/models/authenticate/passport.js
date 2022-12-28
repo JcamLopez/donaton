@@ -18,11 +18,8 @@ passport.use('local.inicio.sesion', new Strategy({
         user = res;
         if (validar_clave) {
             bandera_clave = 'clave_correcta'
-            console.log('entro')
-            console.log(user)
             done(null, user);
         } else {
-
             bandera_clave = 'clave_incorrecta'
             done(null, user);
         }
@@ -78,11 +75,11 @@ passport.use('local.registro', new Strategy({
 
 
 passport.serializeUser((usuario, done) => {
-    done(null, usuario.id)
+    done(null, usuario)
 })
 
-passport.deserializeUser(async (id, done) => {
-    const sql = await pool.query('select u.id_usuario as id, u.usuario,u.clave from usuario as u where u.id_usuario = $1', [id])
+passport.deserializeUser(async (usuario, done) => {
+    const sql = await pool.query('select u.id_usuario as id, u.usuario,u.clave from usuario as u where u.id_usuario = $1', [usuario.id])
     if (sql.rowCount > 0) {
         done(null, sql.rows[0])
     } else {

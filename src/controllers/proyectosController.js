@@ -2,7 +2,7 @@ const controller = {};
 
 
 controller.vista_proyectos = (req, res) => {
-    res.render('./proyectos')
+    res.render('./proyectos',{permisos:req.session.permisos_usuario})
 }
 
 

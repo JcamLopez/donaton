@@ -1,4 +1,6 @@
+import { response } from 'express';
 import { pais, nacionalidad } from '../models/pais.js'
+import usu from '../models/usuario.js'
 const controller = {};
 
 
@@ -19,9 +21,6 @@ controller.cargar_nacionalidad = (req, res) => {
     });
 }
 
-/*controller.registro_usuario = (req,res) => {
-     console.log(req.body)
-}*/
 
 
 

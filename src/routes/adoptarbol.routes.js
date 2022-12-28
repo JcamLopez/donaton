@@ -3,7 +3,7 @@ import controller from '../controllers/adoptarbolController.js'
 const router = Router();
 
 
-router.get('/adoptarbol', controller.vista_adoptarbol)
+router.get('/adoptar-arbol', controller.vista_adoptarbol)
 
 
 
