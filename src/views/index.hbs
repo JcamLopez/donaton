@@ -38,7 +38,7 @@
         </div>
 
     </div>
-    
+
     {{>donar}}
 
     {{!-- CARRUSEL DE ARBOLES --}}
@@ -334,10 +334,21 @@
 
             </div>
             <br>
+            {{#if permisos}}
+
+            <a href="/proyectos">
+                <div class="d-grid gap-2 col-3 mx-auto">
+                    <button class="btn btn-success bg-gradient  mb-3">Donar</button>
+                </div>
+            </a>
+
+
+            {{else}}
             <div class="d-grid gap-2 col-3 mx-auto">
                 <button class="btn btn-success bg-gradient  mb-3 " data-bs-toggle="modal"
                     data-bs-target="#donarcomo">Donar</button>
             </div>
+            {{/if}}
         </div>
     </div>
 

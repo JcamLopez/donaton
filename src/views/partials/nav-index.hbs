@@ -20,9 +20,12 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                 {{#if permisos}}
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#donarcomo"
-                    data-bs-whatever="@mdo">
-                    Donar</button>
+                <li class="nav-item">
+                    <a href="/proyectos">
+                        <button type="button" class="btn btn-dark">
+                            Donar</button>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/proyectos">Proyectos</a>
@@ -31,13 +34,14 @@
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
                 </li>
+                {{#each permisos}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        menu
+                        {{this.usuario}}
                     </a>
                     <ul class="dropdown-menu bg-success bg-gradient">
-                        {{#each permisos}}
+                        {{!-- {{#each permisos}} --}}
                         <li class="nav-item">
                             <a class="dropdown-item" href={{this.ruta}}>{{this.permiso}}</a>
                         </li>
@@ -52,13 +56,13 @@
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#donarcomo"
                     data-bs-whatever="@mdo">
                     Donar</button>
-                    
+
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/proyectos">Proyectos</a>
                 </li>
 
                 <li class="nav-item">
-                      <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
+                    <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/login">Iniciar sesión</a>
