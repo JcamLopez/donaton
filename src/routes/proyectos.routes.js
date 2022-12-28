@@ -14,7 +14,7 @@ const validar = (req, res, next) => {
     }
 }
 
-router.get('/proyectos',validar, controller.vista_proyectos)
+router.get('/proyectos', controller.vista_proyectos)
 
 
 

@@ -15,7 +15,7 @@ const validar = (req, res, next) => {
             })
     }
 }
-router.get('/donantes',validar, controller.vista_donantes)
+router.get('/donantes', controller.vista_donantes)
 
 
 

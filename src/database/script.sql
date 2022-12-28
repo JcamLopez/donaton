@@ -37,21 +37,20 @@ CREATE TABLE rol_tiene_permiso (
 );
 
 
-
 CREATE TABLE tipo_arbol (
     id_tipo_arbol SERIAL PRIMARY KEY,
     tipo varchar(100) null,
     descripcion text not null
 );
 
-CREATE TABLE usuario_dona_arbol (
+/* CREATE TABLE usuario_dona_arbol (
     fk_usuario int not null,
     fk_arbol int not null,
     cantidad_dono float not null,
     cantidad_arboles int not null,
     fecha date not null,
     SERIAL PRIMARY KEY(fk_usuario,fk_arbol)
-);
+); */
 
 
 CREATE TABLE arbol (
