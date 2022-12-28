@@ -8,6 +8,7 @@ import proyectos from './routes/proyectos.routes.js'
 import adoptarbol from './routes/adoptarbol.routes.js'
 import donantes from './routes/donantes.routes.js'
 import perfil from './routes/perfil.routes.js'
+import donar from './routes/donar.routes.js'
 import sobrenosotros from './routes/sobrenosotros.routes.js'
 import paneladmon from './routes/paneladmon.routes.js'
 import passport from 'passport';
@@ -36,6 +37,8 @@ app.engine('.hbs', engine({
 }));
 app.set("view engine", ".hbs");
 
+
+
 //Midelware
 app.use(cookieParser());
 app.use(session(
@@ -51,16 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-/// Variables globales
-/*app.use((req, res, next) => {
 
-
-  //if (req.session.permisos_usuario) {
-  //console.log(req.session.permisos_usuario)
-  //app.locals.permisos = req.session.permisos_usuario
-  //}
-
-})*/
 
 //rutas
 app.use(index);
@@ -71,6 +65,7 @@ app.use(donantes);
 app.use(perfil);
 app.use(sobrenosotros);
 app.use(paneladmon);
+app.use(donar);
 //public 
 app.use(express.static(path.join(__dirname, "public")))
 
