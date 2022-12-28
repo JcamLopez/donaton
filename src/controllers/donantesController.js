@@ -2,7 +2,7 @@ const controller = {};
 
 
 controller.vista_donantes = (req, res) => {
-    res.render('./donantes',{datos:req.session.permisos_usuario})
+    res.render('./donantes',{permisos:req.session.permisos_usuario})
 }
 
 

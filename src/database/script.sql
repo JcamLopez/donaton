@@ -83,31 +83,18 @@ CREATE TABLE publica (
 INSERT INTO rol (rol) VALUES('admin'),
 ('usuario')
 
-INSERT INTO permiso (permiso,ruta,descripcion) VALUES ('Donar','/donar','El usuario podra realizar donaciones al sistema'),
-('Proyectos','/proyectos','El ususario podra ver los diferentes proyectos vinculados'),
-('Comparativas','/comparar','El ususario podra comprar como estaba en bosque antes'),
-('Donantes','/donantes','El ususario podra ver los usuarios qu han donado'),
-('Adopta un Árbol','/adoptar-arbol','El usuario podra adoptar un arbol de acuerdo a la personalidad'),
+INSERT INTO permiso (permiso,ruta,descripcion) VALUES 
 ('Mi perfil','/mi-perfil','El usuario podra ver los datos de su perfil'),
-('Panel Admin','/panel-admin','El admin podra realizar el crud de los usuarios'),
-('Cerrar sesión','/','El usuario podra cerrar sesion')
+('Panel Admin','/panel-admin','El admin podra realizar el crud de los usuarios')
+
 
 INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
 (2,1,1),
-(2,2,1),
-(2,3,1),
-(2,4,1),
-(2,5,1),
-(2,6,1),
-(2,8,1),
 (1,1,1),
-(1,2,1),
-(1,3,1),
-(1,4,1),
-(1,5,1),
-(1,6,1),
-(1,7,1),
-(1,8,1)
+(1,2,1)
+
+
+
 
 INSERT INTO pais (nacionalidad,pais) VALUES
 ('Venezolana','Venezuela'),

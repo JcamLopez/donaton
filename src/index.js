@@ -4,6 +4,7 @@ import path from 'path';
 import url from 'url';
 import index from './routes/index.routes.js'
 import login from './routes/login.routes.js'
+import cerrar_sesion from './routes/cerrar-sesion.routes.js'
 import proyectos from './routes/proyectos.routes.js'
 import adoptarbol from './routes/adoptarbol.routes.js'
 import donantes from './routes/donantes.routes.js'
@@ -66,6 +67,7 @@ app.use(perfil);
 app.use(sobrenosotros);
 app.use(paneladmon);
 app.use(donar);
+app.use(cerrar_sesion);
 //public 
 app.use(express.static(path.join(__dirname, "public")))
 

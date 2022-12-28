@@ -3,7 +3,7 @@ import controller from '../controllers/paneladmonController.js'
 const router = Router();
 
 
-router.get('/paneladmon', controller.vista_paneladmon)
+router.get('/panel-admin', controller.vista_paneladmon)
 
 
 
