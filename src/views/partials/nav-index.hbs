@@ -21,10 +21,9 @@
 
                 {{#if permisos}}
                 <li class="nav-item">
-                    <a href="/proyectos">
-                        <button type="button" class="btn btn-dark">
-                            Donar</button>
-                    </a>
+                    <form action="/create-checkout-session" method="POST">
+                        <button type="submit" id="checkout-button"  class="btn btn-dark">Donar</button>
+                    </form>
                 </li>
 
                 <li class="nav-item">
@@ -64,10 +63,10 @@
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/login">Iniciar sesión</a>
                 </li>
-
 
                 {{/if}}
             </ul>
