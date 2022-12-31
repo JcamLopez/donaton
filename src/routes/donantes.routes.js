@@ -5,17 +5,20 @@ const router = Router();
 
 
 const validar = (req, res, next) => {
-
     if (req.session.passport) {
-            usuario.permisos_usuario(req.session.passport.user.id, res).then((response) => {
-                req.session.permisos_usuario = response
-                next()
-            }).catch((err) => {
-                console.log(err)
-            })
+        usuario.permisos_usuario(req.session.passport.user.id, res).then((response) => {
+            req.session.permisos_usuario = response
+            
+            next()
+        }).catch((err) => {
+            console.log(err)
+        })
+    } else {
+        res.render('./donantes')
     }
 }
-router.get('/donantes', controller.vista_donantes)
+
+router.get('/donantes', validar, controller.vista_donantes)
 
 
 

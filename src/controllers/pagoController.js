@@ -19,7 +19,12 @@ controller.pago = async (req, res) => {
 }
 
 controller.confirmar_pago = (req, res) => {
-    res.render('./pago_exitoso')
+    if (req.session) {
+        res.render('./pago_exitoso', { ruta: '/donantes'})
+    } else {
+        res.render('./pago_exitoso', {ruta: '/'})
+    }
+
 }
 
 

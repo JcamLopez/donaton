@@ -35,7 +35,7 @@ usuario.regitrar_usuario = (usuario) => {
 
 const registrar = (usuario) => {
     return new Promise(async (resolve, reject) => {
-        const registro_usuario = await pool.query('insert into usuario(fk_rol,fk_persona,usuario,clave)values($1,$2,$3,$4) RETURNING *', [2, ultimo_id_persona, usuario.usuario, usuario.clave_encriptada]);
+        const registro_usuario = await pool.query('insert into usuario(fk_rol,fk_persona,fk_tipo_cuenta,usuario,clave)values($1,$2,$3,$4,$5) RETURNING *', [2, ultimo_id_persona, 2, usuario.usuario, usuario.clave_encriptada]);
         if (registro_usuario.rowCount > 0) {
             return resolve('se registro el usuario con exito')
         } else {
@@ -64,20 +64,21 @@ usuario.consultar_usuario = (usuario) => {
             var user = sql.rows[0];
             return resolve(user)
         } else {
-            reject('El usuario no existe')
+            return reject('El usuario no existe')
         }
     })
 
 }
 
 
-usuario.consultar_usuario_por_id = (id) => {
-    return new Promise((resolve, reject) => {
-        var sql = pool.query('select * from usuario as u where u.id_usuario = $1', [id])
+usuario.consultar_perfil = (id) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select p.nombre_completo as  nombre,  u.usuario,t.tipo,t.descripcion,pa.nacionalidad, te.telefono,d.direccion, b.barrio from persona as p left join telefono as te on p.fk_telefono = te.id_telefono left join direccion as d on d.fk_persona = p.id_persona left join barrio as b on d.fk_barrio = b.id_barrio inner join pais as pa on p.fk_nacionalidad = pa.id_pais  inner join usuario as u on u.fk_persona = p.id_persona inner join tipo_cuenta as t on u.fk_tipo_cuenta = t.id_tipo_cuenta where u.id_usuario = $1', [id])
         if (sql.rowCount > 0) {
-            resolve(sql)
+
+            return resolve(sql.rows[0])
         } else {
-            reject('No se encontro el usuario')
+            return reject('No se encontro el usuario')
         }
     })
 }
@@ -85,14 +86,14 @@ usuario.consultar_usuario_por_id = (id) => {
 
 usuario.permisos_usuario = (id, res) => {
     return new Promise(async (resolve, reject) => {
-        const sql = await pool.query('select u.usuario, p.permiso,p.ruta from usuario as u inner join rol as r on  u.fk_rol = r.id_rol inner join rol_tiene_permiso as rp on rp.fk_rol = r.id_rol inner join permiso as p on rp.fk_permiso = p.id_permiso where u.id_usuario = $1', [id])
+        const sql = await pool.query('select r.rol, p.permiso,p.ruta from usuario as u inner join rol as r on  u.fk_rol = r.id_rol inner join rol_tiene_permiso as rp on rp.fk_rol = r.id_rol inner join permiso as p on rp.fk_permiso = p.id_permiso where u.id_usuario = $1', [id])
         if (sql.rowCount > 0) {
             var obj = {}
             sql.rows.forEach(element => {
                 const p = quitarAcentos(element.permiso).split(" ").join("");
                 obj[p] = element
             });
-            console.log(obj)
+
             return resolve(obj)
         } else {
             return reject('No tiene permisos este usuario')
@@ -105,6 +106,22 @@ function quitarAcentos(cadena) {
     return cadena.split('').map(letra => acentos[letra] || letra).join('').toString();
 }
 
+
+usuario.consultar_tipo_de_cuenta = () => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select tipo_cuenta.tipo as tipo from tipo_cuenta')
+        if (sql.rowCount > 0) {
+            var cuenta = new Array();
+            sql.rows.forEach(element => {
+                cuenta.push(element.tipo)
+            });
+         
+            return resolve(cuenta)
+        } else {
+            return reject("No se pudo concultar el tipo de cuenta")
+        }
+    })
+}
 
 
 

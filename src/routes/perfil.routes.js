@@ -4,6 +4,10 @@ const router = Router();
 
 
 router.get('/mi-perfil', controller.vista_perfil)
+router.post('/tipo-cuenta', controller.tipo_cuenta)
+
+
+
 
 
 export default router;

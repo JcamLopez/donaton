@@ -3,6 +3,7 @@ create database reforestacion;
 CREATE TABLE persona (
     id_persona SERIAL PRIMARY KEY,
     fk_nacionalidad int not null,    
+    fk_telefono int null,    
     nombre_completo VARCHAR(100) not null
 );
 
@@ -37,11 +38,56 @@ CREATE TABLE rol_tiene_permiso (
 );
 
 
-CREATE TABLE tipo_arbol (
+
+CREATE TABLE usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    fk_rol int not null,
+    fk_persona int not null,
+    fk_imagen int  null,
+    fk_tipo_cuenta int not null,
+    usuario varchar(100) not null,
+    clave varchar(100) not null
+);
+
+CREATE TABLE tipo_cuenta (
+    id_tipo_cuenta SERIAL PRIMARY KEY,
+    tipo varchar(100) not null,
+    descripcion text not null
+);
+
+
+CREATE TABLE telefono (
+    id_telefono SERIAL PRIMARY KEY,
+    telefono int not null,
+);
+
+CREATE TABLE direccion (
+    id_direccion SERIAL PRIMARY KEY,
+    fk_persona int not null,
+    fk_barrio int not null,
+    direccion varchar(100) not null
+);
+
+CREATE TABLE barrio (
+    id_barrio SERIAL PRIMARY KEY,
+    barrio varchar(100) not null
+);
+
+
+/* CREATE TABLE publica (
+    id_publica SERIAL PRIMARY KEY,
+    fk_usuario int not null,
+    titulo varchar(100) not null,
+    descripcion varchar(100) not null,
+    fecha date not null 
+); */
+
+
+/* CREATE TABLE tipo_arbol (
     id_tipo_arbol SERIAL PRIMARY KEY,
     tipo varchar(100) null,
     descripcion text not null
-);
+); */
 
 /* CREATE TABLE usuario_dona_arbol (
     fk_usuario int not null,
@@ -53,46 +99,64 @@ CREATE TABLE tipo_arbol (
 ); */
 
 
-CREATE TABLE arbol (
+/* CREATE TABLE arbol (
     id_arbol SERIAL PRIMARY KEY,
     fk_usuario_admin int not null,
     fk_tipo_arbol int not null,
     nombre varchar(100) not null,
     precio float not null
-);
+); */
 
 
-CREATE TABLE usuario (
-    id_usuario SERIAL PRIMARY KEY,
-    fk_rol int not null,
-    fk_persona int not null,
-    fk_imagen int  null,
-    usuario varchar(100) not null,
-    clave varchar(100) not null
-);
+ALTER TABLE persona
+ADD FOREIGN KEY(fk_nacionalidad) REFERENCES pais(id_pais);
 
-CREATE TABLE publica (
-    id_publica SERIAL PRIMARY KEY,
-    fk_usuario int not null,
-    titulo varchar(100) not null,
-    descripcion varchar(100) not null,
-    fecha date not null 
-);
+ALTER TABLE persona
+ADD FOREIGN KEY(fk_telefono) REFERENCES telefono(id_telefono);
+
+ALTER TABLE direccion
+ADD FOREIGN KEY(fk_persona) REFERENCES persona(id_persona);
+
+ALTER TABLE direccion
+ADD FOREIGN KEY(fk_barrio) REFERENCES barrio(id_barrio);
+
+ALTER TABLE usuario
+ADD FOREIGN KEY(fk_rol) REFERENCES rol(id_rol);
+
+
+ALTER TABLE usuario
+ADD FOREIGN KEY(fk_persona) REFERENCES persona(id_persona);
+
+
+ALTER TABLE usuario
+ADD FOREIGN KEY(fk_imagen) REFERENCES imagen(id_imagen);
+
+
+ALTER TABLE usuario
+ADD FOREIGN KEY(fk_tipo_cuenta) REFERENCES tipo_cuenta(id_tipo_cuenta);
+
 
 INSERT INTO rol (rol) VALUES('admin'),
-('usuario')
+('usuario');
+
+INSERT INTO tipo_cuenta (tipo,descripcion) VALUES('Empresarial','Es una cuenta empresarial, que permite obtener informacion de la empresa dondante. Esto se hace con el fin de generar reconococimiento a la empresa una vez apoye la reforestacion por medio de las donaciones'),
+('Personal','Es una cuenta personal, que permite obtener informacion de la persona dondante. Esto se hace con el fin de generar reconococimiento a la persona una vez apoye la reforestacion por medio de las donaciones');
 
 INSERT INTO permiso (permiso,ruta,descripcion) VALUES 
 ('Mi perfil','/mi-perfil','El usuario podra ver los datos de su perfil'),
-('Panel Admin','/panel-admin','El admin podra realizar el crud de los usuarios')
+('Panel Admin','/panel-admin','El admin podra realizar el crud de los usuarios');
 
 
 INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
 (2,1,1),
 (1,1,1),
-(1,2,1)
+(1,2,1);
 
 
+INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
+(2,1,1),
+(1,1,1),
+(1,2,1);
 
 
 INSERT INTO pais (nacionalidad,pais) VALUES
@@ -255,4 +319,4 @@ INSERT INTO pais (nacionalidad,pais) VALUES
 ('Yemen Rep Arabe','Yemen Rep. Arabe'),
 ('Yemen Rep Dem','Yemen Rep. Dem'),
 ('Yugoslava','Yugoslavia'),
-('Zaire','Zaire')
+('Zaire','Zaire');
