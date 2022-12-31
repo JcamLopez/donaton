@@ -335,13 +335,11 @@
             </div>
             <br>
             {{#if permisos}}
-
-            <a href="/proyectos">
+            <form action="/create-checkout-session" method="POST">
                 <div class="d-grid gap-2 col-3 mx-auto">
-                    <button class="btn btn-success bg-gradient  mb-3">Donar</button>
+                    <button type="submit" id="checkout-button" class="btn btn-success bg-gradient  mb-3">Donar</button>
                 </div>
-            </a>
-
+            </form>
 
             {{else}}
             <div class="d-grid gap-2 col-3 mx-auto">
