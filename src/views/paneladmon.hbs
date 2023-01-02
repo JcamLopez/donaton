@@ -32,7 +32,7 @@
 
                             <div class="row justify-content-center">
 
-                                <!----MODAL FORMULARIO---->
+                                <!----MODAL NUEVO PROYECTO---->
                                 <div class="col-md-11 text-start">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal" data-bs-whatever="@mdo">
@@ -165,7 +165,7 @@
 
 
                                                 <td class="acc">
-                                                    <button type="button" class="btn ">
+                                                    <button type="button" class="btn " data-bs-target="#edit-proyects">
                                                         <span class="material-icons">
                                                             edit
                                                         </span>
@@ -180,7 +180,7 @@
 
                                             <tbody>
                                                 <td>
-                                                    xxxxxxxxxxx
+                                                    Juan Jose Perez
                                                 </td>
                                                 <td>
                                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -191,33 +191,7 @@
 
 
                                                 <td class="acc">
-                                                    <button type="button" class="btn ">
-                                                        <span class="material-icons">
-                                                            edit
-                                                        </span>
-                                                    </button>
-                                                    <button type="button" class="btn ">
-                                                        <span class="material-icons">
-                                                            delete
-                                                        </span>
-                                                    </button>
-                                                </td>
-                                            </tbody>
-
-                                            <tbody>
-                                                <td>
-                                                    xxxxxxxxxxx
-                                                </td>
-                                                <td>
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                </td>
-                                                <td>
-                                                    xxxxxxxxxxxxxxx
-                                                </td>
-
-
-                                                <td class="acc">
-                                                    <button type="button" class="btn ">
+                                                    <button type="button" class="btn " data-bs-target="#edit-proyects">
                                                         <span class="material-icons">
                                                             edit
                                                         </span>
@@ -261,6 +235,72 @@
                                         </ul>
                                     </nav>
 
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {{!-- MODAL EDITAR --}}
+                        <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar proyecto</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <span id="passwordHelpInline" class="form-text">
+                                                        Imagen del proyecto
+                                                    </span>
+                                                    <input class="form-control" type="file" id="formFile">
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="descripción" class="form-label">Descripción</label>
+                                                    <textarea class="form-control mt-3"
+                                                        placeholder="Ingrese una breve descripción de usted o su empresa"
+                                                        id="floatingTextarea3"
+                                                        style="height: 100px">{{descripcion}}</textarea>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="row">
+
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="nombre" class="form-label">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre"
+                                                        value={{nombre}}>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary">Guardar </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -651,5 +691,7 @@
 
             </div>
         </div>
+
+
     </div>
 </div>
