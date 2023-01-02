@@ -1,14 +1,15 @@
 
 import pool from '../database/conexion.js'
-import { pais, id_nacionalidad } from './pais.js'
+
+import pais from './pais.js'
 import { persona, ultimo_id_persona } from './persona.js'
 
 
 const usuario = {};
 usuario.regitrar_usuario = (usuario) => {
-    pais.ConsultarIdNacioanlidad(usuario.nacionalidad).then(async (response) => {
-        if (response == "se consulto con exito el pais por nacionalidad") {
-            persona.regitrar_persona(id_nacionalidad, usuario.nombre).then((response) => {
+    pais.ConsultarNacioanlidad(usuario.nacionalidad).then(async (response) => {
+      console.log(response);
+             persona.regitrar_persona(response.id, usuario.nombre).then((response) => {
                 if (response == "se regitro la persona con exito") {
                     persona.consultar_persona().then(async (response) => {
                         if (response == "se consulto la ultima persona con exito") {
@@ -26,8 +27,8 @@ usuario.regitrar_usuario = (usuario) => {
                 }
             }).catch((err) => {
                 console.log(err)
-            })
-        }
+            }) 
+        
     }).catch((err) => {
         console.log(err)
     });

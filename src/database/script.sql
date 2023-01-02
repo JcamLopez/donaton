@@ -58,7 +58,7 @@ CREATE TABLE tipo_cuenta (
 
 CREATE TABLE telefono (
     id_telefono SERIAL PRIMARY KEY,
-    telefono int not null,
+    telefono int not null
 );
 
 CREATE TABLE direccion (

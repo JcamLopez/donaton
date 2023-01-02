@@ -3,6 +3,7 @@ if (perfil != undefined && perfil != null && perfil != "") {
 
     const nacionalidad = document.getElementById('nacionalidad')
     const cuenta = document.getElementById('tipo_cuenta')
+    const btn_actua_perfil = document.getElementById('btn_actua_perfil')
     const cargar_nacionalidad = () => {
         fetch("/cargar-nacionalidad", {
             method: "post",
@@ -33,14 +34,30 @@ if (perfil != undefined && perfil != null && perfil != "") {
 
     const llenar_tipo_de_cuenta = (datos) => {
         datos.forEach(element => {
-            const option= document.createElement('option');
+            const option = document.createElement('option');
             option.text = element;
             cuenta.appendChild(option);
         });
 
     }
 
-  
+
+    const actualizar_perfil = () => {
+        btn_actua_perfil.addEventListener('click', () => {
+            var selected_nacionalidad = nacionalidad.options[nacionalidad.selectedIndex].text
+            var datos = new URLSearchParams();
+            datos.append("nacionalidad", selected_nacionalidad);
+            fetch("/actualizar-perfil", {
+                method: "post",
+                body: datos,
+            }).then(res => res.json())
+                .then(res => {
+                    console.log('datos enviados');
+                })
+        })
+
+    }
+
 
 
 
@@ -50,6 +67,7 @@ if (perfil != undefined && perfil != null && perfil != "") {
 
 
     const main = () => {
+        actualizar_perfil();
         cargar_nacionalidad()
         cargar_tipo_cuenta();
     }
