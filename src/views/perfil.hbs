@@ -41,11 +41,10 @@
                             </div>
 
                         </div>
-                        <small class="text-muted">La informacion que se encuentra en esta pagina sera la que se
-                            publique una vez haga su Donacion</small>
+
                         <textarea class="form-control mt-3"
                             placeholder="Ingrese una breve descripción de usted o su empresa" id="floatingTextarea2"
-                            style="height: 100px">{{descripcion}}</textarea>
+                            style="height: 100px" disabled>{{ descripcion }}</textarea>
                     </div>
                 </div>
 
@@ -137,41 +136,53 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar infromacion</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar información</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                                <select class="form-control" name="" id="nacionalidad">
-                                    <option value="">{{nacionalidad}} </option>
-                                </select>
+                                <label for="descripción" class="form-label">Descripción</label>
+                                <textarea class="form-control mt-3"
+                                    placeholder="Ingrese una breve descripción de usted o su empresa"
+                                    id="floatingTextarea3" style="height: 100px">{{descripcion}}</textarea>
                             </div>
                         </div>
-
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="telefono" class="form-label">Telefono</label>
-                                <input type="number" class="form-control" id="telefono" value={{telefono}}>
-                            </div>
-                        </div>
-
                     </div>
 
 
                     <div class="row">
+
                         <div class="col">
+
+
                             <div class="mb-3">
-                                <label for="tipo" class="form-label">Tipo de cuenta</label>
-                                <select class="form-control" name="" id="tipo_cuenta">
-                                  
-                                </select>
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" value={{nombre}}>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="cuenta" class="form-label">Tipo Cuenta</label>
+                                <input type="text" class="form-control" id="cuenta" value={{tipo}}>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono</label>
+                                <input type="text" class="form-control" id="telefono" value={{telefono}}>
                             </div>
                         </div>
 
+
+
                         <div class="col">
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Direccion</label>
+                                <input type="text" class="form-control" id="direccion" value={{direccion}}>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="barrio" class="form-label">Barrio</label>
                                 <input type="text" class="form-control" id="barrio" value={{barrio}}>
@@ -181,19 +192,6 @@
                     </div>
 
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="direccion" class="form-label">Direccion</label>
-                                <input type="text" class="form-control" id="direccion" value={{direccion}}>
-                            </div>
-                        </div>
-
-                        <div class="col">
-
-                        </div>
-
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button  class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
