@@ -2,9 +2,9 @@ create database reforestacion;
 
 CREATE TABLE persona (
     id_persona SERIAL PRIMARY KEY,
-    fk_nacionalidad int not null,    
-    fk_telefono int null,    
-    nombre_completo VARCHAR(100) not null
+    fk_nacionalidad int not null,       
+    nombre_completo VARCHAR(100) not null,
+    descripcion text not null
 );
 
 CREATE TABLE imagen (
@@ -58,13 +58,14 @@ CREATE TABLE tipo_cuenta (
 
 CREATE TABLE telefono (
     id_telefono SERIAL PRIMARY KEY,
-    telefono int not null,
+    fk_persona int not null,
+    telefono int not null
 );
 
 CREATE TABLE direccion (
     id_direccion SERIAL PRIMARY KEY,
-    fk_persona int not null,
-    fk_barrio int not null,
+    fk_persona int  null,
+    fk_barrio int null,
     direccion varchar(100) not null
 );
 
@@ -73,6 +74,12 @@ CREATE TABLE barrio (
     barrio varchar(100) not null
 );
 
+CREATE TABLE dona (
+    id_dona SERIAL PRIMARY KEY,
+    fk_usuario int not null,
+    estado int not null,
+    fecha date not null
+);
 
 /* CREATE TABLE publica (
     id_publica SERIAL PRIMARY KEY,
@@ -111,8 +118,8 @@ CREATE TABLE barrio (
 ALTER TABLE persona
 ADD FOREIGN KEY(fk_nacionalidad) REFERENCES pais(id_pais);
 
-ALTER TABLE persona
-ADD FOREIGN KEY(fk_telefono) REFERENCES telefono(id_telefono);
+ALTER TABLE telefono
+ADD FOREIGN KEY(fk_persona) REFERENCES persona(id_persona);
 
 ALTER TABLE direccion
 ADD FOREIGN KEY(fk_persona) REFERENCES persona(id_persona);
@@ -123,21 +130,21 @@ ADD FOREIGN KEY(fk_barrio) REFERENCES barrio(id_barrio);
 ALTER TABLE usuario
 ADD FOREIGN KEY(fk_rol) REFERENCES rol(id_rol);
 
-
 ALTER TABLE usuario
 ADD FOREIGN KEY(fk_persona) REFERENCES persona(id_persona);
-
 
 ALTER TABLE usuario
 ADD FOREIGN KEY(fk_imagen) REFERENCES imagen(id_imagen);
 
-
 ALTER TABLE usuario
 ADD FOREIGN KEY(fk_tipo_cuenta) REFERENCES tipo_cuenta(id_tipo_cuenta);
 
+ALTER TABLE dona
+ADD FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario);
 
 INSERT INTO rol (rol) VALUES('admin'),
 ('usuario');
+
 
 INSERT INTO tipo_cuenta (tipo,descripcion) VALUES('Empresarial','Es una cuenta empresarial, que permite obtener informacion de la empresa dondante. Esto se hace con el fin de generar reconococimiento a la empresa una vez apoye la reforestacion por medio de las donaciones'),
 ('Personal','Es una cuenta personal, que permite obtener informacion de la persona dondante. Esto se hace con el fin de generar reconococimiento a la persona una vez apoye la reforestacion por medio de las donaciones');
@@ -146,18 +153,15 @@ INSERT INTO permiso (permiso,ruta,descripcion) VALUES
 ('Mi perfil','/mi-perfil','El usuario podra ver los datos de su perfil'),
 ('Panel Admin','/panel-admin','El admin podra realizar el crud de los usuarios');
 
-
 INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
 (2,1,1),
 (1,1,1),
 (1,2,1);
 
-
 INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
 (2,1,1),
 (1,1,1),
 (1,2,1);
-
 
 INSERT INTO pais (nacionalidad,pais) VALUES
 ('Venezolana','Venezuela'),
