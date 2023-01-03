@@ -43,7 +43,7 @@ passport.use('local.registro', new Strategy({
     passReqToCallback: true
 }, async (req, usuario, clave, done) => {
     try {
-        const { nombre, nacionalidad, usuario, clave } = req.body;
+        const {nombre, nacionalidad, usuario, clave } = req.body;
         const clave_encriptada = await encriptar.encriptar(clave);
         const user = {
             nombre,

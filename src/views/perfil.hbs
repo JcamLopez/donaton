@@ -146,55 +146,56 @@
                                 <label for="descripción" class="form-label">Descripción</label>
                                 <textarea class="form-control mt-3"
                                     placeholder="Ingrese una breve descripción de usted o su empresa"
-                                    id="floatingTextarea3" style="height: 100px">{{descripcion}}</textarea>
+                                    id="descripcion" style="height: 100px">{{descripcion}}</textarea>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="row">
-
                         <div class="col">
-
-
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" value={{nombre}}>
-
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="cuenta" class="form-label">Tipo Cuenta</label>
-                                <input type="text" class="form-control" id="cuenta" value={{tipo}}>
-
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="telefono" class="form-label">Telefono</label>
-                                <input type="text" class="form-control" id="telefono" value={{telefono}}>
+                                <input type="text" class="form-control" id="nombre_perfil" value={{nombre}}>
                             </div>
                         </div>
-
-
-
                         <div class="col">
                             <div class="mb-3">
                                 <label for="direccion" class="form-label">Direccion</label>
                                 <input type="text" class="form-control" id="direccion" value={{direccion}}>
                             </div>
+                        </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="tipo_cuenta" class="form-label">Tipo de cuenta</label>
+                                <select id="tipo_cuenta" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col">
                             <div class="mb-3">
                                 <label for="barrio" class="form-label">Barrio</label>
                                 <input type="text" class="form-control" id="barrio" value={{barrio}}>
                             </div>
                         </div>
-
                     </div>
 
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono</label>
+                                <input type="number" class="form-control" id="telefono" value={{telefono}}>
+                            </div>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button  class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button id="btn_actua_perfil" class="btn btn-primary">Guardar</button>
                 </div>
             </div>

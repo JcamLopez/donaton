@@ -12,13 +12,11 @@ controller.vista_perfil = (req, res) => {
             tipo: response.tipo,
             descripcion: response.descripcion,
             nacionalidad: response.nacionalidad,
-            telefono: validar.datos(res.telefono),
-            direccion: validar.datos(res.direccion),
-            barrio: validar.datos(res.barrio)
+            telefono: validar.telefono(response.telefono),
+            direccion: validar.datos(response.direccion),
+            barrio: validar.datos(response.barrio)
         }
         cuenta = user.tipo
-       
-       
         res.render('./perfil', user)
     }).catch((err) => {
         console.log(err);
@@ -38,10 +36,10 @@ controller.tipo_cuenta = (req, res) => {
 
 }
 
-controller.actualizar_perfil=(req)=>{
+controller.actualizar_perfil = (req) => {
     perfil.actualizar(req).then((response) => {
-      console.log('-----');
-      console.log(response);
+    
+     console.log(response);
     }).catch((err) => {
         console.log(err);
     })
