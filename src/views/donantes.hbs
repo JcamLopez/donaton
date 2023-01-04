@@ -29,9 +29,11 @@
                                 Fecha
                             </td>
                         </thead>
+                        {{#if response}}
+
 
                         {{#each response}}
-                        <tbody id="results">
+                        <tbody>
                             <td>
                                 {{this.nombre}}
                             </td>
@@ -48,9 +50,31 @@
                                 {{this.fecha}}
                             </td>
                         </tbody>
-
+                       
                         {{/each}}
 
+
+                        {{else}}
+                        <tbody>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                        </tbody>
+                        {{!-- <h1>Aun no hay Datos registrados</h1> --}}
+
+                        {{/if}}
                     </table>
 
                     <div class="row justify-content-center">
