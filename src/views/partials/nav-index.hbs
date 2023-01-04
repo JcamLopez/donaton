@@ -36,11 +36,12 @@
 
 
                 <li class="nav-item dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Menu {{rol}}
-                    </button>
-                    <ul class="dropdown-menu">
+                   
+                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{rol}}
+                    </a>
+                    <ul class="dropdown-menu bg-success bg-gradient">
                         {{#each permisos}}
                         <li><a class="dropdown-item" href={{this.ruta}}>{{this.permiso}} </a></li>
                         {{/each}}
