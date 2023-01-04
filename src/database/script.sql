@@ -159,11 +159,6 @@ INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES
 (1,2,1);
 
 
-INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
-(2,1,1),
-(1,1,1),
-(1,2,1);
-
 INSERT INTO pais (nacionalidad,pais) VALUES
 ('Venezolana','Venezuela'),
 ('Afgana','Afganistán'),

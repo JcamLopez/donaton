@@ -31,9 +31,9 @@
                         </thead>
 
                         {{#each response}}
-                         <tbody>
+                        <tbody id="results">
                             <td>
-                              {{this.nombre}}
+                                {{this.nombre}}
                             </td>
                             <td>
                                 {{this.nacionalidad}}
@@ -42,16 +42,37 @@
                                 {{this.tipo}}
                             </td>
                             <td>
-                              {{this.descripcion}}
+                                {{this.descripcion}}
                             </td>
-                             <td>
-                              {{this.fecha}}
+                            <td>
+                                {{this.fecha}}
                             </td>
                         </tbody>
-                       
+
                         {{/each}}
 
                     </table>
+
+                    <div class="row justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination" id="donantes_page">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
                 </div>
             </div>
 
