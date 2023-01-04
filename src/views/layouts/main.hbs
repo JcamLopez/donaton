@@ -24,8 +24,10 @@
 </head>
 
 <body>
-  
+
     {{{body}}}
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -41,6 +43,21 @@
 
     <script src="js/perfil.js"></script>
 
+    {{!-- CHATBOT --}}
+
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "3d3fc9f6-c3d0-4e2a-98ae-b7b01468beab", // The ID of this integration.
+            region: "us-east", // The region your integration is hosted in.
+            serviceInstanceID: "f16498cc-9da4-4f15-a328-263ed629467e", // The ID of your service instance.
+            onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+            const t = document.createElement('script');
+            t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+            document.head.appendChild(t);
+        });
+    </script>
 
 </body>
 
