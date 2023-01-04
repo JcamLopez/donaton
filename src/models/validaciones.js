@@ -1,5 +1,5 @@
 const validar = {}
-
+export var pago = false;
 validar.datos = (dato) => {
     if (dato == undefined || dato == "" || dato == null) {
         return "No_registra"
@@ -16,4 +16,8 @@ validar.telefono = (telefono) => {
         return telefono
     }
 }
+
+
+
+
 export default validar;

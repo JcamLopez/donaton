@@ -81,12 +81,16 @@ perfil.actualizar = (req) => {
     })
 }
 
-
-
-
-
-
-
+perfil.consultar_perfil = (id) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select p.nombre_completo as  nombre,p.descripcion, u.usuario,t.tipo,pa.nacionalidad, te.telefono,d.direccion, b.barrio from persona as p left join telefono as te on te.fk_persona = p.id_persona left join direccion as d on d.fk_persona = p.id_persona left join barrio as b on d.fk_barrio = b.id_barrio inner join pais as pa on p.fk_nacionalidad = pa.id_pais  inner join usuario as u on u.fk_persona = p.id_persona inner join tipo_cuenta as t on u.fk_tipo_cuenta = t.id_tipo_cuenta where u.id_usuario = $1', [id])
+        if (sql.rowCount > 0) {
+            return resolve(sql.rows[0])
+        } else {
+            return reject('No se encontro el usuario')
+        }
+    })
+}
 
 const ActualizarNombre = (id_persona, nombre,descripcion) => {
     return new Promise(async (resolve, reject) => {

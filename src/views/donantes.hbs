@@ -3,7 +3,7 @@
     {{>nav-index}}
     <br><br><br><br><br>
 
-    <div class="container">
+    <div class="container-fluid">
         {{>donar}}
         <div class="row donantes ">
             <h2 class="text-dark text-center">Nuestros donantes</h2>
@@ -25,38 +25,31 @@
                             <td>
                                 Descripción
                             </td>
+                            <td>
+                                Fecha
+                            </td>
                         </thead>
-                        <tbody>
+
+                        {{#each response}}
+                         <tbody>
                             <td>
-                                hotelcaquetareal
+                              {{this.nombre}}
                             </td>
                             <td>
-                                cololbiana
+                                {{this.nacionalidad}}
                             </td>
                             <td>
-                                empresa
+                                {{this.tipo}}
                             </td>
                             <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique a fugit
-                                inventore culpa rem? Repellat eaque iste quod aliquam.
+                              {{this.descripcion}}
                             </td>
-                        </tbody>
-                        <tbody>
-                            <td>
-                                juan jose
-                            </td>
-                            <td>
-                                colombia
-                            </td>
-                            <td>
-                                personal
-                            </td>
-                            <td>
-                                amante a las planats
+                             <td>
+                              {{this.fecha}}
                             </td>
                         </tbody>
-                      
                        
+                        {{/each}}
 
                     </table>
                 </div>

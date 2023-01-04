@@ -1,41 +1,39 @@
 
 import pool from '../database/conexion.js'
-
 import pais from './pais.js'
-//import { persona, ultimo_id_persona } from './persona.js'
 import persona from './persona.js'
 
 
 const usuario = {};
 usuario.regitrar_usuario = (usuario) => {
     pais.ConsultarNacioanlidad(usuario.nacionalidad).then(async (response) => {
-      console.log(response);
-             persona.regitrar_persona(response.id, usuario.nombre).then((response) => {
-                if (response == "se regitro la persona con exito") {
-                    persona.consultar_ultima_persona().then(async (response) => {
-                        
-                            registrar(usuario,response).then((response) => {
+        console.log(response);
+        persona.regitrar_persona(response.id, usuario.nombre).then((response) => {
+            if (response == "se regitro la persona con exito") {
+                persona.consultar_ultima_persona().then(async (response) => {
 
-                                console.log(response)
-                            }).catch((err) => {
+                    registrar(usuario, response).then((response) => {
 
-                                console.log(err)
-                            })
-                        
+                        console.log(response)
                     }).catch((err) => {
+
                         console.log(err)
                     })
-                }
-            }).catch((err) => {
-                console.log(err)
-            }) 
-        
+
+                }).catch((err) => {
+                    console.log(err)
+                })
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+
     }).catch((err) => {
         console.log(err)
     });
 }
 
-const registrar = (usuario,id_persona) => {
+const registrar = (usuario, id_persona) => {
     return new Promise(async (resolve, reject) => {
         const registro_usuario = await pool.query('insert into usuario(fk_rol,fk_persona,fk_tipo_cuenta,usuario,clave)values($1,$2,$3,$4,$5) RETURNING *', [2, id_persona, 2, usuario.usuario, usuario.clave_encriptada]);
         if (registro_usuario.rowCount > 0) {
@@ -73,18 +71,32 @@ usuario.consultar_usuario = (usuario) => {
 }
 
 
-usuario.consultar_perfil = (id) => {
+usuario.registrar_usuario_que_dona = (req) => {
     return new Promise(async (resolve, reject) => {
-        const sql = await pool.query('select p.nombre_completo as  nombre,p.descripcion, u.usuario,t.tipo,pa.nacionalidad, te.telefono,d.direccion, b.barrio from persona as p left join telefono as te on te.fk_persona = p.id_persona left join direccion as d on d.fk_persona = p.id_persona left join barrio as b on d.fk_barrio = b.id_barrio inner join pais as pa on p.fk_nacionalidad = pa.id_pais  inner join usuario as u on u.fk_persona = p.id_persona inner join tipo_cuenta as t on u.fk_tipo_cuenta = t.id_tipo_cuenta where u.id_usuario = $1', [id])
-        if (sql.rowCount > 0) {
 
-            return resolve(sql.rows[0])
+        const id = req.session.passport.user.id;
+        const date = new Date();
+        let formato = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+        const sql = await pool.query('insert into dona (fk_usuario,estado,fecha)values($1,$2,$3)', [id, 1, formato])
+        if (sql.rowCount > 0) {
+            return resolve('se registro el usuario donante con exito')
         } else {
-            return reject('No se encontro el usuario')
+            return reject('Error al registrar al usuario donante')
         }
     })
 }
 
+
+usuario.consultar_usuario_que_dona = (req) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select p.nombre_completo as  nombre,p.descripcion, u.usuario,t.tipo,pa.nacionalidad, te.telefono,d.direccion, b.barrio, dona.fecha from persona as p left join telefono as te on te.fk_persona = p.id_persona left join direccion as d on d.fk_persona = p.id_persona left join barrio as b on d.fk_barrio = b.id_barrio inner join pais as pa on p.fk_nacionalidad = pa.id_pais  inner join usuario as u on u.fk_persona = p.id_persona inner join tipo_cuenta as t on u.fk_tipo_cuenta = t.id_tipo_cuenta inner join dona on dona.fk_usuario = u.id_usuario',)
+        if (sql.rowCount > 0) {
+            return resolve(sql.rows)
+        } else {
+            return reject("Error al consultar el usuario que dona")
+        }
+    })
+}
 
 usuario.permisos_usuario = (id, res) => {
     return new Promise(async (resolve, reject) => {
@@ -117,7 +129,6 @@ usuario.consultar_tipo_de_cuenta = () => {
             sql.rows.forEach(element => {
                 cuenta.push(element.tipo)
             });
-         
             return resolve(cuenta)
         } else {
             return reject("No se pudo concultar el tipo de cuenta")
