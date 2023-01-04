@@ -22,7 +22,7 @@
                 {{#if permisos}}
                 <li class="nav-item">
                     <form action="/create-checkout-session" method="POST">
-                        <button type="submit" id="checkout-button"  class="btn btn-dark">Donar</button>
+                        <button type="submit" id="checkout-button" class="btn btn-dark">Donar</button>
                     </form>
                 </li>
 
@@ -33,24 +33,26 @@
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" href="/donantes">Donantes</a>
                 </li>
-                {{#each permisos}}
+
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-black" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {{this.rol}}
-                    </a>
-                    <ul class="dropdown-menu bg-success bg-gradient">
-                        {{!-- {{#each permisos}} --}}
-                        <li class="nav-item">
-                            <a class="dropdown-item" href={{this.ruta}}>{{this.permiso}}</a>
-                        </li>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Menu {{rol}}
+                    </button>
+                    <ul class="dropdown-menu">
+                        {{#each permisos}}
+                        <li><a class="dropdown-item" href={{this.ruta}}>{{this.permiso}} </a></li>
                         {{/each}}
-                        <div class="dropdown-divider"></div>
-                        <li class="nav-item">
-                            <a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar Sesión</a>
+                        <li>
+                            <hr class="dropdown-divider">
                         </li>
+                        <li><a class="dropdown-item" id="cerrar-sesion" href='#'>Cerrar sesión</a></li>
                     </ul>
                 </li>
+
+
+
                 {{else}}
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#donarcomo"
                     data-bs-whatever="@mdo">
