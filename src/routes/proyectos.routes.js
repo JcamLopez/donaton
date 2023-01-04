@@ -11,10 +11,12 @@ const validar = (req, res, next) => {
             }).catch((err) => {
                 console.log(err)
             })
+    }else{
+        res.render('./proyectos')
     }
 }
 
-router.get('/proyectos', controller.vista_proyectos)
+router.get('/proyectos',validar, controller.vista_proyectos)
 
 
 
