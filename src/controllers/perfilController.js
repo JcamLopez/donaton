@@ -1,11 +1,12 @@
 const controller = {};
 import usuario from '../models/usuario.js';
-import validar from '../models/validaciones.js';
 import perfil from '../models/perfil.js';
+import validar from '../models/validaciones.js';
+
 var cuenta;
 controller.vista_perfil = (req, res) => {
     const id = req.session.passport.user.id;
-    usuario.consultar_perfil(id).then((response) => {
+    perfil.consultar_perfil(id).then((response) => {
         const user = {
             nombre: response.nombre,
             usuario: response.usuario,
@@ -33,12 +34,10 @@ controller.tipo_cuenta = (req, res) => {
     }).catch((err) => {
         console.log(err);
     })
-
 }
 
 controller.actualizar_perfil = (req) => {
     perfil.actualizar(req).then((response) => {
-    
      console.log(response);
     }).catch((err) => {
         console.log(err);
