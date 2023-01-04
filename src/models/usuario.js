@@ -93,7 +93,7 @@ usuario.consultar_usuario_que_dona = (req) => {
         if (sql.rowCount > 0) {
             return resolve(sql.rows)
         } else {
-            return reject("Error al consultar el usuario que dona")
+            return reject("No hay donantes")
         }
     })
 }

@@ -29,11 +29,13 @@
                                 Fecha
                             </td>
                         </thead>
+                        {{#if response}}
+
 
                         {{#each response}}
-                         <tbody>
+                        <tbody>
                             <td>
-                              {{this.nombre}}
+                                {{this.nombre}}
                             </td>
                             <td>
                                 {{this.nacionalidad}}
@@ -42,15 +44,38 @@
                                 {{this.tipo}}
                             </td>
                             <td>
-                              {{this.descripcion}}
+                                {{this.descripcion}}
                             </td>
-                             <td>
-                              {{this.fecha}}
+                            <td>
+                                {{this.fecha}}
                             </td>
                         </tbody>
-                       
+
+
                         {{/each}}
 
+
+                        {{else}}
+                        <tbody>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                            <td>
+                                NO HAY DATOS
+                            </td>
+                        </tbody>
+                        {{!-- <h1>Aun no hay Datos registrados</h1> --}}
+
+                        {{/if}}
                     </table>
                 </div>
             </div>
