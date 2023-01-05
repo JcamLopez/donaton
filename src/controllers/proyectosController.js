@@ -7,4 +7,8 @@ controller.vista_proyectos = (req, res) => {
 }
 
 
+controller.crear_proyectos=(req,res)=>{
+    res.send('proyecto creado')
+}
+
 export default controller
