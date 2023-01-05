@@ -1,3 +1,4 @@
+import proyecto from '../models/proyecto.js';
 const controller = {};
 
 
@@ -7,8 +8,15 @@ controller.vista_proyectos = (req, res) => {
 }
 
 
-controller.crear_proyectos=(req,res)=>{
-    res.send('proyecto creado')
+controller.crear_proyectos = (req, res) => {
+    console.log(req.file);
+    proyecto.registrar(req).then((response) => {
+
+        res.send('proyecto creado')
+    }).catch((err) => {
+        console.log(err);
+    });
+
 }
 
 export default controller

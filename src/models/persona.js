@@ -38,4 +38,16 @@ persona.consultar_persona = (req) => {
 }
 
 
+persona.registrar_encargado = (resposable) => {
+    return new Promise(async (resolve, reject) => {
+        var descripcion = "El usuario es un encargado de un proyecto"
+        const persona = await pool.query('insert into persona (nombre_completo,descripcion)values($1,$2) RETURNING *', [resposable,descripcion]);
+        if (persona.rowCount > 0) {
+            return resolve("se regitro la persona encargada con exito")
+        } else {
+            return rejects("no se registro la persona encargada")
+        }
+    })
+}
+
 export default persona;

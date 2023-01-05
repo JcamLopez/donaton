@@ -2,7 +2,7 @@ create database reforestacion;
 
 CREATE TABLE persona (
     id_persona SERIAL PRIMARY KEY,
-    fk_nacionalidad int not null,       
+    fk_nacionalidad int  null,       
     nombre_completo VARCHAR(100) not null,
     descripcion text not null
 );
@@ -84,8 +84,9 @@ CREATE TABLE dona (
 CREATE TABLE proyecto (
     id_proyecto SERIAL PRIMARY KEY,
     fk_responsable int not null,
+    fk_usuario int not null,
     fk_img int not null,
-    proyecto varchar(100),
+    proyecto  varchar(100) not null,
     descripcion text not null
 );
 
