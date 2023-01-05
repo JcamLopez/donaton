@@ -132,6 +132,91 @@
                             </div>
                             <br><br>
 
+
+                            {{!-- PROYECTOS --}}
+                            {{!-- <div class="row justify-content-center ">
+                                <br>
+                                <div class="col-11 bg-white">
+                                    <br>
+                                    <div class="row justify-content-center ">
+                                        <h2 class="text-center text-black">San Vicente verde</h2>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="https://encolombia.com/wp-content/uploads/2018/11/Por-Qu%C3%A9-es-Tan-Grave-la-Deforestaci%C3%B3n-para-el-Medio-Ambiente.jpg"
+                                                alt="" width="100%" height="200px" style="border-radius: 5px;">
+                                        </div>
+                                        <div class="col-6">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+                                            praesentium aliquid quidem doloribus? Optio nam aliquam, quod quibusdam quia
+                                            debitis corporis neque modi tempora fugiat eligendi est voluptas! Ad, eius!
+                                        </div>
+                                        <div class="col-2">
+                                            Carmen Perez
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="col-1">
+                                                <button class="btn btn-sm bg-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#edit-proyects" data-bs-whatever="@mdo">
+                                                    <span class="material-icons">
+                                                        edit
+                                                    </span>
+                                                </button>
+                                                <br><br>
+                                                <button class="btn btn-sm bg-danger ">
+                                                    <span class="material-icons">
+                                                        delete
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center ">
+                                <br>
+                                <div class="col-11 bg-white">
+                                    <br>
+                                    <div class="row justify-content-center ">
+                                        <h2 class="text-center text-black">Sembrando weed por todo florencia</h2>
+                                    </div>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="https://encolombia.com/wp-content/uploads/2018/11/Por-Qu%C3%A9-es-Tan-Grave-la-Deforestaci%C3%B3n-para-el-Medio-Ambiente.jpg"
+                                                alt="" width="100%" height="200px" style="border-radius: 5px;">
+                                        </div>
+                                        <div class="col-6">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+                                            praesentium aliquid quidem doloribus? Optio nam aliquam, quod quibusdam quia
+                                            debitis corporis neque modi tempora fugiat eligendi est voluptas! Ad, eius!
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            Pepe Cadena
+                                        </div>
+                                        <div class="col-1">
+                                            <button class="btn btn-sm bg-primary">
+                                                <span class="material-icons">
+                                                    edit
+                                                </span>
+                                            </button>
+                                            <br><br>
+                                            <button class="btn btn-sm bg-danger">
+                                                <span class="material-icons">
+                                                    delete
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div> --}}
+
+
+
                             {{!-- REGISTROS EJEMPLO --}}
                             <div class="row justify-content-center">
                                 <div class="col-md-11 text-center bg-white">
@@ -154,18 +239,21 @@
                                             </thead>
                                             <tbody>
                                                 <td>
-                                                    xxxxxxxxxxx
+                                                    San Vicente verde
                                                 </td>
                                                 <td>
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
+                                                    beatae in delectus fugiat et eveniet, totam ut. Possimus, est
+                                                    quaerat!
                                                 </td>
                                                 <td>
-                                                    xxxxxxxxxxxxxxx
+                                                    Carmen Perez
                                                 </td>
 
 
                                                 <td class="acc">
-                                                    <button type="button" class="btn " data-bs-target="#edit-proyects">
+                                                    <button type="button" class="btn " data-bs-toggle="modal"
+                                                        data-bs-target="#edit-proyects" data-bs-whatever="@mdo">
                                                         <span class="material-icons">
                                                             edit
                                                         </span>
@@ -180,13 +268,15 @@
 
                                             <tbody>
                                                 <td>
+                                                    plantando weed por toda la amazonia.
+                                                </td>
+                                                <td>
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+                                                    fugit reiciendis quidem tempora veniam dolorum, doloremque eum vero
+                                                    accusamus enim!
+                                                </td>
+                                                <td>
                                                     Juan Jose Perez
-                                                </td>
-                                                <td>
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                </td>
-                                                <td>
-                                                    xxxxxxxxxxxxxxx
                                                 </td>
 
 
@@ -241,7 +331,7 @@
 
 
                         {{!-- MODAL EDITAR --}}
-                        <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" id="edit-proyects" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -270,6 +360,17 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="mb-3">
+                                                    <label for="nombre" class="form-label">Nombre del proyecto</label>
+                                                    <input type="text" class="form-control" id="nombre"
+                                                        value={{nombre}}>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
                                                     <label for="descripción" class="form-label">Descripción</label>
                                                     <textarea class="form-control mt-3"
                                                         placeholder="Ingrese una breve descripción de usted o su empresa"
@@ -286,7 +387,7 @@
 
                                             <div class="col">
                                                 <div class="mb-3">
-                                                    <label for="nombre" class="form-label">Nombre</label>
+                                                    <label for="nombre" class="form-label">Responsable</label>
                                                     <input type="text" class="form-control" id="nombre"
                                                         value={{nombre}}>
 
