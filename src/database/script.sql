@@ -81,6 +81,14 @@ CREATE TABLE dona (
     fecha date not null
 );
 
+CREATE TABLE proyecto (
+    id_proyecto SERIAL PRIMARY KEY,
+    fk_responsable int not null,
+    fk_img int not null,
+    proyecto varchar(100),
+    descripcion text not null
+);
+
 /* CREATE TABLE publica (
     id_publica SERIAL PRIMARY KEY,
     fk_usuario int not null,
@@ -142,6 +150,14 @@ ADD FOREIGN KEY(fk_tipo_cuenta) REFERENCES tipo_cuenta(id_tipo_cuenta);
 ALTER TABLE dona
 ADD FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario);
 
+ALTER TABLE proyecto
+ADD FOREIGN KEY(fk_responsable) REFERENCES persona(id_persona);
+
+
+ALTER TABLE proyecto
+ADD FOREIGN KEY(fk_img) REFERENCES imagen(id_imagen);
+
+
 INSERT INTO rol (rol) VALUES('admin'),
 ('usuario');
 
@@ -158,11 +174,6 @@ INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES
 (1,1,1),
 (1,2,1);
 
-
-INSERT INTO rol_tiene_permiso (fk_rol,fk_permiso,estado) VALUES 
-(2,1,1),
-(1,1,1),
-(1,2,1);
 
 INSERT INTO pais (nacionalidad,pais) VALUES
 ('Venezolana','Venezuela'),

@@ -19,6 +19,7 @@ import stripe from './routes/stripe.routes.js';
 
 
 
+
 //Path
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,6 +52,10 @@ app.use(session(
     saveUninitialized: false,
   }
 ))
+
+/* app.use(multer({
+  destino:'public/img/server'
+}).single('image')) */
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
