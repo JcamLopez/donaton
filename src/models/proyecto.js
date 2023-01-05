@@ -5,7 +5,6 @@ const proyecto = {}
 
 
 proyecto.registrar = (req) => {
-
     return new Promise((resolve, reject) => {
         const { resposable, nombre_proyecto, descripcion_proyecto } = req.body;
         p.registrar_encargado(resposable).then((response) => {
@@ -13,7 +12,15 @@ proyecto.registrar = (req) => {
             if (response == "se regitro la persona encargada con exito") {
                 i.registar(req).then((response) => {
                     console.log(response);
-
+                    registrar_proyecto(req, nombre_proyecto, descripcion_proyecto).then((response) => {
+                        if (response == "se registro el proyecto") {
+                            console.log(response)
+                            return resolve('se registro el proyecto de manera exitosa')
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                        return reject(err)
+                    })
                 }).catch((err) => {
                     console.log(err);
                 })
@@ -26,23 +33,38 @@ proyecto.registrar = (req) => {
 }
 
 const registrar_proyecto = (req, proyecto, descripcion) => {
-    const id = req.session.passport.user.id;
+    const id_usuario = req.session.passport.user.id;
     return new Promise((resolve, reject) => {
-        p.consultar_ultima_persona().then( (response) => {
-            const id_encargado = response
-            i.consultar_ultima_imagen().then(async(response) => {
-                const sql = await pool.query('insert into proyecto(fk_encargado,fk_usuario,fk_imagen,proyecto, descripcion)values($1,$2,$3,$4,$5)')
+        p.consultar_ultima_persona().then((response) => {
+            const id_responsable = response
+            i.consultar_ultima_imagen().then(async (response) => {
+                const id_imagen = response
+                const sql = await pool.query('insert into proyecto(fk_responsable,fk_usuario,fk_img,proyecto, descripcion)values($1,$2,$3,$4,$5)RETURNING *', [id_responsable, id_usuario, id_imagen, proyecto, descripcion])
+                if (sql.rowCount > 0) {
+                    return resolve('se registro el proyecto')
+                } else {
+                    return reject('error , no se registro el proyecto')
+                }
             }).catch((err) => {
-
+                console.log(err)
             })
-
-
-
-
         }).catch((err) => {
             console.log(err);
         })
 
+    })
+}
+
+
+proyecto.consultar = () => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select r.nombre_completo as responsable,i.url as img ,p.proyecto ,p.descripcion from proyecto as p inner join persona as r on p.fk_responsable= r.id_persona inner join imagen as i on p.fk_img = i.id_imagen')
+        
+        if (sql.rowCount > 0) {
+            return resolve(sql.rows)
+        } else {
+            return reject('no hay proyectos')
+        }
     })
 }
 

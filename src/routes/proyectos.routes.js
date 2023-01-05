@@ -18,7 +18,7 @@ const validar = (req, res, next) => {
 }
 
 router.get('/proyectos',validar, controller.vista_proyectos)
-router.post('/crear-proyecto',img.upload.single('img_proyecto'),controller.crear_proyectos)
+
 
 
 

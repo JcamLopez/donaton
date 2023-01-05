@@ -10,7 +10,7 @@ import adoptarbol from './routes/adoptarbol.routes.js'
 import donantes from './routes/donantes.routes.js'
 import perfil from './routes/perfil.routes.js'
 import sobrenosotros from './routes/sobrenosotros.routes.js'
-import paneladmon from './routes/paneladmon.routes.js'
+import panel_admin from './routes/panel_admin.routes.js'
 import passport from 'passport';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
@@ -72,7 +72,7 @@ app.use(adoptarbol);
 app.use(donantes);
 app.use(perfil);
 app.use(sobrenosotros);
-app.use(paneladmon);
+app.use(panel_admin);
 app.use(stripe);
 app.use(cerrar_sesion);
 //public 
