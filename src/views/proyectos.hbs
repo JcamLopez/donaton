@@ -7,41 +7,43 @@
     <div class="container ">
 
         {{>donar}}
-        <div class="row proyectos ">
-            <h2 class="text-dark text-center">Proyectos vinculados</h2>
-            <br><br><br>
+        <h2 class="text-dark text-center">Proyectos vinculados</h2>
+        <br>
+        <div class="row justify-content-center proyectos ">
             {{#if proyecto}}
             {{#each proyecto}}
-            <div class="row justify-content-center ">
-                <div class="col-6  text-center ">
-                    <img src={{this.img}} alt="">
-                </div>
-                <div class="col-6 align-self-center">
-                    <h3>{{this.proyecto}}</h3>
+            <div class="row justify-content-center" id="proyecto">
+                <div class="col-md-10">
+                    <div class="row justify-content-center bg-light">
+                        <div class="col-md-6  text-center " >
+                            <img src={{this.img}} alt="" id="proyimg">
+                        </div>
+                        <div class="col-md-6 align-self-center ">
+                            <h3>
+                                {{this.proyecto}}
+                                <h5>
+                                    Responsable: {{this.responsable}}
+                                </h5>
+                            </h3>
+                            <br>
+                            <p>
+                                {{this.descripcion}}
+                            </p>
+                        </div>
+                    </div>
                     <br>
-                    <p>
-                        {{this.descripcion}}
-                    </p>
                 </div>
             </div>
             {{/each}}
             {{else}}
-            <h1>No hay proyectos</h1>
+            <h3>No hay proyectos</h3>
             {{/if}}
-
-
-
-
         </div>
-
     </div>
-
-
-
-</div>
-<br>
-</div>
 
 {{>footer}}
 
 </div>
+
+
+
