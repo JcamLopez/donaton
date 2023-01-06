@@ -1,13 +1,20 @@
 import proyecto from '../models/proyecto.js'
+
 const controller = {};
 
 
 controller.vista_panel_admin = (req, res) => {
     var rol = req.session.permisos_usuario[0].rol;
-    res.render('./panel_admin', {
-        rol,
-        permisos: req.session.permisos_usuario
+    proyecto.consultar().then((response) => {
+        var proyecto = response;
+        console.log('esta es mi respuesta')
+        console.log(response)
+        res.render('./panel_admin', { rol, permisos: req.session.permisos_usuario, proyecto })
+    }).catch((err) => {
+        console.log(err)
+        res.render('./panel_admin', { rol, permisos: req.session.permisos_usuario })
     })
+ 
 }
 
 controller.crear_proyectos = (req, res) => {

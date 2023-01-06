@@ -11,10 +11,7 @@ const validar = (req, res, next) => {
         }).catch((err) => {
             console.log(err)
         })
-
-    } else {
-      //  res.render('./paneladmon')
-    }
+    } 
 }
 
 router.get('/panel-admin', validar, controller.vista_panel_admin)
