@@ -11,7 +11,7 @@
             <div class="row justify-content-center bg-light">
                 <div class="col-11">
                     <br>
-                    <table class="table responsive text-center ">
+                    <table id="donantes" class="table table-striped text-center ">
                         <thead class="table-dark">
                             <td>
                                 Nombre
@@ -34,23 +34,25 @@
 
                         {{#each response}}
                         <tbody>
-                            <td>
-                                {{this.nombre}}
-                            </td>
-                            <td>
-                                {{this.nacionalidad}}
-                            </td>
-                            <td>
-                                {{this.tipo}}
-                            </td>
-                            <td>
-                                {{this.descripcion}}
-                            </td>
-                            <td>
-                                {{this.fecha}}
-                            </td>
+                            <tr>
+                                <td>
+                                    {{this.nombre}}
+                                </td>
+                                <td>
+                                    {{this.nacionalidad}}
+                                </td>
+                                <td>
+                                    {{this.tipo}}
+                                </td>
+                                <td>
+                                    {{this.descripcion}}
+                                </td>
+                                <td>
+                                    {{this.fecha}}
+                                </td>
+                            </tr>
                         </tbody>
-                       
+
                         {{/each}}
 
 
@@ -72,31 +74,10 @@
                                 NO HAY DATOS
                             </td>
                         </tbody>
-                        {{!-- <h1>Aun no hay Datos registrados</h1> --}}
 
                         {{/if}}
                     </table>
 
-                    <div class="row justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination" id="donantes_page">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-
-                    </div>
                 </div>
             </div>
 
