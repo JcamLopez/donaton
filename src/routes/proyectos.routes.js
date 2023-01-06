@@ -1,6 +1,7 @@
 import { Router } from "express";
 import controller from '../controllers/proyectosController.js'
 import usuario from '../models/usuario.js'
+import img from '../models/imagenes.js'
 const router = Router();
 
 const validar = (req, res, next) => {
@@ -17,6 +18,7 @@ const validar = (req, res, next) => {
 }
 
 router.get('/proyectos',validar, controller.vista_proyectos)
+
 
 
 

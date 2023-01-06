@@ -2,7 +2,7 @@ create database reforestacion;
 
 CREATE TABLE persona (
     id_persona SERIAL PRIMARY KEY,
-    fk_nacionalidad int not null,       
+    fk_nacionalidad int  null,       
     nombre_completo VARCHAR(100) not null,
     descripcion text not null
 );
@@ -81,6 +81,15 @@ CREATE TABLE dona (
     fecha date not null
 );
 
+CREATE TABLE proyecto (
+    id_proyecto SERIAL PRIMARY KEY,
+    fk_responsable int not null,
+    fk_usuario int not null,
+    fk_img int not null,
+    proyecto  varchar(100) not null,
+    descripcion text not null
+);
+
 /* CREATE TABLE publica (
     id_publica SERIAL PRIMARY KEY,
     fk_usuario int not null,
@@ -141,6 +150,14 @@ ADD FOREIGN KEY(fk_tipo_cuenta) REFERENCES tipo_cuenta(id_tipo_cuenta);
 
 ALTER TABLE dona
 ADD FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario);
+
+ALTER TABLE proyecto
+ADD FOREIGN KEY(fk_responsable) REFERENCES persona(id_persona);
+
+
+ALTER TABLE proyecto
+ADD FOREIGN KEY(fk_img) REFERENCES imagen(id_imagen);
+
 
 INSERT INTO rol (rol) VALUES('admin'),
 ('usuario');

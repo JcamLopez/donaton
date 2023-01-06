@@ -33,7 +33,7 @@
                             <div class="row justify-content-center">
 
                                 <!----MODAL NUEVO PROYECTO---->
-                                <div class="col-md-11 text-start">
+                                <div class="col-md-11 text-start" id="modal_proyecto">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal" data-bs-whatever="@mdo">
                                         Agregar Proyecto</button>
@@ -49,7 +49,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="POST" class="">
+                                                    <form method="POST" action="/crear-proyecto" enctype="multipart/form-data">
                                                         {{!-- <div class="row justify-content-center">
                                                             <div class="col text-center">
                                                                 <label for="validationDefault01"
@@ -63,7 +63,7 @@
                                                                     Nombre del proyecto
                                                                 </span>
                                                                 <input type="text" class="form-control bg-light"
-                                                                    id="validationDefault01" aria-required="true"
+                                                                    id="validationDefault01" name="nombre_proyecto" aria-required="true"
                                                                     autocomplete="chrome-off" aria-label="Nombre"
                                                                     rows="1" class="andes-form-control__field"
                                                                     maxlength="30" required>
@@ -78,7 +78,7 @@
                                                                     Descripción
                                                                 </span>
                                                                 <textarea class="form-control bg-light"
-                                                                    id="floatingTextarea2" aria-required="true"
+                                                                    id="floatingTextarea2" name="descripcion_proyecto" aria-required="true"
                                                                     autocomplete="chrome-off" style="height: 100px"
                                                                     maxlength="150"></textarea>
                                                                 {{!--
@@ -96,7 +96,7 @@
                                                                     Nombre del responsable
                                                                 </span>
                                                                 <input type="text" class="form-control bg-light"
-                                                                    id="validationDefault01" aria-required="true"
+                                                                    id="validationDefault01" name="resposable" aria-required="true"
                                                                     autocomplete="chrome-off" aria-label="Nombre"
                                                                     rows="1" class="andes-form-control__field"
                                                                     maxlength="30" required>
@@ -110,8 +110,7 @@
                                                                     <span id="passwordHelpInline" class="form-text">
                                                                         Imagen del proyecto
                                                                     </span>
-                                                                    <input class="form-control" type="file"
-                                                                        id="formFile">
+                                                                    <input class="form-control" type="file" name="img_proyecto" >
                                                                 </div>
 
                                                             </div>

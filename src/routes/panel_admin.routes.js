@@ -1,6 +1,7 @@
 import { Router } from "express";
-import controller from '../controllers/paneladmonController.js'
+import controller from '../controllers/panel_adminController.js'
 import usuario from '../models/usuario.js'
+import img from '../models/imagenes.js'
 const router = Router();
 const validar = (req, res, next) => {
     if (req.session.passport) {
@@ -10,14 +11,11 @@ const validar = (req, res, next) => {
         }).catch((err) => {
             console.log(err)
         })
-
-    } else {
-        res.render('./paneladmon')
-    }
+    } 
 }
 
-router.get('/panel-admin', validar, controller.vista_paneladmon)
-
+router.get('/panel-admin', validar, controller.vista_panel_admin)
+router.post('/crear-proyecto', img.upload.single('img_proyecto'), controller.crear_proyectos)
 
 
 export default router;
