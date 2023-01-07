@@ -1,6 +1,7 @@
 import pool from '../database/conexion.js';
 import p from '../models/persona.js';
 import i from '../models/imagenes.js';
+import { resolve } from 'path';
 const proyecto = {}
 
 
@@ -58,12 +59,25 @@ const registrar_proyecto = (req, proyecto, descripcion) => {
 
 proyecto.consultar = () => {
     return new Promise(async (resolve, reject) => {
-        const sql = await pool.query('select r.nombre_completo as responsable,i.url as img ,p.proyecto ,p.descripcion from proyecto as p inner join persona as r on p.fk_responsable= r.id_persona inner join imagen as i on p.fk_img = i.id_imagen')
-        
+        const sql = await pool.query('select r.id_persona as id_responsable, r.nombre_completo as responsable,i.id_imagen as id_img,i.url as img, p.id_proyecto as id_proye ,p.proyecto ,p.descripcion from proyecto as p inner join persona as r on p.fk_responsable= r.id_persona inner join imagen as i on p.fk_img = i.id_imagen')
+
         if (sql.rowCount > 0) {
             return resolve(sql.rows)
         } else {
             return reject('no hay proyectos')
+        }
+    })
+}
+
+
+proyecto.eliminar = (id_proyecto) => {
+   
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query("delete from proyecto as p where  p.id_proyecto=$1 RETURNING *", [id_proyecto])
+        if (sql.rowCount) {
+            return resolve('El proyecto se elimino de manera correcta')
+        } else {
+            return reject('Error al eliminar el proyecto')
         }
     })
 }

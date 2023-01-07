@@ -240,17 +240,19 @@
 
                                                 </td>
                                             </thead>
+
+                                            {{#if proyecto}}
+
+                                            {{#each proyecto}}
                                             <tbody>
                                                 <td>
-                                                    San Vicente verde
+                                                    {{this.proyecto}}
                                                 </td>
                                                 <td>
-                                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
-                                                    beatae in delectus fugiat et eveniet, totam ut. Possimus, est
-                                                    quaerat!
+                                                    {{this.descripcion}}
                                                 </td>
                                                 <td>
-                                                    Carmen Perez
+                                                    {{this.responsable}}
                                                 </td>
 
 
@@ -261,43 +263,33 @@
                                                             edit
                                                         </span>
                                                     </button>
-                                                    <button type="button" class="btn ">
+                                                    {{!--
+                                                    <button class="btn_eliminar_proyuecto">
                                                         <span class="material-icons">
                                                             delete
                                                         </span>
-                                                    </button>
+                                                    </button> --}}
+                                                    <a href="/eliminar/proyecto/{{id_responsable}}/{{id_proye}}/{{id_img}}">
+                                                        <span class="material-icons">
+                                                            delete
+                                                        </span>
+                                                    </a>
                                                 </td>
                                             </tbody>
-
+                                            {{/each}}
+                                            {{else}}
                                             <tbody>
                                                 <td>
-                                                    plantando weed por toda la amazonia.
+                                                    No hay Datos
                                                 </td>
                                                 <td>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-                                                    fugit reiciendis quidem tempora veniam dolorum, doloremque eum vero
-                                                    accusamus enim!
+                                                    No hay Datos
                                                 </td>
                                                 <td>
-                                                    Juan Jose Perez
-                                                </td>
-
-
-                                                <td class="acc">
-                                                    <button type="button" class="btn " data-bs-target="#edit-proyects">
-                                                        <span class="material-icons">
-                                                            edit
-                                                        </span>
-                                                    </button>
-                                                    <button type="button" class="btn ">
-                                                        <span class="material-icons">
-                                                            delete
-                                                        </span>
-                                                    </button>
+                                                    No hay Datos
                                                 </td>
                                             </tbody>
-
-
+                                            {{/if}}
                                         </table>
 
                                     </div>

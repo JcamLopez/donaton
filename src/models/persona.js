@@ -4,7 +4,7 @@ const persona = {};
 persona.regitrar_persona = (id_nacionalidad, nombre) => {
     return new Promise(async (resolve, reject) => {
         var descripcion = "Este perfil apoya la reforestación de la Amazonia"
-        const persona = await pool.query('insert into persona (fk_nacionalidad,nombre_completo,descripcion)values($1,$2,$3) RETURNING *', [id_nacionalidad, nombre,descripcion]);
+        const persona = await pool.query('insert into persona (fk_nacionalidad,nombre_completo,descripcion)values($1,$2,$3) RETURNING *', [id_nacionalidad, nombre, descripcion]);
         if (persona.rowCount > 0) {
             return resolve("se regitro la persona con exito")
         } else {
@@ -41,7 +41,7 @@ persona.consultar_persona = (req) => {
 persona.registrar_encargado = (resposable) => {
     return new Promise(async (resolve, reject) => {
         var descripcion = "El usuario es un encargado de un proyecto"
-        const persona = await pool.query('insert into persona (nombre_completo,descripcion)values($1,$2) RETURNING *', [resposable,descripcion]);
+        const persona = await pool.query('insert into persona (nombre_completo,descripcion)values($1,$2) RETURNING *', [resposable, descripcion]);
         if (persona.rowCount > 0) {
             return resolve("se regitro la persona encargada con exito")
         } else {
@@ -50,4 +50,15 @@ persona.registrar_encargado = (resposable) => {
     })
 }
 
+
+persona.eliminar = (id_persona) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query("delete from persona as p where  p.id_persona=$1 RETURNING *", [id_persona])
+        if (sql.rowCount) {
+            return resolve('se elimino la persona de manera correcta')
+        } else {
+            return reject('Error al eliminar la persona')
+        }
+    })
+}
 export default persona;
