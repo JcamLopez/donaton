@@ -49,7 +49,8 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="POST" action="/crear-proyecto" enctype="multipart/form-data">
+                                                    <form method="POST" action="/crear-proyecto"
+                                                        enctype="multipart/form-data">
                                                         {{!-- <div class="row justify-content-center">
                                                             <div class="col text-center">
                                                                 <label for="validationDefault01"
@@ -63,10 +64,11 @@
                                                                     Nombre del proyecto
                                                                 </span>
                                                                 <input type="text" class="form-control bg-light"
-                                                                    id="validationDefault01" name="nombre_proyecto" aria-required="true"
-                                                                    autocomplete="chrome-off" aria-label="Nombre"
-                                                                    rows="1" class="andes-form-control__field"
-                                                                    maxlength="30" required>
+                                                                    id="validationDefault01" name="nombre_proyecto"
+                                                                    aria-required="true" autocomplete="chrome-off"
+                                                                    aria-label="Nombre" rows="1"
+                                                                    class="andes-form-control__field" maxlength="30"
+                                                                    required>
                                                             </div>
                                                         </div>
                                                         <br>
@@ -78,9 +80,9 @@
                                                                     Descripción
                                                                 </span>
                                                                 <textarea class="form-control bg-light"
-                                                                    id="floatingTextarea2" name="descripcion_proyecto" aria-required="true"
-                                                                    autocomplete="chrome-off" style="height: 100px"
-                                                                    maxlength="150"></textarea>
+                                                                    id="floatingTextarea2" name="descripcion_proyecto"
+                                                                    aria-required="true" autocomplete="chrome-off"
+                                                                    style="height: 100px" maxlength="150"></textarea>
                                                                 {{!--
                                                                 <input type="text" class="form-control bg-light"
                                                                     id="validationCustom01" aria-required="true"
@@ -96,10 +98,11 @@
                                                                     Nombre del responsable
                                                                 </span>
                                                                 <input type="text" class="form-control bg-light"
-                                                                    id="validationDefault01" name="resposable" aria-required="true"
-                                                                    autocomplete="chrome-off" aria-label="Nombre"
-                                                                    rows="1" class="andes-form-control__field"
-                                                                    maxlength="30" required>
+                                                                    id="validationDefault01" name="resposable"
+                                                                    aria-required="true" autocomplete="chrome-off"
+                                                                    aria-label="Nombre" rows="1"
+                                                                    class="andes-form-control__field" maxlength="30"
+                                                                    required>
                                                             </div>
                                                         </div>
                                                         <br>
@@ -110,7 +113,8 @@
                                                                     <span id="passwordHelpInline" class="form-text">
                                                                         Imagen del proyecto
                                                                     </span>
-                                                                    <input class="form-control" type="file" name="img_proyecto" >
+                                                                    <input class="form-control" type="file"
+                                                                        name="img_proyecto">
                                                                 </div>
 
                                                             </div>
@@ -236,17 +240,19 @@
 
                                                 </td>
                                             </thead>
+
+                                            {{#if proyecto}}
+
+                                            {{#each proyecto}}
                                             <tbody>
                                                 <td>
-                                                    San Vicente verde
+                                                    {{this.proyecto}}
                                                 </td>
                                                 <td>
-                                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
-                                                    beatae in delectus fugiat et eveniet, totam ut. Possimus, est
-                                                    quaerat!
+                                                    {{this.descripcion}}
                                                 </td>
                                                 <td>
-                                                    Carmen Perez
+                                                    {{this.responsable}}
                                                 </td>
 
 
@@ -257,43 +263,33 @@
                                                             edit
                                                         </span>
                                                     </button>
-                                                    <button type="button" class="btn ">
+                                                    {{!--
+                                                    <button class="btn_eliminar_proyuecto">
                                                         <span class="material-icons">
                                                             delete
                                                         </span>
-                                                    </button>
+                                                    </button> --}}
+                                                    <a href="/eliminar/proyecto/{{id_responsable}}/{{id_proye}}/{{id_img}}">
+                                                        <span class="material-icons">
+                                                            delete
+                                                        </span>
+                                                    </a>
                                                 </td>
                                             </tbody>
-
+                                            {{/each}}
+                                            {{else}}
                                             <tbody>
                                                 <td>
-                                                    plantando weed por toda la amazonia.
+                                                    No hay Datos
                                                 </td>
                                                 <td>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-                                                    fugit reiciendis quidem tempora veniam dolorum, doloremque eum vero
-                                                    accusamus enim!
+                                                    No hay Datos
                                                 </td>
                                                 <td>
-                                                    Juan Jose Perez
-                                                </td>
-
-
-                                                <td class="acc">
-                                                    <button type="button" class="btn " data-bs-target="#edit-proyects">
-                                                        <span class="material-icons">
-                                                            edit
-                                                        </span>
-                                                    </button>
-                                                    <button type="button" class="btn ">
-                                                        <span class="material-icons">
-                                                            delete
-                                                        </span>
-                                                    </button>
+                                                    No hay Datos
                                                 </td>
                                             </tbody>
-
-
+                                            {{/if}}
                                         </table>
 
                                     </div>

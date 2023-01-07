@@ -11,11 +11,12 @@ const validar = (req, res, next) => {
         }).catch((err) => {
             console.log(err)
         })
-    } 
+    }
 }
 
 router.get('/panel-admin', validar, controller.vista_panel_admin)
 router.post('/crear-proyecto', img.upload.single('img_proyecto'), controller.crear_proyectos)
+router.get('/eliminar/proyecto/:id_responsable/:id_proye/:id_img', controller.eliminar_proyecto)
 
 
 export default router;

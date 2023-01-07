@@ -124,6 +124,34 @@ CREATE TABLE proyecto (
 ); */
 
 
+create table auditoria(
+id_auditoria serial not null,
+nombre_tabla varchar(50) not null,
+usuario varchar(50),
+operacion varchar(1) not null,
+valor_anterior text,
+fecha timestamp without time zone not null,
+constraint id_auditoria primary key(id_auditoria)
+)
+with(oids=false)
+
+CREATE OR REPLACE FUNCTION auditar() RETURNS trigger AS 
+$$
+BEGIN
+    IF(TG_OP='DELETE') THEN
+    INSERT INTO auditoria(nombre_tabla,usuario,operacion,valor_anterior,fecha)VALUES(TG_TABLE_NAME,USER,'D',OLD,now());
+    RETURN OLD;
+END IF;
+RETURN NULL;
+END;
+$$ 
+language plpgsql;
+
+CREATE TRIGGER guardar_datos AFTER DELETE ON PERSONA FOR EACH ROW EXECUTE PROCEDURE auditar();
+CREATE TRIGGER guardar_datos AFTER DELETE ON PROYECTO FOR EACH ROW EXECUTE PROCEDURE auditar();
+CREATE TRIGGER guardar_datos AFTER DELETE ON IMAGEN FOR EACH ROW EXECUTE PROCEDURE auditar();
+
+
 ALTER TABLE persona
 ADD FOREIGN KEY(fk_nacionalidad) REFERENCES pais(id_pais);
 

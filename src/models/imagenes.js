@@ -51,4 +51,15 @@ img.consultar_ultima_imagen = () => {
     })
 }
 
+img.eliminar = (id_img) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query("delete from imagen as i where  i.id_imagen=$1 RETURNING *", [id_img])
+        if (sql.rowCount) {
+            return resolve('se elimino la imagen de manera correcta')
+        } else {
+            return reject('Error al eliminar la imagen')
+        }
+    })
+}
+
 export default img
