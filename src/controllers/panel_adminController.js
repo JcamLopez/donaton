@@ -28,7 +28,6 @@ controller.crear_proyectos = (req, res) => {
     }).catch((err) => {
         console.log(err);
     })
-
 }
 
 
