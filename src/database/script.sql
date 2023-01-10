@@ -1,5 +1,7 @@
 create database reforestacion;
 
+/********** CREATE TABLES **********/
+
 CREATE TABLE persona (
     id_persona SERIAL PRIMARY KEY,
     fk_nacionalidad int  null,       
@@ -83,46 +85,15 @@ CREATE TABLE dona (
 
 CREATE TABLE proyecto (
     id_proyecto SERIAL PRIMARY KEY,
-    fk_responsable int not null,
+    responsable int not null,
     fk_usuario int not null,
     fk_img int not null,
     proyecto  varchar(100) not null,
     descripcion text not null
 );
 
-/* CREATE TABLE publica (
-    id_publica SERIAL PRIMARY KEY,
-    fk_usuario int not null,
-    titulo varchar(100) not null,
-    descripcion varchar(100) not null,
-    fecha date not null 
-); */
 
-
-/* CREATE TABLE tipo_arbol (
-    id_tipo_arbol SERIAL PRIMARY KEY,
-    tipo varchar(100) null,
-    descripcion text not null
-); */
-
-/* CREATE TABLE usuario_dona_arbol (
-    fk_usuario int not null,
-    fk_arbol int not null,
-    cantidad_dono float not null,
-    cantidad_arboles int not null,
-    fecha date not null,
-    SERIAL PRIMARY KEY(fk_usuario,fk_arbol)
-); */
-
-
-/* CREATE TABLE arbol (
-    id_arbol SERIAL PRIMARY KEY,
-    fk_usuario_admin int not null,
-    fk_tipo_arbol int not null,
-    nombre varchar(100) not null,
-    precio float not null
-); */
-
+/********** AUDITORIAS **********/
 
 create table auditoria(
 id_auditoria serial not null,
@@ -147,10 +118,25 @@ END;
 $$ 
 language plpgsql;
 
+/* COMO QUEDARIA */
+/* CREATE OR REPLACE FUNCTION auditar() RETURNS trigger AS 
+$$
+BEGIN
+    IF(TG_OP='DELETE') THEN
+    INSERT INTO auditoria(usuario,operacion,fk_proyecto,valor_anterior,fecha)VALUES(TG_TABLE_NAME,USER,'D',OLD,now());
+    RETURN OLD;
+END IF;
+RETURN NULL;
+END;
+$$ 
+language plpgsql; */
+
 CREATE TRIGGER guardar_datos AFTER DELETE ON PERSONA FOR EACH ROW EXECUTE PROCEDURE auditar();
 CREATE TRIGGER guardar_datos AFTER DELETE ON PROYECTO FOR EACH ROW EXECUTE PROCEDURE auditar();
 CREATE TRIGGER guardar_datos AFTER DELETE ON IMAGEN FOR EACH ROW EXECUTE PROCEDURE auditar();
 
+
+/********** ADD FK **********/
 
 ALTER TABLE persona
 ADD FOREIGN KEY(fk_nacionalidad) REFERENCES pais(id_pais);
@@ -180,11 +166,73 @@ ALTER TABLE dona
 ADD FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario);
 
 ALTER TABLE proyecto
-ADD FOREIGN KEY(fk_responsable) REFERENCES persona(id_persona);
-
-
-ALTER TABLE proyecto
 ADD FOREIGN KEY(fk_img) REFERENCES imagen(id_imagen);
+
+
+
+/********** INSERTS **********/
+
+/* PERSONA */
+
+INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(1, 36, 'Stivenson Zapata Ramirez', 'Administrador DonaTree');
+
+INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(2, 36, 'Juan Camilo Lopez', 'Administrador DonaTree');
+
+INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(3, 36, 'Pepe Cadena', 'Usuario DonaTree');
+
+INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(4, 36, 'Sofia Gomez', 'Usuario encargado de un proyecto vinculado a DonaTree');
+
+INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(5, 36, 'Juan Pablo Perez', 'Usuario DonaTree');
+
+INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(6, 36, 'Ana Maria Torres', 'Usuario encargado de un proyecto vinculado a DonaTree');
+
+
+/* USUARIO */
+
+INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
+            VALUES(1, 1, 1, null, 2, 'szr@gmail.com', '123');
+
+INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
+            VALUES(2, 1, 1, null, 2, 'jcl@gmail.com', '123');
+
+INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
+            VALUES(3, 2, 3, null, 1, 'pc@gmail.com', '123');
+
+INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
+            VALUES(4, 2, 4, null, 1, 'sg@gmail.com', '123');
+
+INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
+            VALUES(5, 2, 5, null, 2, 'jpp@gmail.com', '123');
+
+INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
+            VALUES(6, 2, 6, null, 2, 'amt@gmail.com', '123');
+
+
+
+/* PROYECTO */
+
+INSERT INTO proyecto(id_proyecto, responsable, fk_usuario, fk_img, proyecto, descripcion) 
+            VALUES(1, 'Sofia Gomez', 1, null, 'Campesinos, jóvenes y mujeres unidos', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
+                nulla iste
+                porro! Ratione a accusamus recusandae velit facere, impedit, dolore, nisi labore ea laboriosam
+                suscipit
+                earum
+                natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?');
+
+INSERT INTO proyecto(id_proyecto, fk_responsable, fk_usuario, fk_img, proyecto, descripcion) 
+            VALUES(2, 'Ana Maria Torres', 1, null, 'Frutos amazónicos, en peligro', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
+                nulla iste
+                porro! Ratione a accusamus recusandae velit facere, impedit, dolore, nisi labore ea laboriosam
+                suscipit
+                earum
+                natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?');
+
 
 
 INSERT INTO rol (rol) VALUES('admin'),
