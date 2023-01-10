@@ -40,7 +40,7 @@ const registrar_proyecto = (req, proyecto, descripcion) => {
             const id_responsable = response
             i.consultar_ultima_imagen().then(async (response) => {
                 const id_imagen = response
-                const sql = await pool.query('insert into proyecto(fk_responsable,fk_usuario,fk_img,proyecto, descripcion)values($1,$2,$3,$4,$5)RETURNING *', [id_responsable, id_usuario, id_imagen, proyecto, descripcion])
+                const sql = await pool.query('insert into proyecto(fk_responsable,fk_usuario,fk_img,proyecto, descripcion,estado)values($1,$2,$3,$4,$5,$6)RETURNING *', [id_responsable, id_usuario, id_imagen, proyecto, descripcion, true])
                 if (sql.rowCount > 0) {
                     return resolve('se registro el proyecto')
                 } else {

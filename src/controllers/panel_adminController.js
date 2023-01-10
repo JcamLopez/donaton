@@ -3,7 +3,7 @@ import img from '../models/imagenes.js';
 import persona from '../models/persona.js';
 import usuario from '../models/usuario.js';
 import rol from '../models/rol.js';
-import { resolve } from 'path';
+import pais from '../models/pais.js';
 
 const controller = {};
 
@@ -31,7 +31,8 @@ controller.crear_proyectos = (req, res) => {
     console.log(req.file);
     proyecto.registrar(req).then((response) => {
         if (response == "se registro el proyecto de manera exitosa") {
-            res.redirect('/panel-admin')
+        res.redirect('/panel-admin')
+           
         } else {
             res.json({ error: "No se registro el proyecto" })
         }
@@ -78,6 +79,19 @@ controller.abrir_modal_actualizar_proyecto = (req, res) => {
     })
 }
 
+controller.cargar_responsable = (req, res) => {
+    usuario.consultar_todos_los_usuario().then((response) => {
+        console.log("----------------");
+        console.log(response);
+        res.json(response)
+    }).catch((err) => {
+        console.log(err);
+        res.json({
+            error: err
+        })
+    })
+}
+
 
 controller.actualizar_proyecto = (req, res) => {
     const { id_proyecto, responsable, nombre_proyecto, descripcion, name_img } = req.body;
@@ -110,9 +124,13 @@ controller.actualizar_proyecto = (req, res) => {
 }
 
 controller.eliminar_usuario = (req, res) => {
-    const { id_usuario, correo } = req.body;
+    const { id_usuario } = req.body;
     usuario.eliminar(id_usuario).then((response) => {
         console.log(response);
+        res.json({
+            status: 'ok',
+            url: '/panel-admin'
+        })
     }).catch((err) => {
         console.log(err);
     })
@@ -120,7 +138,7 @@ controller.eliminar_usuario = (req, res) => {
 
 
 controller.atualizar_rol_usuario = (req, res) => {
-    const { id_usuario,role} = req.body;
+    const { id_usuario, role } = req.body;
     rol.consultar(role).then((response) => {
         const id_rol = response.id
         usuario.actualizar_rol(id_usuario, id_rol).then((response) => {
@@ -136,5 +154,22 @@ controller.atualizar_rol_usuario = (req, res) => {
         console.log(err);
     })
 }
+
+controller.consultar_usuario = (req, res) => {
+    const { user } = req.body;
+    usuario.consultar_usuario(user).then((response) => {
+        console.log(response);
+        res.json(response)
+    }).catch((err) => {
+        console.log(err);
+        res.json({
+            err: 'No se encontro el usuario'
+        })
+
+    })
+}
+
+
+
 
 export default controller

@@ -35,7 +35,7 @@ usuario.regitrar_usuario = (usuario) => {
 
 const registrar = (usuario, id_persona) => {
     return new Promise(async (resolve, reject) => {
-        const registro_usuario = await pool.query('insert into usuario(fk_rol,fk_persona,fk_tipo_cuenta,usuario,clave)values($1,$2,$3,$4,$5) RETURNING *', [2, id_persona, 2, usuario.usuario, usuario.clave_encriptada]);
+        const registro_usuario = await pool.query('insert into usuario(fk_rol,fk_persona,fk_tipo_cuenta,usuario,clave,estado)values($1,$2,$3,$4,$5,$6) RETURNING *', [2, id_persona, 2, usuario.usuario, usuario.clave_encriptada,true]);
         if (registro_usuario.rowCount > 0) {
             return resolve('se registro el usuario con exito')
         } else {
@@ -59,7 +59,7 @@ usuario.ConsultaUltimoUsuario = () => {
 
 usuario.consultar_usuario = (usuario) => {
     return new Promise(async (resolve, reject) => {
-        const sql = await pool.query("select p.id_persona, p.nombre_completo, u.id_usuario as id,u.usuario as usu,u.clave as c,i.id_imagen as id_img,i.url,d.id_direccion, d.direccion from usuario as u left join imagen as i on u.fk_imagen = i.id_imagen  inner join persona as p on u.fk_persona = p.id_persona left join direccion as d on d.fk_persona = p.id_persona  left join barrio as b on d.fk_barrio = b.id_barrio where u.usuario =$1", [usuario])
+        const sql = await pool.query("select p.id_persona, p.nombre_completo, u.id_usuario as id,u.usuario as usu,u.clave as c,i.id_imagen as id_img,i.url,d.id_direccion, d.direccion,t.telefono,r.rol from usuario as u inner join rol as r on u.fk_rol = r.id_rol left join imagen as i on u.fk_imagen = i.id_imagen  inner join persona as p on u.fk_persona = p.id_persona left join direccion as d on d.fk_persona = p.id_persona left join telefono as t on t.fk_persona = p.id_persona left join barrio as b on d.fk_barrio = b.id_barrio where u.usuario =$1 AND u.estado=$2", [usuario,true])
         if (sql.rowCount > 0) {
             var user = sql.rows[0];
             return resolve(user)

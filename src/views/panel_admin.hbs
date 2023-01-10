@@ -51,13 +51,7 @@
                                                 <div class="modal-body">
                                                     <form method="POST" action="/crear-proyecto"
                                                         enctype="multipart/form-data">
-                                                        {{!-- <div class="row justify-content-center">
-                                                            <div class="col text-center">
-                                                                <label for="validationDefault01"
-                                                                    class="form-label ">Nombre</label>
-                                                            </div>
 
-                                                        </div> --}}
                                                         <div class="row justify-content-center ">
                                                             <div class="col-md-10 ">
                                                                 <span id="passwordHelpInline" class="form-text">
@@ -83,11 +77,11 @@
                                                                     id="floatingTextarea2" name="descripcion_proyecto"
                                                                     aria-required="true" autocomplete="chrome-off"
                                                                     style="height: 100px" maxlength="150"></textarea>
-                                                                {{!--
-                                                                <input type="text" class="form-control bg-light"
-                                                                    id="validationCustom01" aria-required="true"
-                                                                    autocomplete="chrome-off" rows="2" maxlength="100"
-                                                                    required> --}}
+
+
+
+
+
                                                             </div>
                                                         </div>
                                                         <br>
@@ -95,14 +89,16 @@
                                                         <div class="row justify-content-center ">
                                                             <div class="col-md-10 ">
                                                                 <span id="passwordHelpInline" class="form-text">
-                                                                    Nombre del responsable
+                                                                    responsable
                                                                 </span>
+
                                                                 <input type="text" class="form-control bg-light"
                                                                     id="validationDefault01" name="resposable"
                                                                     aria-required="true" autocomplete="chrome-off"
                                                                     aria-label="Nombre" rows="1"
                                                                     class="andes-form-control__field" maxlength="30"
                                                                     required>
+
                                                             </div>
                                                         </div>
                                                         <br>
@@ -430,17 +426,24 @@
 
                                     <div class="col-md-4 ">
                                         <div class="buscar ">
-                                            <form class="d-flex">
-                                                <input class="form-control me-2" type="search"
-                                                    placeholder="Buscar usuario">
-                                                <button class="btn btn-outline-dark btn-sm" type="submit">
-                                                    <span class="material-icons">
-                                                        search
-                                                    </span>
-                                                </button>
-                                            </form>
+                                            <div class="d-flex">
+                                                {{!-- <form method="GET" action="/buscar/usuario" class="d-flex"> --}}
+                                                    <input id="input_buscar" name="user" class="form-control me-2"
+                                                        type="search" placeholder="Buscar usuario">
+                                                    <button class="btn btn-outline-dark btn-sm" type="submit"
+                                                        id="btn_buscar">
+                                                        <span class="material-icons">
+                                                            search
+                                                        </span>
+                                                    </button>
+
+                                                    {{!--
+                                                </form> --}}
+                                            </div>
+
                                         </div>
                                     </div>
+
 
                                     <!----MODAL NUEVO USUARIO---->
                                     <div class="col-md-8 text-end">
@@ -466,7 +469,7 @@
                                                                         Nombre completo
                                                                     </span>
                                                                     <input type="text" class="form-control bg-light"
-                                                                        id="validationDefault01" aria-required="true"
+                                                                        id="nombre_usuario" aria-required="true"
                                                                         autocomplete="chrome-off" aria-label="Nombre"
                                                                         rows="1" class="andes-form-control__field"
                                                                         maxlength="40" required>
@@ -480,43 +483,11 @@
                                                                     <span id="passwordHelpInline" class="form-text">
                                                                         Nacionalidad
                                                                     </span>
-                                                                    <select class="form-select bg-light"
+                                                                    <select id="nacionalidad"
+                                                                        class="form-select bg-light"
                                                                         aria-label="Default select example" required>
-                                                                        <option value=""></option>
-                                                                        <option value="1">AMAZONAS</option>
-                                                                        <option value="2">ANTIOQUIA</option>
-                                                                        <option value="3">ARAUCA</option>
-                                                                        <option value="4">ATLÁNTICO</option>
-                                                                        <option value="5">BOLÍVAR</option>
-                                                                        <option value="6">BOYACÁ</option>
-                                                                        <option value="7">CALDAS</option>
-                                                                        <option value="8">CAQUETÁ</option>
-                                                                        <option value="9">CASANARE</option>
-                                                                        <option value="10">CAUCA</option>
-                                                                        <option value="11">CESAR</option>
-                                                                        <option value="12">CHOCÓ</option>
-                                                                        <option value="13">CÓRDOBA</option>
-                                                                        <option value="14">CUNDINAMARCA</option>
-                                                                        <option value="15">GUAINÍA</option>
-                                                                        <option value="16">GUAVIARE</option>
-                                                                        <option value="17">HUILA</option>
-                                                                        <option value="18">LA GUAJIRA</option>
-                                                                        <option value="19">MAGDALENA</option>
-                                                                        <option value="20">META</option>
-                                                                        <option value="21">NARÍÑO</option>
-                                                                        <option value="22">NORTE DE SANTANDER
+                                                                        <option value="#">Seleccione su nacionalidad
                                                                         </option>
-                                                                        <option value="23">PUTUMAYO</option>
-                                                                        <option value="24">QUINDÍO</option>
-                                                                        <option value="25">RISARALDA</option>
-                                                                        <option value="26">SAN ANDRÉS Y
-                                                                            PROVIDENCIA</option>
-                                                                        <option value="27">SANTANDER</option>
-                                                                        <option value="28">SUCRE</option>
-                                                                        <option value="29">TOLIMA</option>
-                                                                        <option value="30">VALLE</option>
-                                                                        <option value="31">VAUPÉS</option>
-                                                                        <option value="32">VICHADA</option>
                                                                     </select>
                                                                 </div>
 
@@ -530,7 +501,7 @@
                                                                         Email
                                                                     </span>
                                                                     <input type="email" class="form-control bg-light"
-                                                                        id="validationCustom01" aria-required="true"
+                                                                        id="usuario" aria-required="true"
                                                                         autocomplete="chrome-off" rows="1"
                                                                         maxlength="30" required>
                                                                 </div>
@@ -544,14 +515,14 @@
                                                                         Contraseña
                                                                     </span>
                                                                     <input type="password" class="form-control bg-light"
-                                                                        id="validationDefault02" required>
+                                                                        id="clave" required>
                                                                 </div>
                                                             </div>
                                                             <br>
 
                                                             <div class="d-grid gap-2 col-md-5 mx-auto">
                                                                 <button class="btn btn-primary bg-gradient"
-                                                                    type="submit">Registrar</button>
+                                                                    id="btn-registrar-usuario">Registrar</button>
                                                             </div>
 
                                                         </form>
@@ -570,7 +541,7 @@
                         {{!-- REGISTROS EJEMPLO --}}
                         <div class="row justify-content-center">
                             <div class="col-md-11">
-                                <table class="table text-center ">
+                                <table class="table text-center" id="tabla_usuario">
                                     <thead class="table-dark">
                                         <td>
                                             Usuario
@@ -588,7 +559,7 @@
 
                                         </td>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="datos_usuario">
                                         {{#if usuarios}}
                                         {{#each usuarios}}
                                         <tr>
@@ -621,8 +592,6 @@
                                             </td>
                                         </tr>
                                         {{/each}}
-
-
                                         {{/if}}
 
                                     </tbody>
