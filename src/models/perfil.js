@@ -6,8 +6,9 @@ import t from './telefono.js';
 import p from './persona.js';
 import c from './tipo_cuenta.js';
 perfil.actualizar = (req) => {
+    const id_usuario = req.session.passport.user.id;
     return new Promise(async (resolve, reject) => {
-        p.consultar_persona(req).then((response) => {
+        p.consultar_persona(id_usuario).then((response) => {
             const { nombre, direccion, barrio, telefono, tipo_cuenta,descripcion } = req.body;
             const id_persona = response.id;
             ActualizarNombre(id_persona, nombre,descripcion).then((response) => {

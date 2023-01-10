@@ -60,7 +60,6 @@ const registrar_proyecto = (req, proyecto, descripcion) => {
 proyecto.consultar = () => {
     return new Promise(async (resolve, reject) => {
         const sql = await pool.query('select r.id_persona as id_responsable, r.nombre_completo as responsable,i.id_imagen as id_img,i.url as img, p.id_proyecto as id_proye ,p.proyecto ,p.descripcion from proyecto as p inner join persona as r on p.fk_responsable= r.id_persona inner join imagen as i on p.fk_img = i.id_imagen')
-
         if (sql.rowCount > 0) {
             return resolve(sql.rows)
         } else {
@@ -69,9 +68,29 @@ proyecto.consultar = () => {
     })
 }
 
+proyecto.consultar_proyecto_por_id = (id_proyecto) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select r.id_persona as id_responsable, r.nombre_completo as responsable,i.id_imagen as id_img,i.url as img, p.id_proyecto as id_proye ,p.proyecto ,p.descripcion from proyecto as p inner join persona as r on p.fk_responsable= r.id_persona inner join imagen as i on p.fk_img = i.id_imagen where p.id_proyecto = $1', [id_proyecto])
+        if (sql.rowCount > 0) {
+            return resolve(sql.rows[0])
+        } else {
+            return reject('no hay proyectos')
+        }
+    })
+}
 
+proyecto.actualizar = (id_proyecto, proyecto, descripcion) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('update proyecto set proyecto = $1, descripcion = $2 where id_proyecto = $3 RETURNING *', [proyecto, descripcion, id_proyecto])
+        if (sql.rowCount > 0) {
+            return resolve('El proyecto se ha actualizado de manera correcta')
+        } else {
+            return reject('Error al actualizar el proyecto')
+        }
+    })
+}
 proyecto.eliminar = (id_proyecto) => {
-   
+
     return new Promise(async (resolve, reject) => {
         const sql = await pool.query("delete from proyecto as p where  p.id_proyecto=$1 RETURNING *", [id_proyecto])
         if (sql.rowCount) {

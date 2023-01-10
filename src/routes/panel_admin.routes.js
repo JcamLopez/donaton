@@ -15,8 +15,17 @@ const validar = (req, res, next) => {
 }
 
 router.get('/panel-admin', validar, controller.vista_panel_admin)
+/* Proyecto */
 router.post('/crear-proyecto', img.upload.single('img_proyecto'), controller.crear_proyectos)
-router.get('/eliminar/proyecto/:id_responsable/:id_proye/:id_img', controller.eliminar_proyecto)
+router.post('/abrir/modal/actualizar/proyecto', controller.abrir_modal_actualizar_proyecto)
+//router.post('/actualizar/proyecto',img.upload.single('img_proyecto'), controller.actualizar_proyecto)
+router.post('/actualizar/proyecto', controller.actualizar_proyecto)
+
+
+/* Usuario */
+router.post('/eliminar/usuario', controller.eliminar_usuario )
+router.post('/actualizar/rol/usuario', controller.atualizar_rol_usuario)
+
 
 
 export default router;

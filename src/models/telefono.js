@@ -24,5 +24,15 @@ telefono.actualizar = (telefono, id_persona) => {
         }
     })
 }
+telefono.eliminar = (id_telefono) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('delete from telefono as t where t.id_telefono =$1 ', [id_telefono])
+        if (sql.rowCount > 0) {
+            return resolve('error al eliminar el telefono')
+        } else {
+            return reject("error al eliminar el telefono")
+        }
+    })
+}
 
 export default telefono

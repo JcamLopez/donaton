@@ -37,8 +37,6 @@ CREATE TABLE rol_tiene_permiso (
     estado int not null
 );
 
-
-
 CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     fk_rol int not null,
@@ -46,7 +44,8 @@ CREATE TABLE usuario (
     fk_imagen int  null,
     fk_tipo_cuenta int not null,
     usuario varchar(100) not null,
-    clave varchar(100) not null
+    clave varchar(100) not null,
+    estado int (1) not null
 );
 
 CREATE TABLE tipo_cuenta (
@@ -89,67 +88,6 @@ CREATE TABLE proyecto (
     proyecto  varchar(100) not null,
     descripcion text not null
 );
-
-/* CREATE TABLE publica (
-    id_publica SERIAL PRIMARY KEY,
-    fk_usuario int not null,
-    titulo varchar(100) not null,
-    descripcion varchar(100) not null,
-    fecha date not null 
-); */
-
-
-/* CREATE TABLE tipo_arbol (
-    id_tipo_arbol SERIAL PRIMARY KEY,
-    tipo varchar(100) null,
-    descripcion text not null
-); */
-
-/* CREATE TABLE usuario_dona_arbol (
-    fk_usuario int not null,
-    fk_arbol int not null,
-    cantidad_dono float not null,
-    cantidad_arboles int not null,
-    fecha date not null,
-    SERIAL PRIMARY KEY(fk_usuario,fk_arbol)
-); */
-
-
-/* CREATE TABLE arbol (
-    id_arbol SERIAL PRIMARY KEY,
-    fk_usuario_admin int not null,
-    fk_tipo_arbol int not null,
-    nombre varchar(100) not null,
-    precio float not null
-); */
-
-
-create table auditoria(
-id_auditoria serial not null,
-nombre_tabla varchar(50) not null,
-usuario varchar(50),
-operacion varchar(1) not null,
-valor_anterior text,
-fecha timestamp without time zone not null,
-constraint id_auditoria primary key(id_auditoria)
-)
-with(oids=false)
-
-CREATE OR REPLACE FUNCTION auditar() RETURNS trigger AS 
-$$
-BEGIN
-    IF(TG_OP='DELETE') THEN
-    INSERT INTO auditoria(nombre_tabla,usuario,operacion,valor_anterior,fecha)VALUES(TG_TABLE_NAME,USER,'D',OLD,now());
-    RETURN OLD;
-END IF;
-RETURN NULL;
-END;
-$$ 
-language plpgsql;
-
-CREATE TRIGGER guardar_datos AFTER DELETE ON PERSONA FOR EACH ROW EXECUTE PROCEDURE auditar();
-CREATE TRIGGER guardar_datos AFTER DELETE ON PROYECTO FOR EACH ROW EXECUTE PROCEDURE auditar();
-CREATE TRIGGER guardar_datos AFTER DELETE ON IMAGEN FOR EACH ROW EXECUTE PROCEDURE auditar();
 
 
 ALTER TABLE persona
@@ -365,3 +303,71 @@ INSERT INTO pais (nacionalidad,pais) VALUES
 ('Yemen Rep Dem','Yemen Rep. Dem'),
 ('Yugoslava','Yugoslavia'),
 ('Zaire','Zaire');
+
+
+
+
+
+
+
+/* create table auditoria_proyecto(
+id_auditoria serial not null,
+fk_responsanble int not null,
+fk_usuario int not null,
+fk_imagen int not null,
+proyecto varchar(50) not null,
+descripcion text not null,
+fecha timestamp without time zone not null,
+constraint id_auditoria primary key(id_auditoria)
+)
+with(oids=false)
+
+
+CREATE TRIGGER trigger_auditoria_proyecto()
+ON proyecto
+AFTER DELETE, UPDATE
+$$
+BEGIN
+    IF EXISTS (SELECT 1 FROM delete)
+    BEGIN 
+    INSERT INTO (fk_responsable,fk_usuario,fk_imagen,proyecto,descripcion,fecha) 
+    SELECT p.fk_responsable,p.fk_usuario,p.fk_imagen,p.proyecto,p.descripcion,now(), 
+    FROM delete p
+END;
+
+ELSE
+$$
+BEGIN
+    BEGIN 
+    INSERT INTO (fk_responsable,fk_usuario,fk_imagen,proyecto,descripcion,fecha) 
+    SELECT p.fk_responsable,p.fk_usuario,p.fk_imagen,p.proyecto,p.descripcion,now(), 
+    FROM insert p
+END;
+$$ 
+END;
+
+
+CREATE OR REPLACE FUNCTION trigger_auditar() RETURNS trigger AS 
+$$
+BEGIN
+DECLARE datos integer;
+
+
+    IF(TG_OP='DELETE') THEN
+    INSERT INTO auditoria(fk_responsable,fk_usuario,fk_imagen,proyecto,descripcion,fecha)VALUES(USER,'D',OLD.proyecto,now());
+    RETURN OLD.proyecto;
+
+    /* ELSEIF(TG_OP='UPDATE') THEN
+    INSERT INTO auditoria(nombre_tabla,usuario,operacion,valor_anterior,fecha)VALUES(TG_TABLE_NAME,USER,'D',OLD,now());
+    RETURN OLD; */
+    
+END IF;
+RETURN NULL;
+END;
+$$ 
+language plpgsql;
+
+CREATE TRIGGER guardar_datos AFTER DELETE ON PERSONA FOR EACH ROW EXECUTE PROCEDURE auditar();
+CREATE TRIGGER guardar_datos AFTER DELETE ON PROYECTO FOR EACH ROW EXECUTE PROCEDURE auditar();
+CREATE TRIGGER guardar_datos AFTER DELETE ON IMAGEN FOR EACH ROW EXECUTE PROCEDURE auditar();
+ */

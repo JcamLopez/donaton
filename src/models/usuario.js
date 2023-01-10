@@ -59,7 +59,7 @@ usuario.ConsultaUltimoUsuario = () => {
 
 usuario.consultar_usuario = (usuario) => {
     return new Promise(async (resolve, reject) => {
-        const sql = await pool.query("select u.id_usuario as id,u.usuario as usu, u.clave as c  from usuario as u where u.usuario =$1", [usuario])
+        const sql = await pool.query("select p.id_persona, p.nombre_completo, u.id_usuario as id,u.usuario as usu,u.clave as c,i.id_imagen as id_img,i.url,d.id_direccion, d.direccion from usuario as u left join imagen as i on u.fk_imagen = i.id_imagen  inner join persona as p on u.fk_persona = p.id_persona left join direccion as d on d.fk_persona = p.id_persona  left join barrio as b on d.fk_barrio = b.id_barrio where u.usuario =$1", [usuario])
         if (sql.rowCount > 0) {
             var user = sql.rows[0];
             return resolve(user)
@@ -68,6 +68,16 @@ usuario.consultar_usuario = (usuario) => {
         }
     })
 
+}
+usuario.consultar_todos_los_usuario = () => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('select id_usuario as id, p.nombre_completo as  nombre , u.usuario,t.telefono,r.rol from persona as p inner join usuario as u on u.fk_persona = p.id_persona left join telefono as t on t.fk_persona = p.id_persona inner join rol as r on u.fk_rol = r.id_rol where u.estado=$1', [true])
+        if (sql.rowCount > 0) {
+            return resolve(sql.rows)
+        } else {
+            return reject('No se consultaron todos los usuarios con exito')
+        }
+    })
 }
 
 
@@ -101,6 +111,8 @@ usuario.consultar_usuario_que_dona = (req) => {
 usuario.permisos_usuario = (id, res) => {
     return new Promise(async (resolve, reject) => {
         const sql = await pool.query('select r.rol, p.permiso, p.ruta from usuario as u inner join rol as r on  u.fk_rol = r.id_rol inner join rol_tiene_permiso as rp on rp.fk_rol = r.id_rol inner join permiso as p on rp.fk_permiso = p.id_permiso where u.id_usuario = $1', [id])
+        console.log("vida hp");
+        console.log(sql);
         if (sql.rowCount > 0) {
             //var obj = {}
             var obj = new Array();
@@ -139,6 +151,28 @@ usuario.consultar_tipo_de_cuenta = () => {
 }
 
 
+
+usuario.eliminar = (id_usuario) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('update usuario set estado = $1 where usuario.id_usuario = $2', [false, id_usuario])
+        if (sql.rowCount > 0) {
+            return resolve('usuario eliminado')
+        } else {
+            return reject("error al eliminar el usuario")
+        }
+    })
+}
+
+usuario.actualizar_rol = (id_usuario, id_rol) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('update usuario set fk_rol = $1 where usuario.id_usuario = $2', [id_rol, id_usuario])
+        if (sql.rowCount > 0) {
+            return resolve('rol del usuario actualizdo')
+        } else {
+            return reject("error el rol del usuario")
+        }
+    })
+}
 
 
 export default usuario;

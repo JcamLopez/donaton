@@ -30,4 +30,17 @@ direccion.registrar_direccion = (id_persona, direccion) => {
     })
 }
 
+
+direccion.eliminar = (id_direccion) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('delete from direccion as d where d.id_direccion =$1', [id_direccion])
+        if (sql.rowCount > 0) {
+            return resolve('direccion eliminada')
+        } else {
+            return reject("error al eliminar la direccion")
+        }
+    })
+}
+
+
 export default direccion;
