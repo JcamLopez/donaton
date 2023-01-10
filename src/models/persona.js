@@ -25,9 +25,8 @@ persona.consultar_ultima_persona = () => {
 
 }
 
-persona.consultar_persona = (req) => {
+persona.consultar_persona = (id_usuario) => {
     return new Promise(async (resolve, reject) => {
-        const id_usuario = req.session.passport.user.id;
         const sql = await pool.query('select p.id_persona as id, p.nombre_completo as nombre from persona as p inner join usuario as u on p.id_persona = u.fk_persona where u.id_usuario = $1', [id_usuario])
         if (sql.rowCount > 0) {
             return resolve(sql.rows[0])
@@ -61,4 +60,29 @@ persona.eliminar = (id_persona) => {
         }
     })
 }
+
+persona.actualizar = (id_persona,nombre) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query("update persona set nombre_completo = $1 where id_persona = $2", [nombre,id_persona])
+        if (sql.rowCount > 0) {
+            return resolve('persona actualizada')
+        } else {
+            return reject('error al actualizar la persona')
+        }
+
+    })
+}
+
+persona.eliminar = (id_persona) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('delete from persona as p where p.id_persona =$1 ', [id_persona])
+        if (sql.rowCount > 0) {
+
+            return resolve('persona eliminado')
+        } else {
+            return reject("error al eliminar la persona")
+        }
+    })
+}
+
 export default persona;

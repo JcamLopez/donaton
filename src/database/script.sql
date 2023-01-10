@@ -39,8 +39,6 @@ CREATE TABLE rol_tiene_permiso (
     estado int not null
 );
 
-
-
 CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     fk_rol int not null,
@@ -48,7 +46,8 @@ CREATE TABLE usuario (
     fk_imagen int  null,
     fk_tipo_cuenta int not null,
     usuario varchar(100) not null,
-    clave varchar(100) not null
+    clave varchar(100) not null,
+    estado  boolean not null
 );
 
 CREATE TABLE tipo_cuenta (
@@ -85,15 +84,17 @@ CREATE TABLE dona (
 
 CREATE TABLE proyecto (
     id_proyecto SERIAL PRIMARY KEY,
-    responsable int not null,
+    fk_responsable int not null,
     fk_usuario int not null,
     fk_img int not null,
     proyecto  varchar(100) not null,
-    descripcion text not null
+    descripcion text not null,
+    estado boolean not null
 );
 
 
-/********** AUDITORIAS **********/
+
+
 
 create table auditoria(
 id_auditoria serial not null,
@@ -117,7 +118,6 @@ RETURN NULL;
 END;
 $$ 
 language plpgsql;
-
 
 CREATE TRIGGER guardar_datos AFTER DELETE ON PERSONA FOR EACH ROW EXECUTE PROCEDURE auditar();
 CREATE TRIGGER guardar_datos AFTER DELETE ON PROYECTO FOR EACH ROW EXECUTE PROCEDURE auditar();
@@ -156,7 +156,8 @@ ADD FOREIGN KEY(fk_usuario) REFERENCES usuario(id_usuario);
 ALTER TABLE proyecto
 ADD FOREIGN KEY(fk_img) REFERENCES imagen(id_imagen);
 
-
+ALTER TABLE proyecto
+ADD FOREIGN KEY(fk_responsable) REFERENCES persona(id_persona);
 
 /********** INSERTS **********/
 
@@ -342,61 +343,64 @@ INSERT INTO pais (nacionalidad,pais) VALUES
 
 /* PERSONA */
 
-INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
-            VALUES(1, 36, 'Stivenson Zapata Ramirez', 'Administrador DonaTree');
+INSERT INTO persona (fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(36, 'Stivenson Zapata Ramirez', 'Administrador DonaTree');
 
-INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
-            VALUES(2, 36, 'Juan Camilo Lopez', 'Administrador DonaTree');
+INSERT INTO persona (fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(36, 'Juan Camilo Lopez', 'Administrador DonaTree');
 
-INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
-            VALUES(3, 36, 'Pepe Cadena', 'Usuario DonaTree');
+INSERT INTO persona (fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(36, 'Pepe Cadena', 'Usuario DonaTree');
 
-INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
-            VALUES(4, 36, 'Sofia Gomez', 'Usuario encargado de un proyecto vinculado a DonaTree');
+INSERT INTO persona (fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(36, 'Sofia Gomez', 'Usuario encargado de un proyecto vinculado a DonaTree');
 
-INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
-            VALUES(5, 36, 'Juan Pablo Perez', 'Usuario DonaTree');
+INSERT INTO persona (fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(36, 'Juan Pablo Perez', 'Usuario DonaTree');
 
-INSERT INTO persona (id_persona, fk_nacionalidad, nombre_completo, descripcion)
-            VALUES(6, 36, 'Ana Maria Torres', 'Usuario encargado de un proyecto vinculado a DonaTree');
+INSERT INTO persona (fk_nacionalidad, nombre_completo, descripcion)
+            VALUES(36, 'Ana Maria Torres', 'Usuario encargado de un proyecto vinculado a DonaTree');
 
 
 /* USUARIO */
 
-INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
-            VALUES(1, 1, 1, null, 2, 'szr@gmail.com', '123');
+INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave,estado)
+            VALUES(1, 1, null, 2, 'szr@gmail.com', '$2a$12$XHXlfC1HJH7YqhVZPauhhu5ForEaCwFOkQykdGqNeqEWtWYVQAnIy',true);
 
-INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
-            VALUES(2, 1, 1, null, 2, 'jcl@gmail.com', '123');
+INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave,estado)
+            VALUES(1, 2, null, 2, 'jcl@gmail.com', '$2a$12$XHXlfC1HJH7YqhVZPauhhu5ForEaCwFOkQykdGqNeqEWtWYVQAnIy',true);
 
-INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
-            VALUES(3, 2, 3, null, 1, 'pc@gmail.com', '123');
+INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave,estado)
+            VALUES(2, 3, null, 1, 'pc@gmail.com', '$2a$12$XHXlfC1HJH7YqhVZPauhhu5ForEaCwFOkQykdGqNeqEWtWYVQAnIy',true);
 
-INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
-            VALUES(4, 2, 4, null, 1, 'sg@gmail.com', '123');
+INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave,estado)
+            VALUES(2, 4, null, 1, 'sg@gmail.com', '$2a$12$XHXlfC1HJH7YqhVZPauhhu5ForEaCwFOkQykdGqNeqEWtWYVQAnIy',true);
 
-INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
-            VALUES(5, 2, 5, null, 2, 'jpp@gmail.com', '123');
+INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave,estado)
+            VALUES(2, 5, null, 2, 'jpp@gmail.com', '$2a$12$XHXlfC1HJH7YqhVZPauhhu5ForEaCwFOkQykdGqNeqEWtWYVQAnIy',true);
 
-INSERT INTO usuario (id_usuario, fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave)
-            VALUES(6, 2, 6, null, 2, 'amt@gmail.com', '123');
+INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, clave,estado)
+            VALUES(2, 6, null, 2, 'amt@gmail.com', '$2a$12$XHXlfC1HJH7YqhVZPauhhu5ForEaCwFOkQykdGqNeqEWtWYVQAnIy',true);
 
 
 
 /* PROYECTO */
 
-INSERT INTO proyecto(id_proyecto, responsable, fk_usuario, fk_img, proyecto, descripcion) 
-            VALUES(1, 'Sofia Gomez', 1, null, 'Campesinos, jóvenes y mujeres unidos', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
+INSERT INTO proyecto(id_proyecto, fk_responsable, fk_usuario, fk_img, proyecto, descripcion,estado) 
+            VALUES(1, 4,1, 1, 'Frutos amazónicos, en peligro', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
                 nulla iste
                 porro! Ratione a accusamus recusandae velit facere, impedit, dolore, nisi labore ea laboriosam
                 suscipit
                 earum
-                natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?');
+                natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?',true);
 
-INSERT INTO proyecto(id_proyecto, fk_responsable, fk_usuario, fk_img, proyecto, descripcion) 
-            VALUES(2, 'Ana Maria Torres', 1, null, 'Frutos amazónicos, en peligro', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
+INSERT INTO proyecto(id_proyecto, fk_responsable, fk_usuario, fk_img, proyecto, descripcion,estado) 
+            VALUES(2,6, 1, 1, 'Frutos amazónicos, en peligro', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
                 nulla iste
                 porro! Ratione a accusamus recusandae velit facere, impedit, dolore, nisi labore ea laboriosam
                 suscipit
                 earum
-                natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?');
+                natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?',true);
+
+
+INSERT INTO imagen (url)values('http://localhost:5000/server/sembrando.png')  

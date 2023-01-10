@@ -46,4 +46,17 @@ barrio.ultimo_barrio = () => {
         }
     })
 }
+
+barrio.eliminar = (id_barrio) => {
+    return new Promise(async (resolve, reject) => {
+        const sql = await pool.query('delete from barrio as b where b.id_barrio =$1 ', [id_barrio])
+        if (sql.rowCount > 0) {
+
+            return resolve('barrio  eliminado')
+        } else {
+            return reject("error al eliminar el barrio")
+        }
+    })
+}
+
 export default barrio;

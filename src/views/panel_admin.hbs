@@ -5,7 +5,7 @@
     <br><br>
     <br>
 
-    <div class="container bg-light">
+    <div id="panel-admin" class="container bg-light">
 
 
         <nav>
@@ -51,13 +51,7 @@
                                                 <div class="modal-body">
                                                     <form method="POST" action="/crear-proyecto"
                                                         enctype="multipart/form-data">
-                                                        {{!-- <div class="row justify-content-center">
-                                                            <div class="col text-center">
-                                                                <label for="validationDefault01"
-                                                                    class="form-label ">Nombre</label>
-                                                            </div>
 
-                                                        </div> --}}
                                                         <div class="row justify-content-center ">
                                                             <div class="col-md-10 ">
                                                                 <span id="passwordHelpInline" class="form-text">
@@ -83,11 +77,11 @@
                                                                     id="floatingTextarea2" name="descripcion_proyecto"
                                                                     aria-required="true" autocomplete="chrome-off"
                                                                     style="height: 100px" maxlength="150"></textarea>
-                                                                {{!--
-                                                                <input type="text" class="form-control bg-light"
-                                                                    id="validationCustom01" aria-required="true"
-                                                                    autocomplete="chrome-off" rows="2" maxlength="100"
-                                                                    required> --}}
+
+
+
+
+
                                                             </div>
                                                         </div>
                                                         <br>
@@ -95,14 +89,16 @@
                                                         <div class="row justify-content-center ">
                                                             <div class="col-md-10 ">
                                                                 <span id="passwordHelpInline" class="form-text">
-                                                                    Nombre del responsable
+                                                                    responsable
                                                                 </span>
+
                                                                 <input type="text" class="form-control bg-light"
                                                                     id="validationDefault01" name="resposable"
                                                                     aria-required="true" autocomplete="chrome-off"
                                                                     aria-label="Nombre" rows="1"
                                                                     class="andes-form-control__field" maxlength="30"
                                                                     required>
+
                                                             </div>
                                                         </div>
                                                         <br>
@@ -135,12 +131,102 @@
                             </div>
                             <br><br>
 
+
+                            {{!-- PROYECTOS --}}
+                            {{!-- <div class="row justify-content-center ">
+                                <br>
+                                <div class="col-11 bg-white">
+                                    <br>
+                                    <div class="row justify-content-center ">
+                                        <h2 class="text-center text-black">San Vicente verde</h2>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="https://encolombia.com/wp-content/uploads/2018/11/Por-Qu%C3%A9-es-Tan-Grave-la-Deforestaci%C3%B3n-para-el-Medio-Ambiente.jpg"
+                                                alt="" width="100%" height="200px" style="border-radius: 5px;">
+                                        </div>
+                                        <div class="col-6">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+                                            praesentium aliquid quidem doloribus? Optio nam aliquam, quod quibusdam quia
+                                            debitis corporis neque modi tempora fugiat eligendi est voluptas! Ad, eius!
+                                        </div>
+                                        <div class="col-2">
+                                            Carmen Perez
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="col-1">
+                                                <button class="btn btn-sm bg-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#edit-proyects" data-bs-whatever="@mdo">
+                                                    <span class="material-icons">
+                                                        edit
+                                                    </span>
+                                                </button>
+                                                <br><br>
+                                                <button class="btn btn-sm bg-danger ">
+                                                    <span class="material-icons">
+                                                        delete
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center ">
+                                <br>
+                                <div class="col-11 bg-white">
+                                    <br>
+                                    <div class="row justify-content-center ">
+                                        <h2 class="text-center text-black">Sembrando weed por todo florencia</h2>
+                                    </div>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="https://encolombia.com/wp-content/uploads/2018/11/Por-Qu%C3%A9-es-Tan-Grave-la-Deforestaci%C3%B3n-para-el-Medio-Ambiente.jpg"
+                                                alt="" width="100%" height="200px" style="border-radius: 5px;">
+                                        </div>
+                                        <div class="col-6">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+                                            praesentium aliquid quidem doloribus? Optio nam aliquam, quod quibusdam quia
+                                            debitis corporis neque modi tempora fugiat eligendi est voluptas! Ad, eius!
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            Pepe Cadena
+                                        </div>
+                                        <div class="col-1">
+                                            <button class="btn btn-sm bg-primary">
+                                                <span class="material-icons">
+                                                    edit
+                                                </span>
+                                            </button>
+                                            <br><br>
+                                            <button class="btn btn-sm bg-danger">
+                                                <span class="material-icons">
+                                                    delete
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div> --}}
+
+
+
+
+
+
+
+
                             {{!-- REGISTROS EJEMPLO --}}
                             <div class="row justify-content-center">
                                 <div class="col-md-11 text-center bg-white">
                                     <br>
-                                    <div class="col">
-                                        <table id="" class="table responsive text-center ">
+                                    <div id="registro" class="col">
+                                        <table class="table responsive text-center ">
                                             <thead class="table-dark">
                                                 <td>
                                                     Nombre
@@ -172,23 +258,28 @@
 
 
                                                 <td class="acc">
-                                                    <button type="button" class="btn " data-bs-toggle="modal"
+                                                    {{!-- <button type="button" class="btn " data-bs-toggle="modal"
                                                         data-bs-target="#edit-proyects" data-bs-whatever="@mdo">
                                                         <span class="material-icons">
                                                             edit
                                                         </span>
-                                                    </button>
-                                                    {{!--
-                                                    <button class="btn_eliminar_proyuecto">
-                                                        <span class="material-icons">
-                                                            delete
-                                                        </span>
                                                     </button> --}}
-                                                    <a href="/eliminar/proyecto/{{id_responsable}}/{{id_proye}}/{{id_img}}">
+
+                                                    <button id="{{id_proye}}" class="btn btn_actualizar_proyecto">
                                                         <span class="material-icons">
-                                                            delete
+                                                            edit
                                                         </span>
-                                                    </a>
+                                                        <button <span class="material-icons">
+                                                            delete
+                                                            </span>
+                                                        </button>
+                                                        {{!--
+                                                        <a
+                                                            href="/eliminar/proyecto/{{id_responsable}}/{{id_proye}}/{{id_img}}">
+                                                            <span class="material-icons">
+                                                                delete
+                                                            </span>
+                                                        </a> --}}
                                                 </td>
                                             </tbody>
                                             {{/each}}
@@ -221,75 +312,80 @@
                         <div class="modal fade" id="edit-proyects" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar proyecto</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
 
+                                {{!-- <form method="POST" action="/actualizar/proyecto" enctype="multipart/form-data">
+                                    --}}
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar proyecto</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
 
-                                    <div class="modal-body">
-                                        <div class="row justify-content-center">
-                                            <div class="col-8 text-center">
-                                                <div class="row justify-content-center">
+                                        <div class="modal-body">
+                                            {{!-- <div class="row justify-content-center">
+                                                <div class="col-8 text-center">
+                                                    <div class="row justify-content-center">
 
-                                                    <label for="nombre" class="form-label">Imagen del proyecto</label>
+                                                        <label for="img" class="form-label">Imagen del proyecto</label>
 
-                                                    <div class="col-10 " id="editproyimg">
-                                                        <img src="" alt="">
+                                                        <div class="col-10">
+                                                            <img id="img">
+                                                        </div>
+                                                        <input class="form-control" name="img_proyecto" type="file"
+                                                            id="img_proyecto">
                                                     </div>
-                                                    <input class="form-control" type="file" id="formFile">
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mb-3">
-                                                    <label for="nombre" class="form-label">Nombre del proyecto</label>
-                                                    <input type="text" class="form-control" id="nombre"
-                                                        value={{nombre}}>
+                                            </div> --}}
+                                            {{!-- <br> --}}
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="nombre" class="form-label">Nombre del
+                                                            proyecto</label>
+                                                        <input type="text" class="form-control" id="nombre">
 
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mb-3">
-                                                    <label for="descripción" class="form-label">Descripción</label>
-                                                    <textarea class="form-control mt-3"
-                                                        placeholder="Ingrese una breve descripción de usted o su empresa"
-                                                        id="floatingTextarea3"
-                                                        style="height: 100px">{{descripcion}}</textarea>
+                                                    </div>
                                                 </div>
                                             </div>
 
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="descripción" class="form-label">Descripción</label>
+                                                        <textarea class="form-control mt-3"
+                                                            placeholder="Ingrese una breve descripción de usted o su empresa"
+                                                            id="descripcion" style="height: 100px"></textarea>
+                                                    </div>
+                                                </div>
 
-                                        </div>
+
+                                            </div>
 
 
-                                        <div class="row">
+                                            <div class="row">
 
-                                            <div class="col">
-                                                <div class="mb-3">
-                                                    <label for="nombre" class="form-label">Responsable</label>
-                                                    <input type="text" class="form-control" id="nombre"
-                                                        value={{nombre}}>
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="nombre" class="form-label">Responsable</label>
+                                                        <input type="text" name="respon" class="form-control"
+                                                            id="responsable">
 
+                                                    </div>
                                                 </div>
                                             </div>
+
+
                                         </div>
-
-
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button id="btn_actualizar" class="btn btn-primary">Guardar </button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar </button>
-                                    </div>
-                                </div>
+                                    {{!--
+                                </form> --}}
+
+
                             </div>
                         </div>
 
@@ -307,17 +403,24 @@
 
                                     <div class="col-md-4 ">
                                         <div class="buscar ">
-                                            <form class="d-flex">
-                                                <input class="form-control me-2" type="search"
-                                                    placeholder="Buscar usuario">
-                                                <button class="btn btn-outline-dark btn-sm" type="submit">
-                                                    <span class="material-icons">
-                                                        search
-                                                    </span>
-                                                </button>
-                                            </form>
+                                            <div class="d-flex">
+                                                {{!-- <form method="GET" action="/buscar/usuario" class="d-flex"> --}}
+                                                    <input id="input_buscar" name="user" class="form-control me-2"
+                                                        type="search" placeholder="Buscar usuario">
+                                                    <button class="btn btn-outline-dark btn-sm" type="submit"
+                                                        id="btn_buscar">
+                                                        <span class="material-icons">
+                                                            search
+                                                        </span>
+                                                    </button>
+
+                                                    {{!--
+                                                </form> --}}
+                                            </div>
+
                                         </div>
                                     </div>
+
 
                                     <!----MODAL NUEVO USUARIO---->
                                     <div class="col-md-8 text-end">
@@ -343,7 +446,7 @@
                                                                         Nombre completo
                                                                     </span>
                                                                     <input type="text" class="form-control bg-light"
-                                                                        id="validationDefault01" aria-required="true"
+                                                                        id="nombre_usuario" aria-required="true"
                                                                         autocomplete="chrome-off" aria-label="Nombre"
                                                                         rows="1" class="andes-form-control__field"
                                                                         maxlength="40" required>
@@ -357,43 +460,11 @@
                                                                     <span id="passwordHelpInline" class="form-text">
                                                                         Nacionalidad
                                                                     </span>
-                                                                    <select class="form-select bg-light"
+                                                                    <select id="nacionalidad"
+                                                                        class="form-select bg-light"
                                                                         aria-label="Default select example" required>
-                                                                        <option value=""></option>
-                                                                        <option value="1">AMAZONAS</option>
-                                                                        <option value="2">ANTIOQUIA</option>
-                                                                        <option value="3">ARAUCA</option>
-                                                                        <option value="4">ATLÁNTICO</option>
-                                                                        <option value="5">BOLÍVAR</option>
-                                                                        <option value="6">BOYACÁ</option>
-                                                                        <option value="7">CALDAS</option>
-                                                                        <option value="8">CAQUETÁ</option>
-                                                                        <option value="9">CASANARE</option>
-                                                                        <option value="10">CAUCA</option>
-                                                                        <option value="11">CESAR</option>
-                                                                        <option value="12">CHOCÓ</option>
-                                                                        <option value="13">CÓRDOBA</option>
-                                                                        <option value="14">CUNDINAMARCA</option>
-                                                                        <option value="15">GUAINÍA</option>
-                                                                        <option value="16">GUAVIARE</option>
-                                                                        <option value="17">HUILA</option>
-                                                                        <option value="18">LA GUAJIRA</option>
-                                                                        <option value="19">MAGDALENA</option>
-                                                                        <option value="20">META</option>
-                                                                        <option value="21">NARÍÑO</option>
-                                                                        <option value="22">NORTE DE SANTANDER
+                                                                        <option value="#">Seleccione su nacionalidad
                                                                         </option>
-                                                                        <option value="23">PUTUMAYO</option>
-                                                                        <option value="24">QUINDÍO</option>
-                                                                        <option value="25">RISARALDA</option>
-                                                                        <option value="26">SAN ANDRÉS Y
-                                                                            PROVIDENCIA</option>
-                                                                        <option value="27">SANTANDER</option>
-                                                                        <option value="28">SUCRE</option>
-                                                                        <option value="29">TOLIMA</option>
-                                                                        <option value="30">VALLE</option>
-                                                                        <option value="31">VAUPÉS</option>
-                                                                        <option value="32">VICHADA</option>
                                                                     </select>
                                                                 </div>
 
@@ -407,7 +478,7 @@
                                                                         Email
                                                                     </span>
                                                                     <input type="email" class="form-control bg-light"
-                                                                        id="validationCustom01" aria-required="true"
+                                                                        id="usuario" aria-required="true"
                                                                         autocomplete="chrome-off" rows="1"
                                                                         maxlength="30" required>
                                                                 </div>
@@ -421,14 +492,14 @@
                                                                         Contraseña
                                                                     </span>
                                                                     <input type="password" class="form-control bg-light"
-                                                                        id="validationDefault02" required>
+                                                                        id="clave" required>
                                                                 </div>
                                                             </div>
                                                             <br>
 
                                                             <div class="d-grid gap-2 col-md-5 mx-auto">
                                                                 <button class="btn btn-primary bg-gradient"
-                                                                    type="submit">Registrar</button>
+                                                                    id="btn-registrar-usuario">Registrar</button>
                                                             </div>
 
                                                         </form>
@@ -447,19 +518,13 @@
                         {{!-- REGISTROS EJEMPLO --}}
                         <div class="row justify-content-center">
                             <div class="col-md-11">
-                                <table id="" class="table text-center ">
+                                <table class="table text-center" id="tabla_usuario">
                                     <thead class="table-dark">
                                         <td>
                                             Usuario
                                         </td>
                                         <td>
-                                            Nombres
-                                        </td>
-                                        <td>
-                                            Apellidos
-                                        </td>
-                                        <td>
-                                            Email
+                                            Nombre
                                         </td>
                                         <td>
                                             Teléfono
@@ -471,34 +536,31 @@
 
                                         </td>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="datos_usuario">
+                                        {{#if usuarios}}
+                                        {{#each usuarios}}
                                         <tr>
+                                            <td>
+                                                {{this.usuario}}
+                                            </td>
+                                            <td>
+                                                {{this.nombre}}
+                                            </td>
+                                            <td>
+                                                {{this.telefono}}
+                                            </td>
+                                            <td>
+                                                {{this.rol}}
+                                            </td>
 
-                                            <td>
-                                                xxxxxxxxxx
-                                            </td>
-                                            <td>
-                                                xxxxxxxx
-                                            </td>
-                                            <td>
-                                                xxxxxxxx
-                                            </td>
-                                            <td>
-                                                xxxxxxxxxxxxxxxx
-                                            </td>
-                                            <td>
-                                                xxxxxxxx
-                                            </td>
-                                            <td>
-                                                xxxxxxxx
-                                            </td>
                                             <td class="acc">
-                                                <button type="button" class="btn ">
+                                                <button id="{{this.id}}" class="btn btn_actualizar_usuario  ">
                                                     <span class="material-icons">
                                                         block
                                                     </span>
                                                 </button>
-                                                <button type="button" class="btn ">
+                                                <button id="{{this.id}}/{{this.usuario}}"
+                                                    class="btn btn_eliminar_usuario">
                                                     <span class="material-icons">
                                                         person_remove
                                                     </span>
@@ -506,144 +568,54 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                    {{!-- <tbody>
-                                        <td>
-                                            xxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td class="acc">
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    block
-                                                </span>
-                                            </button>
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    person_remove
-                                                </span>
+                                        {{/each}}
+                                        {{/if}}
 
-                                            </button>
-                                        </td>
                                     </tbody>
-                                    <tbody>
-                                        <td>
-                                            xxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td class="acc">
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    block
-                                                </span>
-                                            </button>
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    person_remove
-                                                </span>
 
-                                            </button>
-                                        </td>
-                                    </tbody>
-                                    <tbody>
-                                        <td>
-                                            xxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td class="acc">
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    block
-                                                </span>
-                                            </button>
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    person_remove
-                                                </span>
-
-                                            </button>
-                                        </td>
-                                    </tbody>
-                                    <tbody>
-                                        <td>
-                                            xxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxxxxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td>
-                                            xxxxxxxx
-                                        </td>
-                                        <td class="acc">
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    block
-                                                </span>
-                                            </button>
-                                            <button type="button" class="btn ">
-                                                <span class="material-icons">
-                                                    person_remove
-                                                </span>
-
-                                            </button>
-                                        </td>
-                                    </tbody> --}}
 
                                 </table>
                             </div>
                         </div>
                         <br>
+
+                        {{!-- MODAL ROL USUARIO --}}
+                        <div class="modal fade" id="edit-usuario" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar proyecto</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="rol" class="form-label">Rol</label>
+                                                    <select class="form-control" name="" id="rol">
+                                                        <option value="#">Seleccione un rol</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="usuario">Usuario</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button id="btn_actualizar_usuario" class="btn btn-primary">Guardar </button>
+                                    </div>
+                                </div>
+                                {{!--
+                                </form> --}}
+
+
+                            </div>
+                        </div>
+
 
                         {{!-- PAGINACION --}}
                         {{!-- <div class="row justify-content-center">
@@ -686,4 +658,3 @@
 
     </div>
 </div>
-
