@@ -1,3 +1,4 @@
+import * as dotenv from 'dotenv' 
 import express from 'express'
 import { engine } from 'express-handlebars';
 import path from 'path';
@@ -20,9 +21,12 @@ import stripe from './routes/stripe.routes.js';
 
 
 
+
 //Path
+
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+dotenv.config()
 
 //inicializar 
 const app = express();
@@ -31,6 +35,8 @@ pass;
 //Confirguraciones
 app.set("port", process.env.PORT || 5000);
 app.set("views", path.join(__dirname, "views"));
+
+
 
 //Motor de plantillas handlebars
 app.engine('.hbs', engine({
