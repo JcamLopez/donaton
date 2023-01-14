@@ -7,27 +7,29 @@
         {{>donar}}
         <div class="row donantes ">
             <h2 class="text-dark text-center">Nuestros donantes</h2>
-            <br><br><br>
-            <div class="row justify-content-center bg-light">
+            <br><br>
+            <div class="row justify-content-center ">
                 <div class="col-11">
                     <br>
-                    <table id="donantes" class="table table-striped text-center ">
+                    <table id="donantes" class="table table-striped text-center">
                         <thead class="table-dark">
-                            <td>
-                                Nombre
-                            </td>
-                            <td>
-                                Nacionalidad
-                            </td>
-                            <td>
-                                Cuenta
-                            </td>
-                            <td>
-                                Descripción
-                            </td>
-                            <td>
-                                Fecha
-                            </td>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Nacionalidad
+                                </th>
+                                <th>
+                                    Cuenta
+                                </th>
+                                <th>
+                                    Descripción
+                                </th>
+                                <th>
+                                    Fecha
+                                </th>
+                            </tr>
                         </thead>
                         {{#if response}}
 
@@ -58,21 +60,23 @@
 
                         {{else}}
                         <tbody>
-                            <td>
-                                NO HAY DATOS
-                            </td>
-                            <td>
-                                NO HAY DATOS
-                            </td>
-                            <td>
-                                NO HAY DATOS
-                            </td>
-                            <td>
-                                NO HAY DATOS
-                            </td>
-                            <td>
-                                NO HAY DATOS
-                            </td>
+                            <tr>
+                                <td>
+                                    NO HAY DATOS
+                                </td>
+                                <td>
+                                    NO HAY DATOS
+                                </td>
+                                <td>
+                                    NO HAY DATOS
+                                </td>
+                                <td>
+                                    NO HAY DATOS
+                                </td>
+                                <td>
+                                    NO HAY DATOS
+                                </td>
+                            </tr>
                         </tbody>
 
                         {{/if}}
