@@ -358,8 +358,6 @@ INSERT INTO usuario (fk_rol, fk_persona, fk_imagen, fk_tipo_cuenta, usuario, cla
 INSERT INTO imagen (url)values('http://localhost:5000/server/sembrando.png');
 
 
-INSERT INTO imagen (url)values('http://localhost:5000/server/sembrando.png');  
-
 INSERT INTO proyecto(fk_responsable, fk_usuario, fk_img, proyecto, descripcion,estado) 
             VALUES(4, 1, 1, 'Frutos amazónicos, en peligro', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit pariatur fuga consequatur dolores
                 nulla iste
@@ -377,4 +375,3 @@ INSERT INTO proyecto(fk_responsable, fk_usuario, fk_img, proyecto, descripcion,e
                 natus placeat repellendus commodi mollitia! Aliquam, consectetur quas! Veniam, similique?',true);
 
 
-INSERT INTO imagen (url)values('http://localhost:5000/server/sembrando.png')  
