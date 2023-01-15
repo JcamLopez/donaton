@@ -29,7 +29,8 @@ img.upload = multer({
 img.registar = (req) => {
     return new Promise(async (resolve, reject) => {
         const archivo = req.file.originalname;
-        const ruta = "http://localhost:5000/server/" + archivo
+        //const ruta = "http://localhost:5000/server/" + archivo
+        const ruta = "https://donaton.vercel.app/server/logo.png" + archivo
         const sql = await pool.query("insert into imagen (url)values($1) RETURNING *", [ruta])
         if (sql.rowCount > 0) {
             return resolve('registro la imagen de manera correcta')
