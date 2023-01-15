@@ -19,14 +19,17 @@ proyecto.registrar = (req) => {
                             return resolve('se registro el proyecto de manera exitosa')
                         }
                     }).catch((err) => {
+                        res.json({ error: err })
                         console.log(err);
                         return reject(err)
                     })
                 }).catch((err) => {
+                    res.json({ error: err })
                     console.log(err);
                 })
             }
         }).catch((err) => {
+            res.json({ error: err })
             console.log(err);
         })
     })

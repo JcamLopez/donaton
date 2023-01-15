@@ -20,8 +20,6 @@ router.post('/crear-proyecto', img.upload.single('img_proyecto'), controller.cre
 router.post('/abrir/modal/actualizar/proyecto', controller.abrir_modal_actualizar_proyecto)
 router.post('/actualizar/proyecto', controller.actualizar_proyecto)
 router.post('/cargar/responsable', controller.cargar_responsable)
-
-
 /* Usuario */
 router.post('/eliminar/usuario', controller.eliminar_usuario )
 router.post('/actualizar/rol/usuario', controller.atualizar_rol_usuario)

@@ -37,6 +37,7 @@ controller.crear_proyectos = (req, res) => {
             res.json({ error: "No se registro el proyecto" })
         }
     }).catch((err) => {
+        res.json({ error: err })
         console.log(err);
     })
 }
