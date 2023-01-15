@@ -21,7 +21,6 @@ import stripe from './routes/stripe.routes.js';
 
 
 
-
 //Path
 
 const __filename = url.fileURLToPath(import.meta.url);

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import controller from '../controllers/adoptarbolController.js'
+
 const router = Router();
 
 
