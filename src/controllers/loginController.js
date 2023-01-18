@@ -1,9 +1,6 @@
-import { response } from 'express';
+
 import pais from '../models/pais.js'
-import usu from '../models/usuario.js'
 const controller = {};
-
-
 controller.vista_login = (req, res) => {
     res.render('./login')
 }

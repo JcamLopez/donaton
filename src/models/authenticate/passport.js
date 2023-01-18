@@ -32,7 +32,6 @@ passport.use('local.inicio.sesion', new Strategy({
         console.log(err)
         bandera_usuario = 'usuario_no_existe'
         done(null, user);
-
     })
 
 }));

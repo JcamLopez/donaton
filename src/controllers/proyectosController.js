@@ -1,7 +1,5 @@
 import proyecto from '../models/proyecto.js';
 const controller = {};
-
-
 controller.vista_proyectos = (req, res) => {
     var rol = req.session.permisos_usuario[0].rol;
     proyecto.consultar().then((response) => {

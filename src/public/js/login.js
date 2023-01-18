@@ -26,7 +26,6 @@ if (contenedorlogin != undefined && contenedorlogin != null && contenedorlogin !
            
             const usuario = document.getElementById('login-usuario').value
             const clave = document.getElementById('login-clave').value
-
             if (usuario != "") {
                 if (clave != "") {
                     var datos = new URLSearchParams();
@@ -37,7 +36,6 @@ if (contenedorlogin != undefined && contenedorlogin != null && contenedorlogin !
                         body: datos
                     }).then(res => res.json())
                         .then(res => {
-                          
                             if (res.status == "ok") {
                                 if (res.usuario == "usuario_si_existe") {
                                     if (res.clave == "clave_correcta") {
@@ -59,7 +57,6 @@ if (contenedorlogin != undefined && contenedorlogin != null && contenedorlogin !
                                     })
                                 }
                             }
-
 
                         })
 

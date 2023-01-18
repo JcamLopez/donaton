@@ -18,15 +18,10 @@ import cookieParser from 'cookie-parser';
 import pass from './models/authenticate/passport.js';
 import stripe from './routes/stripe.routes.js';
 
-
-
-
 //Path
-
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config()
-
 //inicializar 
 const app = express();
 pass;
@@ -34,9 +29,6 @@ pass;
 //Confirguraciones
 app.set("port", process.env.PORT || 5000);
 app.set("views", path.join(__dirname, "views"));
-
-
-
 //Motor de plantillas handlebars
 app.engine('.hbs', engine({
   defaultLayout: "main",
@@ -45,8 +37,6 @@ app.engine('.hbs', engine({
   extname: ".hbs"
 }));
 app.set("view engine", ".hbs");
-
-
 
 //Midelware
 app.use(cookieParser());
@@ -58,16 +48,10 @@ app.use(session(
   }
 ))
 
-/* app.use(multer({
-  destino:'public/img/server'
-}).single('image')) */
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
 
 //rutas
 app.use(index);
