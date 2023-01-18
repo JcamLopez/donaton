@@ -36,12 +36,11 @@ controller.crear_proyectos = (req, res) => {
     proyecto.registrar(req).then((response) => {
         if (response == "se registro el proyecto de manera exitosa") {
             res.redirect('/panel-admin')
-
         } else {
             res.json({ error: "No se registro el proyecto" })
         }
     }).catch((err) => {
-        res.json({ error: err })
+        res.json({ error: "estes es mi errroir " + err })
         console.log(err);
     })
 }
