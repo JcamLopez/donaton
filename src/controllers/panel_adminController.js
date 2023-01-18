@@ -26,8 +26,7 @@ controller.vista_panel_admin = (req, res) => {
 
     }).catch((err) => {
         console.log(err)
-      
-        res.render('./panel_admin', { rol, permisos: req.session.permisos_usuario })
+        res.render('./panel_admin', {rol, permisos: req.session.permisos_usuario })
     })
 
 }
