@@ -24,7 +24,7 @@ controller.confirmar_pago = (req, res) => {
     if (req.session.passport) {
         usuario.registrar_usuario_que_dona(req).then((response) => {
             console.log(response);
-            res.render('./pago_exitoso', { ruta: '/donantes' })
+            res.render('./pago_exitoso', {ruta:'/donantes' })
         }).catch((err) => {
             console.log(err);
         })

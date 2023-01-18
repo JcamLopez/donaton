@@ -9,6 +9,7 @@ const validar = (req, res, next) => {
             req.session.permisos_usuario = response
             next()
         }).catch((err) => {
+            res.json({ error: err })
             console.log(err)
         })
     }
@@ -21,7 +22,7 @@ router.post('/abrir/modal/actualizar/proyecto', controller.abrir_modal_actualiza
 router.post('/actualizar/proyecto', controller.actualizar_proyecto)
 router.post('/cargar/responsable', controller.cargar_responsable)
 /* Usuario */
-router.post('/eliminar/usuario', controller.eliminar_usuario )
+router.post('/eliminar/usuario', controller.eliminar_usuario)
 router.post('/actualizar/rol/usuario', controller.atualizar_rol_usuario)
 router.post('/buscar/usuario', controller.consultar_usuario)
 
